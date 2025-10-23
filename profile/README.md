@@ -71,6 +71,40 @@ Each chapter includes structured metadata for character POV, timeline placement,
 
 All repositories include pre-configured [Amazon Q CLI](https://aws.amazon.com/q/developer/) agents for intelligent assistance with repository-specific tasks and cross-project coordination.
 
+## 🔄 Shared Workflows
+
+The organization provides reusable GitHub Actions workflows for common tasks:
+
+### Content Publishing
+
+Timeline repositories can use the shared workflow for processing and publishing content:
+
+```yaml
+# .github/workflows/publish.yml
+name: Publish Timeline Content
+
+on:
+  push:
+    branches: [main]
+    paths: ['content/**/*.md']
+
+jobs:
+  publish:
+    uses: echoes-io/.github/.github/workflows/publish-content.yml@main
+    with:
+      timeline-name: 'anima'  # Change for each timeline
+      content-path: 'content/'
+      web-app-url: 'https://app.echoes.io'
+    secrets:
+      WEB_APP_TOKEN: ${{ secrets.WEB_APP_TOKEN }}
+```
+
+The workflow automatically:
+- Processes markdown files with frontmatter
+- Extracts metadata and calculates text statistics
+- Uploads processed content to the web application
+- Handles error reporting and artifacts
+
 ## 🎨 Design Philosophy
 
 - **Literary yet accessible** - Reflects the storytelling nature while remaining technically robust
