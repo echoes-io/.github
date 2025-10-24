@@ -46,10 +46,13 @@ Each chapter is a markdown file with structured frontmatter, enabling flexible o
 - **[@echoes-io/mcp-server](https://github.com/echoes-io/mcp-server)** - AI integration via Model Context Protocol for content operations *(Active Development)*
 - **[@echoes-io/rag](https://github.com/echoes-io/rag)** - Semantic search and context retrieval with vector embeddings *(Active Development)*
 
+### Publishing Tools (🚧 In Progress)
+
+- **[@echoes-io/books-generator](https://github.com/echoes-io/books-generator)** - LaTeX book generation and compilation system *(Active Development)*
+
 ### Services (📋 Planned)
 
 - **echoes-web-app** - Frontend application consuming all services
-- **echoes-latex** - Book generation and compilation system
 
 ## 🛠️ Tech Stack
 
@@ -165,8 +168,8 @@ The workflow automatically:
 - ✅ **Timeline Repositories**: 3/3 created and configured
 - 🚧 **MCP Server**: AI integration tools in development
 - 🚧 **RAG System**: Semantic search implementation in progress
+- 🚧 **Books Generator**: LaTeX compilation system in development
 - 📋 **Web Application**: Frontend development planned
-- 📋 **Book Generation**: LaTeX compilation system planned
 
 The project focuses on creating a robust foundation for multi-perspective storytelling with modern web technologies and AI-assisted content management.
 

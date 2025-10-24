@@ -30,11 +30,13 @@ This repository contains shared configurations and resources for the [echoes.io]
 - `@echoes-io/mcp-server` - Model Context Protocol server for AI integration
 - `@echoes-io/rag` - Semantic search and vector embeddings system
 
+**Publishing Tools (1/1)**
+- `@echoes-io/books-generator` - LaTeX book generation and compilation system
+
 ### 📋 Planned
 
 **Applications**
 - `echoes-web-app` - Frontend application
-- `echoes-latex` - Book generation system
 
 ## Repository Template
 
@@ -130,7 +132,7 @@ The `@echoes-io/mcp-server` provides:
 - `episode-info` - Episode overview
 - `words-update` - Tracker database sync
 - `chapter-add/update/delete` - Content CRUD operations
-- `book-generate` - LaTeX compilation
+- `book-generate` - LaTeX compilation via @echoes-io/books-generator
 
 ### RAG System
 The `@echoes-io/rag` system enables:
