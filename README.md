@@ -8,6 +8,8 @@ This repository contains shared configurations and resources for the [echoes.io]
 - **`.amazonq/cli-agents/default.json`** - Main orchestrator agent for project-wide tasks
 - **`.github/workflows/publish-content.yml`** - Shared workflow for timeline content publishing
 - **`template/`** - Repository template with standard configurations
+- **`WRITING_WORKFLOW.md`** - Complete guide for writing timeline content
+- **`EPISODE_PLANNING.md`** - Complete guide for planning new episodes
 
 ## Current Project Status
 
