@@ -26,7 +26,7 @@ Timeline (story universe)
 │   │   │   └── Chapter (individual .md file)
 ```
 
-Each chapter is a markdown file with structured frontmatter, enabling flexible organization and rich storytelling across **324 chapters** successfully migrated and organized.
+Each chapter is a markdown file with structured frontmatter, enabling flexible organization and rich storytelling across **326 chapters** successfully migrated and organized.
 
 ### Core Libraries (✅ Complete)
 
@@ -37,20 +37,20 @@ Each chapter is a markdown file with structured frontmatter, enabling flexible o
 
 ### Content Repositories (✅ Complete)
 
-- **echoes-timeline-anima** - Anima timeline content with 55 markdown chapters organized in arcs: matilde (5), anima (50)
-- **echoes-timeline-eros** - Eros timeline content with 266 markdown chapters organized in arcs: ale (122), gio (57), work (87)
-- **echoes-timeline-bloom** - Bloom timeline content with 5 markdown chapters in arc: bloom (5)
+- **[echoes-timeline-anima](https://github.com/echoes-io/timeline-anima)** - Anima timeline content with 55 markdown chapters organized in arcs: matilde (5), anima (50)
+- **[echoes-timeline-eros](https://github.com/echoes-io/timeline-eros)** - Eros timeline content with 266 markdown chapters organized in arcs: ale (122), gio (57), work (87)
+- **[echoes-timeline-bloom](https://github.com/echoes-io/timeline-bloom)** - Bloom timeline content with 5 markdown chapters in arc: bloom (5)
 
-### Services (🚧 In Progress)
+### AI Services (🚧 In Progress)
 
 - **[@echoes-io/mcp-server](https://github.com/echoes-io/mcp-server)** - AI integration via Model Context Protocol for content operations *(Active Development)*
-- **[@echoes-io/rag](https://github.com/echoes-io/rag)** - Semantic search and context retrieval with vector embeddings *(Active Development)*
+- **[@echoes-io/rag](https://github.com/echoes-io/rag)** - Semantic search and context retrieval with vector embeddings *(Planned)*
 
-### Publishing Tools (🚧 In Progress)
+### Publishing Tools (✅ Complete)
 
-- **[@echoes-io/books-generator](https://github.com/echoes-io/books-generator)** - LaTeX book generation and compilation system *(Active Development)*
+- **[@echoes-io/books-generator](https://github.com/echoes-io/books-generator)** - LaTeX book generation and compilation system
 
-### Services (📋 Planned)
+### Applications (📋 Planned)
 
 - **echoes-web-app** - Frontend application consuming all services
 
@@ -105,9 +105,9 @@ The `@echoes-io/mcp-server` provides AI tools for content operations:
 - **Tracker Operations**: `words-update`, `chapter-add`, `chapter-update`, `chapter-delete`
 - **Book Generation**: `book-generate` for LaTeX compilation
 
-### RAG System
+### RAG System (Planned)
 
-The `@echoes-io/rag` system enables semantic search across all content:
+The planned `@echoes-io/rag` system will enable semantic search across all content:
 
 - **Vector Embeddings**: OpenAI-powered chapter embeddings
 - **Semantic Search**: Find similar content across timelines
@@ -159,16 +159,16 @@ The workflow automatically:
 
 ## 🌟 Current Status
 
-**Active Development** - Core libraries complete and published to NPM. Content migration completed with 324 chapters organized across three timelines. MCP server and RAG system in active development for AI-powered content operations.
+**Active Development** - Core libraries complete and published to NPM. Content migration completed with 326 chapters organized across three timelines. MCP server and books generator active, RAG system planned for AI-powered content operations.
 
 ### Progress Summary
 
-- ✅ **Core Libraries**: 4/4 complete and published
-- ✅ **Content Migration**: 324 chapters organized with frontmatter
+- ✅ **Core Libraries**: 4/4 complete and published to NPM
+- ✅ **Content Migration**: 326 chapters organized with frontmatter
 - ✅ **Timeline Repositories**: 3/3 created and configured
-- 🚧 **MCP Server**: AI integration tools in development
-- 🚧 **RAG System**: Semantic search implementation in progress
-- 🚧 **Books Generator**: LaTeX compilation system in development
+- ✅ **Books Generator**: LaTeX compilation system complete
+- 🚧 **MCP Server**: AI integration tools in active development
+- 📋 **RAG System**: Semantic search implementation planned
 - 📋 **Web Application**: Frontend development planned
 
 The project focuses on creating a robust foundation for multi-perspective storytelling with modern web technologies and AI-assisted content management.

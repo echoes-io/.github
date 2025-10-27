@@ -2,7 +2,7 @@
 
 This repository contains shared configurations and resources for the [echoes.io](https://github.com/echoes-io) organization.
 
-## Contents
+## 📁 Repository Contents
 
 - **`profile/README.md`** - Organization profile (visible on https://github.com/echoes-io)
 - **`.amazonq/cli-agents/default.json`** - Main orchestrator agent for project-wide tasks
@@ -11,40 +11,11 @@ This repository contains shared configurations and resources for the [echoes.io]
 - **`WRITING_WORKFLOW.md`** - Complete guide for writing timeline content
 - **`EPISODE_PLANNING.md`** - Complete guide for planning new episodes
 
-## Current Project Status
+## 🚀 How to Use This Repository
 
-### ✅ Completed Repositories
+### Creating New Repositories
 
-**Core Libraries (4/4)**
-- `@echoes-io/brand` - Visual identity and timeline color palettes
-- `@echoes-io/utils` - Markdown parsing and text utilities
-- `@echoes-io/models` - TypeScript types and Zod validation schemas
-- `@echoes-io/tracker` - SQLite database with Kysely query builder
-
-**Timeline Content (3/3)**
-- `timeline-anima` - 55 chapters (matilde: 5, anima: 50)
-- `timeline-eros` - 266 chapters (ale: 122, gio: 57, work: 87)
-- `timeline-bloom` - 5 chapters (bloom: 5)
-
-### 🚧 In Development
-
-**AI Services (2/2)**
-- `@echoes-io/mcp-server` - Model Context Protocol server for AI integration
-- `@echoes-io/rag` - Semantic search and vector embeddings system
-
-**Publishing Tools (1/1)**
-- `@echoes-io/books-generator` - LaTeX book generation and compilation system
-
-### 📋 Planned
-
-**Applications**
-- `echoes-web-app` - Frontend application
-
-## Repository Template
-
-The `template/` directory contains standardized configurations and planning templates for echoes.io repositories:
-
-### Repository Setup (`template/repo/`)
+Use the repository template for consistent setup:
 
 ```bash
 # Copy template to new repository
@@ -62,7 +33,7 @@ git add .
 git commit -m "feat: initial repository setup"
 ```
 
-### Planning Templates (`template/docs/`)
+### Setting Up Timeline Content Planning
 
 For timeline repositories, copy planning templates:
 
@@ -71,13 +42,66 @@ For timeline repositories, copy planning templates:
 cp -r template/docs/* timeline-anima/docs/templates/
 
 # Create new character sheet
-cp docs/templates/character-sheet.md docs/characters/new-character.md
+cp docs/templates/character-sheet.md docs/characters/marie.md
 
 # Create new episode outline  
-cp docs/templates/episode-outline.md docs/episodes/ep03-title.md
+cp docs/templates/episode-outline.md docs/episodes/ep03-growth.md
 ```
 
-#### Available Templates
+### Using Shared Workflows
+
+Timeline repositories can use the shared content publishing workflow:
+
+```yaml
+# .github/workflows/publish.yml
+name: Publish Timeline Content
+
+on:
+  push:
+    branches: [main]
+    paths: ['content/**/*.md']
+
+jobs:
+  publish:
+    uses: echoes-io/.github/.github/workflows/publish-content.yml@main
+    with:
+      timeline-name: 'anima'  # Change for each timeline
+      content-path: 'content/'
+      web-app-url: 'https://app.echoes.io'
+    secrets:
+      WEB_APP_TOKEN: ${{ secrets.WEB_APP_TOKEN }}
+```
+
+## 📋 Available Templates
+
+### Repository Template (`template/repo/`)
+
+Standard configurations for new echoes.io repositories:
+
+**Included Files:**
+- **`.github/workflows/release.yml`** - Automated testing, building, and NPM publishing
+- **`.editorconfig`** - Editor configuration for consistent formatting
+- **`.gitignore`** - Standard Node.js/TypeScript exclusions
+- **`.lintstagedrc`** - Pre-commit hooks for quality checks
+- **`biome.json`** - Linting and formatting configuration
+- **`LICENSE`** - MIT license
+- **`package.json`** - NPM package configuration with semantic release
+- **`README.md`** - Documentation template
+- **`tsconfig.json`** - TypeScript configuration
+- **`vitest.config.ts`** - Testing configuration
+
+**Features:**
+- ✅ TypeScript strict mode with Node.js 22 target  
+- ✅ Automated testing with Vitest and coverage reporting  
+- ✅ Linting with Biome (replaces ESLint + Prettier)  
+- ✅ Pre-commit hooks with lint-staged and husky  
+- ✅ Semantic versioning with automated changelog generation  
+- ✅ NPM publishing with provenance and access control  
+- ✅ GitHub Actions for CI/CD pipeline  
+
+### Planning Templates (`template/docs/`)
+
+Templates for content planning in timeline repositories:
 
 **`character-sheet.md`** - Character development template with:
 - Basic information and appearance
@@ -96,87 +120,52 @@ cp docs/templates/episode-outline.md docs/episodes/ep03-title.md
 - Usage history across episodes
 - Character connections and symbolic meaning
 
-### Included Files
-
-- **`.github/workflows/release.yml`** - Automated testing, building, and NPM publishing
-- **`.editorconfig`** - Editor configuration for consistent formatting
-- **`.gitignore`** - Standard Node.js/TypeScript exclusions
-- **`.lintstagedrc`** - Pre-commit hooks for quality checks
-- **`biome.json`** - Linting and formatting configuration
-- **`LICENSE`** - MIT license
-- **`package.json`** - NPM package configuration with semantic release
-- **`README.md`** - Documentation template
-- **`tsconfig.json`** - TypeScript configuration
-- **`vitest.config.ts`** - Testing configuration
-
-### Features
-
-✅ **TypeScript strict mode** with Node.js 22 target  
-✅ **Automated testing** with Vitest and coverage reporting  
-✅ **Linting** with Biome (replaces ESLint + Prettier)  
-✅ **Pre-commit hooks** with lint-staged and husky  
-✅ **Semantic versioning** with automated changelog generation  
-✅ **NPM publishing** with provenance and access control  
-✅ **GitHub Actions** for CI/CD pipeline  
-
-## Content Migration Status
-
-### Migration Completed ✅
-- **324 chapters** migrated with structured frontmatter
-- **Organized by arcs**: Timeline → Arc → Episode → Chapter hierarchy
-- **Metadata validation**: POV, titles, dates, locations extracted
-- **File naming**: Consistent `ep##-ch###-pov-title.md` convention
-
-### Content Structure
-```
-timeline-{name}/content/
-├── {arc-name}/
-│   └── {ep##-episode-title}/
-│       └── {ep##-ch###-pov-title}.md
-```
-
-### Frontmatter Schema
-```yaml
----
-pov: string          # Point of view character
-title: string        # Chapter title  
-date: string         # Publication date
-timeline: string     # Timeline name
-arc: string          # Arc name
-episode: number      # Episode number
-part: number         # Part number
-chapter: number      # Chapter number
-excerpt: string      # Brief description
-location: string     # Scene location
-outfit: string       # (optional) Character outfit
-kink: string         # (optional) Content tags
----
-```
-
-## AI Integration
+## 🤖 AI Integration Setup
 
 ### Amazon Q CLI Agents
-Each repository includes specialized agents:
-- **Main orchestrator** (`/.amazonq/cli-agents/default.json`) - Project-wide coordination
-- **Timeline agents** - Content-specific assistance with MCP server integration
-- **Service agents** - Development assistance for core libraries
 
-### MCP Server Tools
-The `@echoes-io/mcp-server` provides:
-- `words-count` - Chapter word counting
-- `chapter-info` - Metadata and statistics
-- `episode-info` - Episode overview
-- `words-update` - Tracker database sync
-- `chapter-add/update/delete` - Content CRUD operations
-- `book-generate` - LaTeX compilation via @echoes-io/books-generator
+Each repository should include a specialized agent configuration:
 
-### RAG System
-The `@echoes-io/rag` system enables:
-- **Vector embeddings** for all 324 chapters
-- **Semantic search** across timelines and characters
-- **Context retrieval** for AI interactions
-- **Similarity matching** for narrative connections
+```json
+{
+  "$schema": "https://raw.githubusercontent.com/aws/amazon-q-developer-cli/refs/heads/main/schemas/agent-v1.json",
+  "name": "default",
+  "description": "Agent for [repository-name]",
+  "prompt": "[Repository-specific prompt]",
+  "tools": ["fs_read", "fs_write", "execute_bash"],
+  "resources": ["file://README.md"]
+}
+```
+
+### MCP Server Integration
+
+Timeline repositories integrate with `@echoes-io/mcp-server` for content operations:
+- Chapter creation and management
+- Word counting and statistics
+- Database synchronization
+- Book generation
+
+## 📖 Documentation Guides
+
+- **`WRITING_WORKFLOW.md`** - Step-by-step guide for writing chapters
+- **`EPISODE_PLANNING.md`** - Complete episode planning workflow
+- **`profile/README.md`** - Organization overview and project structure
+
+## 🔧 Maintenance
+
+### Updating Templates
+
+When updating templates, ensure changes are propagated to existing repositories:
+
+1. Update templates in this repository
+2. Create migration guide for existing repositories
+3. Update documentation to reflect changes
+4. Notify team of template updates
+
+### Shared Workflow Updates
+
+Changes to shared workflows affect all repositories using them. Test thoroughly before merging.
 
 ---
 
-**Echoes** - Multi-POV storytelling platform ✨
+**For project overview and architecture, see the [organization profile](profile/README.md)** ✨
