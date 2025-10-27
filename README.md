@@ -7,7 +7,7 @@ This repository contains shared configurations and resources for the [echoes.io]
 - **`profile/README.md`** - Organization profile (visible on https://github.com/echoes-io)
 - **`.amazonq/cli-agents/default.json`** - Main orchestrator agent for project-wide tasks
 - **`.github/workflows/publish-content.yml`** - Shared workflow for timeline content publishing
-- **`template/`** - Repository template with standard configurations
+- **`template/`** - Templates for repositories and planning documentation
 - **`WRITING_WORKFLOW.md`** - Complete guide for writing timeline content
 - **`EPISODE_PLANNING.md`** - Complete guide for planning new episodes
 
@@ -42,13 +42,13 @@ This repository contains shared configurations and resources for the [echoes.io]
 
 ## Repository Template
 
-The `template/` directory contains standardized configurations for new echoes.io repositories:
+The `template/` directory contains standardized configurations and planning templates for echoes.io repositories:
 
-### Usage
+### Repository Setup (`template/repo/`)
 
 ```bash
 # Copy template to new repository
-cp -r template/* /path/to/new-repo/
+cp -r template/repo/* /path/to/new-repo/
 cd /path/to/new-repo
 
 # Customize placeholders
@@ -61,6 +61,40 @@ git init
 git add .
 git commit -m "feat: initial repository setup"
 ```
+
+### Planning Templates (`template/docs/`)
+
+For timeline repositories, copy planning templates:
+
+```bash
+# Copy planning templates to timeline repository
+cp -r template/docs/* timeline-anima/docs/templates/
+
+# Create new character sheet
+cp docs/templates/character-sheet.md docs/characters/new-character.md
+
+# Create new episode outline  
+cp docs/templates/episode-outline.md docs/episodes/ep03-title.md
+```
+
+#### Available Templates
+
+**`character-sheet.md`** - Character development template with:
+- Basic information and appearance
+- Current personality and relationships  
+- Character evolution across episodes
+- Episode-specific notes
+
+**`episode-outline.md`** - Episode planning template with:
+- Overview and themes
+- Character roles and development
+- 3-act structure with chapter breakdown
+- Locations and continuity notes
+
+**`location.md`** - Location documentation template with:
+- Physical description and atmosphere
+- Usage history across episodes
+- Character connections and symbolic meaning
 
 ### Included Files
 
