@@ -9,7 +9,6 @@ This repository contains shared configurations and resources for the [echoes.io]
 - **`.github/workflows/publish-content.yml`** - Shared workflow for timeline content publishing
 - **`template/`** - Templates for repositories and planning documentation
 - **`WRITING_WORKFLOW.md`** - Complete guide for writing timeline content
-- **`EPISODE_PLANNING.md`** - Complete guide for planning new episodes
 
 ## 🚀 How to Use This Repository
 
@@ -148,7 +147,6 @@ Timeline repositories integrate with `@echoes-io/mcp-server` for content operati
 ## 📖 Documentation Guides
 
 - **`WRITING_WORKFLOW.md`** - Step-by-step guide for writing chapters
-- **`EPISODE_PLANNING.md`** - Complete episode planning workflow
 - **`profile/README.md`** - Organization overview and project structure
 
 ## 🔧 Maintenance

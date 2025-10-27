@@ -100,18 +100,9 @@ q chat "Validate and refresh this chapter's frontmatter"
 ```
 **MCP Tool:** `chapter-refresh` - Updates chapter metadata
 
-## 🔍 Content Discovery (Future)
+## 🔍 Content Discovery
 
-### Semantic Search (Coming Soon)
-```bash
-# Find related content - REQUIRES RAG INTEGRATION
-q chat "Find chapters similar to 'internal conflict theme'"
-```
-
-**Planned MCP Tools:**
-- `semantic-search` - Semantic search via RAG system
-- `find-similar` - Find related chapters
-- `get-context` - Retrieve context for AI assistance
+Use Amazon Q's built-in search capabilities to find related content across your timeline.
 
 ## 📊 Chapter Management
 
@@ -146,21 +137,19 @@ Database synchronization happens automatically via:
 - **Git hooks** (husky) on commit
 - **GitHub Actions** on push to main branch
 
-## 📚 Book Generation (Future)
+## 📚 Book Generation
 
-### Generate Books (Coming Soon)
+### Generate Books
 ```bash
-# Generate PDF for complete arc - REQUIRES BOOKS-GENERATOR INTEGRATION
+# Generate PDF for complete arc
 q chat "Generate a PDF book for the anima arc"
 
 # Generate specific episode
 q chat "Generate PDF for episode 1 of anima timeline"
 ```
 
-**Planned MCP Tools:**
+**MCP Tool:**
 - `book-generate` - LaTeX compilation via @echoes-io/books-generator
-- `book-preview` - Generate chapter previews
-- `book-export` - Multi-format export (PDF, EPUB)
 
 ## 🚀 Publishing Workflow
 
@@ -203,17 +192,7 @@ Pre-commit hooks automatically:
 - `episode-update` - Update episode metadata
 - `stats` - Timeline/arc/episode statistics
 - `timeline-sync` - Database synchronization
-
-### 🚧 Coming Soon
-**RAG Integration:**
-- `semantic-search` - Semantic content search
-- `find-similar` - Related chapter discovery
-- `get-context` - AI context retrieval
-
-**Books Generator Integration:**
 - `book-generate` - LaTeX book compilation
-- `book-preview` - Chapter preview generation
-- `book-export` - Multi-format book export
 
 ## 💡 Best Practices
 
