@@ -41,10 +41,10 @@ Each chapter is a markdown file with structured frontmatter, enabling flexible o
 - **[echoes-timeline-eros](https://github.com/echoes-io/timeline-eros)** - Eros timeline content with 266 markdown chapters organized in arcs: ale (122), gio (57), work (87)
 - **[echoes-timeline-bloom](https://github.com/echoes-io/timeline-bloom)** - Bloom timeline content with 5 markdown chapters in arc: bloom (5)
 
-### AI Services (🚧 In Progress)
+### AI Services (✅ Complete)
 
-- **[@echoes-io/mcp-server](https://github.com/echoes-io/mcp-server)** - AI integration via Model Context Protocol for content operations *(Active Development)*
-- **[@echoes-io/rag](https://github.com/echoes-io/rag)** - Semantic search and context retrieval with vector embeddings *(Planned)*
+- **[@echoes-io/mcp-server](https://github.com/echoes-io/mcp-server)** - AI integration via Model Context Protocol for content operations
+- **[@echoes-io/rag](https://github.com/echoes-io/rag)** - Semantic search and context retrieval with vector embeddings using ChromaDB
 
 ### Publishing Tools (✅ Complete)
 
@@ -105,9 +105,9 @@ The `@echoes-io/mcp-server` provides AI tools for content operations:
 - **Tracker Operations**: `words-update`, `chapter-add`, `chapter-update`, `chapter-delete`
 - **Book Generation**: `book-generate` for LaTeX compilation
 
-### RAG System (Planned)
+### RAG System
 
-The planned `@echoes-io/rag` system will enable semantic search across all content:
+The `@echoes-io/rag` system enables semantic search across all content:
 
 - **Vector Embeddings**: OpenAI-powered chapter embeddings
 - **Semantic Search**: Find similar content across timelines
@@ -159,16 +159,15 @@ The workflow automatically:
 
 ## 🌟 Current Status
 
-**Active Development** - Core libraries complete and published to NPM. Content migration completed with 326 chapters organized across three timelines. MCP server and books generator active, RAG system planned for AI-powered content operations.
+**Active Development** - Core libraries complete and published to NPM. Content migration completed with 326 chapters organized across three timelines. MCP server and RAG system operational, books generator complete. Ready for web application development.
 
 ### Progress Summary
 
 - ✅ **Core Libraries**: 4/4 complete and published to NPM
 - ✅ **Content Migration**: 326 chapters organized with frontmatter
 - ✅ **Timeline Repositories**: 3/3 created and configured
+- ✅ **AI Services**: MCP server and RAG system operational
 - ✅ **Books Generator**: LaTeX compilation system complete
-- 🚧 **MCP Server**: AI integration tools in active development
-- 📋 **RAG System**: Semantic search implementation planned
 - 📋 **Web Application**: Frontend development planned
 
 The project focuses on creating a robust foundation for multi-perspective storytelling with modern web technologies and AI-assisted content management.
