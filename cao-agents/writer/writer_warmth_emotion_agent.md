@@ -1,5 +1,5 @@
 ---
-name: writing_warmth_emotion_agent
+name: writer_warmth_emotion_agent
 description: "Agente specializzato nel rendere la scrittura più calda, emotiva e coinvolgente"
 model: "claude-sonnet-4.5"
 mcpServers:

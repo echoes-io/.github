@@ -1,5 +1,5 @@
 ---
-name: writing_style_editor
+name: writer_style_editor
 description: "Agente che perfeziona stile, grammatica e ritmo narrativo del capitolo"
 model: "claude-sonnet-4.5"
 mcpServers:

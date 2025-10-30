@@ -7,7 +7,7 @@ This repository contains shared configurations and resources for the [echoes.io]
 - **`profile/README.md`** - Organization profile (visible on https://github.com/echoes-io)
 - **`.amazonq/cli-agents/default.json`** - Main orchestrator agent for project-wide tasks
 - **`.github/workflows/publish-content.yml`** - Shared workflow for timeline content publishing
-- **`cao-agents/writing/`** - CAO agents for content creation workflow
+- **`cao-agents/writer/`** - CAO agents for content creation workflow
 - **`cao-agents/web-dev/`** - CAO agents for web application development
 - **`template/`** - Templates for repositories and planning documentation
 - **`WRITING_WORKFLOW.md`** - Complete guide for writing timeline content
@@ -127,17 +127,17 @@ Templates for content planning in timeline repositories:
 
 The project uses [CLI Agent Orchestrator](https://github.com/awslabs/cli-agent-orchestrator) for multi-agent workflows.
 
-#### Writing Agents (`cao-agents/writing/`)
+#### Writer Agents (`cao-agents/writer/`)
 
 Specialized agents for content creation:
-- **`context_orchestrator`** - Gathers narrative context
-- **`narrative_writer`** - Creative writing
-- **`warmth_emotion_agent`** - Emotional depth
-- **`continuity_guardian`** - Narrative consistency
-- **`style_editor`** - Style refinement
-- **`metadata_manager`** - Frontmatter and database sync
+- **`writer`** - Main orchestrator, gathers narrative context
+- **`writer_narrative_writer`** - Creative writing
+- **`writer_warmth_emotion_agent`** - Emotional depth
+- **`writer_continuity_guardian`** - Narrative consistency
+- **`writer_style_editor`** - Style refinement
+- **`writer_metadata_manager`** - Frontmatter and database sync
 
-See [`cao-agents/writing/README.md`](cao-agents/writing/README.md) for details.
+See [`cao-agents/writer/README.md`](cao-agents/writer/README.md) for details.
 
 #### Web Development Agents (`cao-agents/web-dev/`)
 
@@ -157,17 +157,19 @@ See [`cao-agents/web-dev/README.md`](cao-agents/web-dev/README.md) for details.
 **Automated Installation (Recommended):**
 
 ```bash
-# Install all CAO agents automatically
-make install-cao-agents
+# Install CAO prerequisites and all agents automatically
+make install
 ```
 
-The Makefile dynamically discovers and installs all agents from `cao-agents/*/` directories, excluding README files.
+The Makefile installs:
+1. **Prerequisites:** tmux configuration, uv package manager, CAO tool
+2. **All agents:** Dynamically discovers and installs all agents from `cao-agents/*/` directories
 
 **Manual Installation:**
 
 ```bash
 # Install specific agents
-cao install https://raw.githubusercontent.com/echoes-io/.github/main/cao-agents/writing/writing.md
+cao install https://raw.githubusercontent.com/echoes-io/.github/main/cao-agents/writer/writer.md
 cao install https://raw.githubusercontent.com/echoes-io/.github/main/cao-agents/web-dev/web_dev.md
 ```
 
@@ -175,8 +177,8 @@ cao install https://raw.githubusercontent.com/echoes-io/.github/main/cao-agents/
 
 ```bash
 # Launch orchestrators
-cao launch --agents writing    # For content creation
-cao launch --agents web_dev    # For web development
+make launch-writer     # For content creation
+make launch-web-dev    # For web development
 ```
 
 ### Amazon Q CLI Agents

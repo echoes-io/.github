@@ -1,4 +1,4 @@
-# Echoes Writing Agents - CAO System
+# Echoes Writer Agents - CAO System
 
 Sistema di agenti specializzati per la scrittura collaborativa dei capitoli Echoes utilizzando CLI Agent Orchestrator (CAO).
 
@@ -7,38 +7,38 @@ Sistema di agenti specializzati per la scrittura collaborativa dei capitoli Echo
 Il sistema implementa un workflow sequenziale con handoff tra agenti specializzati:
 
 ```
-writing → writing_narrative_writer → writing_warmth_emotion_agent → writing_continuity_guardian → writing_style_editor → writing_metadata_manager
+writer → writer_narrative_writer → writer_warmth_emotion_agent → writer_continuity_guardian → writer_style_editor → writer_metadata_manager
 ```
 
-### 🔍 writing (Orchestrator)
+### 🔍 writer (Orchestrator)
 **Ruolo:** Raccoglie e organizza tutto il contesto necessario per la scrittura
 - Recupera metadata del capitolo target
 - Usa RAG per contesto narrativo correlato
 - Prepara briefing completo per il writer
 - **Tools MCP:** `chapter-info`, `episode-info`, `rag-context`, `rag-search`
 
-### ✍️ writing_narrative_writer
+### ✍️ writer_narrative_writer
 **Ruolo:** Scrittura creativa pura, focus su narrativa coinvolgente
 - Riceve briefing completo dall'orchestrator
 - Scrive draft del capitolo in italiano
 - Focus su dialoghi, emozioni, sviluppo personaggio
 - **Tools MCP:** Nessuno (creatività pura)
 
-### 🔥 writing_warmth_emotion_agent
+### 🔥 writer_warmth_emotion_agent
 **Ruolo:** Riscalda la scrittura rendendola più emotiva e coinvolgente
 - Trasforma descrizioni fredde in scene vissute
 - Aggiunge dettagli sensoriali specifici
 - Intensifica connessioni emotive
 - **Tools MCP:** Nessuno (editing emotivo)
 
-### 🛡️ writing_continuity_guardian
+### 🛡️ writer_continuity_guardian
 **Ruolo:** Verifica coerenza narrativa e continuità personaggi
 - Controlla consistenza con capitoli precedenti
 - Verifica sviluppo logico dei personaggi
 - Identifica e corregge contraddizioni
 - **Tools MCP:** `rag-search`, `rag-context`, `episode-info`
 
-### 📝 writing_style_editor
+### 📝 writer_style_editor
 **Ruolo:** Perfeziona stile, grammatica e ritmo narrativo
 - Correzioni linguistiche e stilistiche
 - Adatta stile alla timeline specifica
@@ -46,7 +46,7 @@ writing → writing_narrative_writer → writing_warmth_emotion_agent → writin
 - Controlla word count target
 - **Tools MCP:** Nessuno (editing stilistico)
 
-### 📊 writing_metadata_manager
+### 📊 writer_metadata_manager
 **Ruolo:** Gestisce metadata, frontmatter e salvataggio finale
 - Genera frontmatter completo
 - Calcola statistiche accurate
@@ -63,25 +63,25 @@ writing → writing_narrative_writer → writing_warmth_emotion_agent → writin
 
 ### Installazione Agenti
 ```bash
-# Installa tutti gli agenti writing da GitHub
-cao install https://raw.githubusercontent.com/echoes-io/.github/main/cao-agents/writing/writing.md
-cao install https://raw.githubusercontent.com/echoes-io/.github/main/cao-agents/writing/writing_narrative_writer.md
-cao install https://raw.githubusercontent.com/echoes-io/.github/main/cao-agents/writing/writing_warmth_emotion_agent.md
-cao install https://raw.githubusercontent.com/echoes-io/.github/main/cao-agents/writing/writing_continuity_guardian.md
-cao install https://raw.githubusercontent.com/echoes-io/.github/main/cao-agents/writing/writing_style_editor.md
-cao install https://raw.githubusercontent.com/echoes-io/.github/main/cao-agents/writing/writing_metadata_manager.md
+# Installa tutti gli agenti writer da GitHub
+cao install https://raw.githubusercontent.com/echoes-io/.github/main/cao-agents/writer/writer.md
+cao install https://raw.githubusercontent.com/echoes-io/.github/main/cao-agents/writer/writer_narrative_writer.md
+cao install https://raw.githubusercontent.com/echoes-io/.github/main/cao-agents/writer/writer_warmth_emotion_agent.md
+cao install https://raw.githubusercontent.com/echoes-io/.github/main/cao-agents/writer/writer_continuity_guardian.md
+cao install https://raw.githubusercontent.com/echoes-io/.github/main/cao-agents/writer/writer_style_editor.md
+cao install https://raw.githubusercontent.com/echoes-io/.github/main/cao-agents/writer/writer_metadata_manager.md
 ```
 
 ### Avvio Workflow
 ```bash
 # Avvia il workflow dall'orchestrator principale
-q chat --profile writing
+q chat --profile writer
 
 # Il workflow procederà automaticamente attraverso tutti gli agenti
 ```
 
 ### Input Richiesto
-L'orchestrator **writing** richiede solo:
+L'orchestrator **writer** richiede solo:
 - **Timeline:** anima/eros/bloom
 - **Arc:** nome dell'arco
 - **Episode:** numero episodio
@@ -178,4 +178,4 @@ Il sistema utilizza **due MCP server** per funzionalità diverse:
 
 ---
 
-**Echoes Writing System** - Dove la creatività umana incontra l'orchestrazione intelligente ✨
+**Echoes Writer System** - Dove la creatività umana incontra l'orchestrazione intelligente ✨

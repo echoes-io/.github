@@ -1,5 +1,5 @@
 ---
-name: writing
+name: writer
 description: "Agente che raccoglie e organizza il contesto narrativo per la scrittura di un nuovo capitolo"
 model: "claude-sonnet-4.5"
 mcpServers:
