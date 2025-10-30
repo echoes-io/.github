@@ -9,7 +9,7 @@ help: ## Show this help message
 install: ## Install CAO prerequisites and all agents
 	@echo "🔧 Installing CAO prerequisites..."
 	@echo "  Installing tmux configuration..."
-	@bash <(curl -s https://raw.githubusercontent.com/awslabs/cli-agent-orchestrator/refs/heads/main/tmux-install.sh)
+	@curl -s https://raw.githubusercontent.com/awslabs/cli-agent-orchestrator/refs/heads/main/tmux-install.sh | bash
 	@echo "  Installing uv..."
 	@curl -LsSf https://astral.sh/uv/install.sh | sh
 	@echo "  Installing CAO..."
