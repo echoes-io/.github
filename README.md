@@ -7,6 +7,8 @@ This repository contains shared configurations and resources for the [echoes.io]
 - **`profile/README.md`** - Organization profile (visible on https://github.com/echoes-io)
 - **`.amazonq/cli-agents/default.json`** - Main orchestrator agent for project-wide tasks
 - **`.github/workflows/publish-content.yml`** - Shared workflow for timeline content publishing
+- **`cao-agents/writing/`** - CAO agents for content creation workflow
+- **`cao-agents/web-dev/`** - CAO agents for web application development
 - **`template/`** - Templates for repositories and planning documentation
 - **`WRITING_WORKFLOW.md`** - Complete guide for writing timeline content
 
@@ -120,6 +122,51 @@ Templates for content planning in timeline repositories:
 - Character connections and symbolic meaning
 
 ## 🤖 AI Integration Setup
+
+### CLI Agent Orchestrator (CAO)
+
+The project uses [CLI Agent Orchestrator](https://github.com/awslabs/cli-agent-orchestrator) for multi-agent workflows.
+
+#### Writing Agents (`cao-agents/writing/`)
+
+Specialized agents for content creation:
+- **`context_orchestrator`** - Gathers narrative context
+- **`narrative_writer`** - Creative writing
+- **`warmth_emotion_agent`** - Emotional depth
+- **`continuity_guardian`** - Narrative consistency
+- **`style_editor`** - Style refinement
+- **`metadata_manager`** - Frontmatter and database sync
+
+See [`cao-agents/writing/README.md`](cao-agents/writing/README.md) for details.
+
+#### Web Development Agents (`cao-agents/web-dev/`)
+
+Specialized agents for web app development:
+- **`web_dev`** - Main orchestrator
+- **`web_dev_database_engineer`** - Drizzle schema and migrations
+- **`web_dev_ui_ux_designer`** - Design system and wireframes
+- **`web_dev_component_developer`** - React components
+- **`web_dev_integration_engineer`** - API routes and GitHub Actions
+- **`web_dev_test_engineer`** - Vitest and Playwright tests
+- **`web_dev_performance_optimizer`** - Next.js optimization
+
+See [`cao-agents/web-dev/README.md`](cao-agents/web-dev/README.md) for details.
+
+#### Installation
+
+```bash
+# Install writing agents
+cao install https://raw.githubusercontent.com/echoes-io/.github/main/cao-agents/writing/context_orchestrator.md
+# ... (other writing agents)
+
+# Install web-dev agents
+cao install https://raw.githubusercontent.com/echoes-io/.github/main/cao-agents/web-dev/web_dev.md
+# ... (other web-dev agents)
+
+# Launch orchestrator
+cao launch --agents context_orchestrator  # For writing
+cao launch --agents web_dev              # For web development
+```
 
 ### Amazon Q CLI Agents
 

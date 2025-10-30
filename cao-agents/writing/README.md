@@ -7,38 +7,38 @@ Sistema di agenti specializzati per la scrittura collaborativa dei capitoli Echo
 Il sistema implementa un workflow sequenziale con handoff tra agenti specializzati:
 
 ```
-Context Orchestrator → Narrative Writer → Warmth & Emotion Agent → Continuity Guardian → Style Editor → Metadata Manager
+writing → writing_narrative_writer → writing_warmth_emotion_agent → writing_continuity_guardian → writing_style_editor → writing_metadata_manager
 ```
 
-### 🔍 Context Orchestrator
+### 🔍 writing (Orchestrator)
 **Ruolo:** Raccoglie e organizza tutto il contesto necessario per la scrittura
 - Recupera metadata del capitolo target
 - Usa RAG per contesto narrativo correlato
 - Prepara briefing completo per il writer
 - **Tools MCP:** `chapter-info`, `episode-info`, `rag-context`, `rag-search`
 
-### ✍️ Narrative Writer  
+### ✍️ writing_narrative_writer
 **Ruolo:** Scrittura creativa pura, focus su narrativa coinvolgente
-- Riceve briefing completo dal Context Orchestrator
+- Riceve briefing completo dall'orchestrator
 - Scrive draft del capitolo in italiano
 - Focus su dialoghi, emozioni, sviluppo personaggio
 - **Tools MCP:** Nessuno (creatività pura)
 
-### 🔥 Warmth & Emotion Agent
+### 🔥 writing_warmth_emotion_agent
 **Ruolo:** Riscalda la scrittura rendendola più emotiva e coinvolgente
 - Trasforma descrizioni fredde in scene vissute
 - Aggiunge dettagli sensoriali specifici
 - Intensifica connessioni emotive
 - **Tools MCP:** Nessuno (editing emotivo)
 
-### 🛡️ Continuity Guardian
+### 🛡️ writing_continuity_guardian
 **Ruolo:** Verifica coerenza narrativa e continuità personaggi
 - Controlla consistenza con capitoli precedenti
 - Verifica sviluppo logico dei personaggi
 - Identifica e corregge contraddizioni
 - **Tools MCP:** `rag-search`, `rag-context`, `episode-info`
 
-### 📝 Style Editor
+### 📝 writing_style_editor
 **Ruolo:** Perfeziona stile, grammatica e ritmo narrativo
 - Correzioni linguistiche e stilistiche
 - Adatta stile alla timeline specifica
@@ -46,7 +46,7 @@ Context Orchestrator → Narrative Writer → Warmth & Emotion Agent → Continu
 - Controlla word count target
 - **Tools MCP:** Nessuno (editing stilistico)
 
-### 📊 Metadata Manager
+### 📊 writing_metadata_manager
 **Ruolo:** Gestisce metadata, frontmatter e salvataggio finale
 - Genera frontmatter completo
 - Calcola statistiche accurate
@@ -64,27 +64,24 @@ Context Orchestrator → Narrative Writer → Warmth & Emotion Agent → Continu
 ### Installazione Agenti
 ```bash
 # Installa tutti gli agenti writing da GitHub
-cao install https://raw.githubusercontent.com/echoes-io/.github/main/cao-agents/writing/context_orchestrator.md
-cao install https://raw.githubusercontent.com/echoes-io/.github/main/cao-agents/writing/narrative_writer.md
-cao install https://raw.githubusercontent.com/echoes-io/.github/main/cao-agents/writing/warmth_emotion_agent.md
-cao install https://raw.githubusercontent.com/echoes-io/.github/main/cao-agents/writing/continuity_guardian.md
-cao install https://raw.githubusercontent.com/echoes-io/.github/main/cao-agents/writing/style_editor.md
-cao install https://raw.githubusercontent.com/echoes-io/.github/main/cao-agents/writing/metadata_manager.md
+cao install https://raw.githubusercontent.com/echoes-io/.github/main/cao-agents/writing/writing.md
+cao install https://raw.githubusercontent.com/echoes-io/.github/main/cao-agents/writing/writing_narrative_writer.md
+cao install https://raw.githubusercontent.com/echoes-io/.github/main/cao-agents/writing/writing_warmth_emotion_agent.md
+cao install https://raw.githubusercontent.com/echoes-io/.github/main/cao-agents/writing/writing_continuity_guardian.md
+cao install https://raw.githubusercontent.com/echoes-io/.github/main/cao-agents/writing/writing_style_editor.md
+cao install https://raw.githubusercontent.com/echoes-io/.github/main/cao-agents/writing/writing_metadata_manager.md
 ```
 
 ### Avvio Workflow
 ```bash
-# Avvia CAO server
-cao-server
-
-# In altro terminale, lancia il Context Orchestrator
-cao launch --agents context_orchestrator
+# Avvia il workflow dall'orchestrator principale
+q chat --profile writing
 
 # Il workflow procederà automaticamente attraverso tutti gli agenti
 ```
 
 ### Input Richiesto
-Il **Context Orchestrator** richiede solo:
+L'orchestrator **writing** richiede solo:
 - **Timeline:** anima/eros/bloom
 - **Arc:** nome dell'arco
 - **Episode:** numero episodio
