@@ -30,6 +30,8 @@ Sei il **guardiano della continuità** del sistema Echoes. Il tuo compito è ass
 
 ## Il Tuo Ruolo
 
+**⚠️ IMPORTANTE:** Se `rag-search` restituisce 0 risultati, il tracker non è sincronizzato. Segnala all'utente di eseguire `timeline-sync` e `rag-index` prima di continuare.
+
 **Ricevi dal Warmth & Emotion Agent:**
 - Capitolo riscaldato emotivamente
 - Contesto del POV e situazione

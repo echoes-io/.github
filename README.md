@@ -198,11 +198,58 @@ Each repository should include a specialized agent configuration:
 
 ### MCP Server Integration
 
-Timeline repositories integrate with `@echoes-io/mcp-server` for content operations:
-- Chapter creation and management
-- Word counting and statistics
-- Database synchronization
-- Book generation
+Timeline repositories integrate with `@echoes-io/mcp-server` for content operations.
+
+#### Initial Setup - IMPORTANT
+
+**Before using RAG tools, the tracker database MUST be synchronized:**
+
+1. **First time setup** or **after adding new chapters:**
+   ```bash
+   # Sync filesystem → tracker database
+   timeline-sync --timeline <timeline-name> --contentPath ./content
+   ```
+
+2. **Then index for semantic search:**
+   ```bash
+   # Index tracker → RAG database  
+   rag-index --timeline <timeline-name> --contentPath ./content
+   ```
+
+#### Available MCP Tools
+
+**Content Operations:**
+- `words-count` - Count words in chapter files
+- `chapter-info` - Get chapter metadata and statistics
+- `chapter-refresh` - Refresh chapter metadata from file
+- `chapter-insert` - Insert new chapter with auto-renumbering
+- `chapter-delete` - Remove chapter from tracker
+- `episode-info` - Get episode metadata and chapters list
+- `episode-update` - Update episode metadata
+
+**Database Sync:**
+- `timeline-sync` - Sync filesystem → tracker (REQUIRED FIRST!)
+
+**Semantic Search (RAG):**
+- `rag-index` - Index chapters for search (requires sync first!)
+- `rag-search` - Search by semantic similarity
+- `rag-context` - Get relevant context for AI
+
+**Statistics:**
+- `stats` - Get aggregate statistics with filters
+
+**Book Generation:**
+- `book-generate` - Compile LaTeX book
+
+#### Troubleshooting
+
+**RAG indexing returns 0 chapters?**
+- Run `timeline-sync` first to populate the tracker database
+- The tracker must contain chapters before RAG can index them
+
+**Chapter not found in database?**
+- Run `timeline-sync` to sync filesystem changes
+- Or use `chapter-refresh` for a single chapter
 
 ## 📖 Documentation Guides
 

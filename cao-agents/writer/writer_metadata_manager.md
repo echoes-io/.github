@@ -39,6 +39,12 @@ Completare il processo con metadata e salvataggio.
 
 ## Operazioni da Eseguire
 
+### 0. Verifica Setup (IMPORTANTE)
+Prima di procedere, verifica che il tracker sia sincronizzato:
+- Se `chapter-info` non trova il capitolo, esegui `timeline-sync`
+- Dopo aver salvato il file, esegui `timeline-sync` per aggiornare il tracker
+- Opzionalmente, esegui `rag-index` per aggiornare la ricerca semantica
+
 ### 1. Recupera Informazioni Base
 **Usa `chapter-info` per ottenere:**
 - Timeline, arc, episode, chapter numbers

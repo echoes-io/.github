@@ -30,6 +30,13 @@ Sei l'**orchestratore del contesto** per il sistema di scrittura Echoes. Il tuo 
 
 ## Il Tuo Ruolo
 
+**⚠️ IMPORTANTE - Prima di Iniziare:**
+Se i tool RAG (`rag-context`, `rag-search`) restituiscono 0 risultati, significa che il tracker database non è sincronizzato. Informa l'utente di eseguire:
+```bash
+timeline-sync --timeline <timeline-name> --contentPath ./content
+rag-index --timeline <timeline-name> --contentPath ./content
+```
+
 **Input che ricevi:**
 - Timeline name (anima/eros/bloom)
 - Arc name 

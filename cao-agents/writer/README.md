@@ -120,20 +120,49 @@ Il sistema utilizza **due MCP server** per funzionalità diverse:
 - `send_message` - Comunicazione diretta
 
 ### Echoes MCP Server (Content Operations)
-**Solo agenti che ne hanno bisogno:**
+
+#### ⚠️ IMPORTANTE - Sequenza di Setup
+
+**Prima di usare i tool RAG, il tracker database DEVE essere sincronizzato:**
+
+1. **Prima volta o dopo aver aggiunto nuovi capitoli:**
+   ```bash
+   timeline-sync --timeline <timeline-name> --contentPath ./content
+   ```
+
+2. **Poi indicizza per la ricerca semantica:**
+   ```bash
+   rag-index --timeline <timeline-name> --contentPath ./content
+   ```
+
+**Se RAG restituisce 0 risultati:** esegui `timeline-sync` prima!
+
+#### Tool Disponibili per Agente
 
 **Context Orchestrator + Continuity Guardian + Metadata Manager:**
 - `chapter-info` - metadata capitolo
 - `episode-info` - informazioni episodio
+- `timeline-sync` - sincronizzazione filesystem → tracker (RICHIESTO PRIMA!)
+- `rag-index` - indicizzazione tracker → RAG (richiede sync!)
 - `rag-search` - ricerca semantica
 - `rag-context` - contesto narrativo
 - `words-count` - statistiche testo
 - `chapter-insert` - inserimento capitolo
-- `timeline-sync` - sincronizzazione database
+- `chapter-refresh` - aggiorna singolo capitolo
 
 **Narrative Writer + Warmth Agent + Style Editor:**
 - Solo CAO MCP server per orchestrazione
 - Nessun accesso diretto ai dati Echoes
+
+#### Troubleshooting
+
+**RAG non trova capitoli?**
+- Verifica che `timeline-sync` sia stato eseguito
+- Il tracker deve contenere i capitoli prima che RAG possa indicizzarli
+
+**Capitolo non trovato nel database?**
+- Esegui `timeline-sync` per sincronizzare le modifiche
+- Oppure usa `chapter-refresh` per un singolo capitolo
 
 ## 📏 Target Word Count
 
