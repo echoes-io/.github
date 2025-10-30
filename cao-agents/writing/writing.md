@@ -1,5 +1,5 @@
 ---
-name: context_orchestrator
+name: writing
 description: "Agente che raccoglie e organizza il contesto narrativo per la scrittura di un nuovo capitolo"
 model: "claude-sonnet-4.5"
 mcpServers:

@@ -1,5 +1,5 @@
 ---
-name: metadata_manager
+name: writing_metadata_manager
 description: "Agente che gestisce metadata, frontmatter e salvataggio finale del capitolo"
 model: "claude-sonnet-4.5"
 mcpServers:

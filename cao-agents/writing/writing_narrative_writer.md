@@ -1,5 +1,5 @@
 ---
-name: narrative_writer
+name: writing_narrative_writer
 description: "Agente specializzato nella scrittura creativa dei capitoli Echoes"
 model: "claude-sonnet-4.5"
 mcpServers:

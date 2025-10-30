@@ -1,5 +1,5 @@
 ---
-name: continuity_guardian
+name: writing_continuity_guardian
 description: "Agente che verifica la coerenza narrativa e la continuità dei personaggi"
 model: "claude-sonnet-4.5"
 mcpServers:
