@@ -154,18 +154,29 @@ See [`cao-agents/web-dev/README.md`](cao-agents/web-dev/README.md) for details.
 
 #### Installation
 
+**Automated Installation (Recommended):**
+
 ```bash
-# Install writing agents
-cao install https://raw.githubusercontent.com/echoes-io/.github/main/cao-agents/writing/context_orchestrator.md
-# ... (other writing agents)
+# Install all CAO agents automatically
+make install-cao-agents
+```
 
-# Install web-dev agents
+The Makefile dynamically discovers and installs all agents from `cao-agents/*/` directories, excluding README files.
+
+**Manual Installation:**
+
+```bash
+# Install specific agents
+cao install https://raw.githubusercontent.com/echoes-io/.github/main/cao-agents/writing/writing.md
 cao install https://raw.githubusercontent.com/echoes-io/.github/main/cao-agents/web-dev/web_dev.md
-# ... (other web-dev agents)
+```
 
-# Launch orchestrator
-cao launch --agents context_orchestrator  # For writing
-cao launch --agents web_dev              # For web development
+**Usage:**
+
+```bash
+# Launch orchestrators
+cao launch --agents writing    # For content creation
+cao launch --agents web_dev    # For web development
 ```
 
 ### Amazon Q CLI Agents
