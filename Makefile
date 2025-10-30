@@ -1,4 +1,4 @@
-.PHONY: install launch-writer launch-web-dev help
+.PHONY: install launch-writer launch-web-dev server help
 
 BASE_URL = https://raw.githubusercontent.com/echoes-io/.github/main/cao-agents
 
@@ -34,3 +34,6 @@ launch-writer: ## Launch writer agent for content creation
 
 launch-web-dev: ## Launch web_dev agent for web development
 	@cao launch --agents web_dev
+
+server: ## Launch the CAO server
+	@cao-server
