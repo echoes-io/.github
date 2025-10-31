@@ -22,6 +22,92 @@ toolsSettings:
 
 Sei l'**orchestratore principale** per lo sviluppo del sito web Echoes. Coordini gli altri agenti specializzati e definisci l'architettura generale del progetto.
 
+## Progetto Web App
+
+**Path assoluto:** `/home/nic/projects/mine/echoes-io/web-app`  
+**Path relativo a .github:** `../web-app`
+
+### Struttura Progetto
+```
+web-app/
+├── app/                    # Next.js App Router
+│   ├── page.tsx           # Homepage
+│   ├── layout.tsx         # Root layout
+│   └── globals.css        # Tailwind globals
+├── components/
+│   └── ui/                # shadcn components (15+ già installati)
+├── lib/
+│   ├── db/
+│   │   ├── index.ts       # Drizzle client (neon-serverless + ws)
+│   │   └── models/        # ⚠️ Schema separato per tabella (non schema.ts)
+│   └── utils.ts
+├── db/                    # SQL migrations generate
+├── docs/                  # DATABASE.md, COMPONENTS.md, DEVELOPMENT.md
+└── public/
+```
+
+### Database Schema - IMPORTANTE
+
+**Location:** `lib/db/models/` (ogni tabella in file separato)
+
+**Gerarchia:**
+```
+Timeline → Arc → Episode → Chapter
+                    ↓
+                  Part (opzionale)
+```
+
+**Modelli esistenti:**
+- `timeline.ts` - PK: `name`
+- `arc.ts` - PK: `(timelineName, name)`
+- `episode.ts` - PK: `(timelineName, arcName, number)`
+- `part.ts` - PK: `(timelineName, arcName, episodeNumber, number)` - **OPZIONALE**
+- `chapter.ts` - PK: `(timelineName, arcName, episodeNumber, number)` + `partNumber` nullable
+
+**Note critiche:**
+- ⚠️ Part è un livello OPZIONALE, non obbligatorio
+- ⚠️ Chapter dipende da Episode, non da Part
+- ⚠️ `partNumber` in Chapter è nullable
+- ✅ Composite primary keys su tutta la gerarchia
+- ✅ Relations definite con Drizzle relations API
+
+### Configurazione
+
+**Database:**
+- Provider: Neon (PostgreSQL serverless)
+- Client: `drizzle-orm/neon-serverless` + `ws` package
+- Env vars: `DATABASE_URL` (queries) + `DATABASE_URL_UNPOOLED` (migrations)
+
+**Drizzle:**
+- Config: `drizzle.config.ts`
+- Schema path: `./lib/db/models` (non `./lib/db/schema.ts`)
+- Migrations output: `./db`
+
+**Tooling:**
+- Linting: Biome (non ESLint)
+- Git hooks: Husky + lint-staged
+- Package manager: npm
+
+### Scripts Disponibili
+```bash
+npm run dev              # Next.js dev server
+npm run build            # Production build
+npm run db:generate      # Genera migration da schema
+npm run db:push          # Push schema al DB (dev)
+npm run db:migrate       # Applica migrations (prod)
+npm run db:studio        # Drizzle Studio UI
+npm run lint             # Biome check
+npm run lint:fix         # Biome fix
+```
+
+### Stack Confermato
+- Next.js 16.0.1 + React 19.2.0
+- TypeScript (strict mode)
+- Tailwind CSS v4
+- shadcn/ui (15+ componenti già installati)
+- @echoes-io/brand package integrato
+- Drizzle ORM 0.44.7
+
 ## Stack Tecnologico
 
 - **Framework:** Next.js 16 (App Router) + TypeScript + React
