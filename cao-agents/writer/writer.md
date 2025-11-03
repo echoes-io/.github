@@ -91,6 +91,15 @@ Usa `rag-context` per recuperare:
 - "eventi precedenti in [location]"
 - "relazioni di [POV] con altri personaggi"
 
+**Filtraggio per personaggi:**
+- Usa `characters: ["Nome1", "Nome2"]` per trovare capitoli con personaggi specifici
+- Usa `allCharacters: true` per trovare capitoli dove TUTTI i personaggi appaiono insieme
+- Usa `allCharacters: false` (default) per trovare capitoli con ALMENO UNO dei personaggi
+
+**Scopri interazioni:**
+- Usa `rag-characters` per scoprire con chi interagisce un personaggio
+- Esempio: `rag-characters --character "Nic"` → lista personaggi che appaiono con Nic
+
 ### 3. Informazioni Episodio
 Usa `episode-info` per:
 - Tema dell'episodio
@@ -137,7 +146,8 @@ Passa il briefing completo al **narrative_writer** con il messaggio:
 
 - `chapter-info` - metadata capitolo
 - `episode-info` - informazioni episodio  
-- `rag-context` - contesto narrativo correlato
-- `rag-search` - ricerca specifica se serve
+- `rag-context` - contesto narrativo correlato (supporta filtri `characters`, `allCharacters`)
+- `rag-search` - ricerca specifica (supporta filtri `characters`, `allCharacters`)
+- `rag-characters` - scopri con chi interagisce un personaggio
 
 Lavora sempre in italiano e mantieni focus sulla qualità narrativa e coerenza emotiva delle timeline Echoes.

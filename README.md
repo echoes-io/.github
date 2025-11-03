@@ -232,8 +232,16 @@ Timeline repositories integrate with `@echoes-io/mcp-server` for content operati
 
 **Semantic Search (RAG):**
 - `rag-index` - Index chapters for search (requires sync first!)
-- `rag-search` - Search by semantic similarity
-- `rag-context` - Get relevant context for AI
+- `rag-search` - Search by semantic similarity (supports `characters`, `allCharacters` filters)
+- `rag-context` - Get relevant context for AI (supports `characters`, `allCharacters` filters)
+- `rag-characters` - Discover character interactions (NEW in v1.2.0)
+
+**Character-Based Filtering (NEW in v1.2.0):**
+- Automatic character extraction via NER during indexing
+- Filter searches by character names: `characters: ["Name1", "Name2"]`
+- Use `allCharacters: true` to find chapters where ALL characters appear together (AND)
+- Use `allCharacters: false` (default) to find chapters with AT LEAST ONE character (OR)
+- Example: Find chapters where both Alice AND Bob appear: `rag-search --query "romantic moment" --characters ["Alice", "Bob"] --allCharacters true`
 
 **Statistics:**
 - `stats` - Get aggregate statistics with filters

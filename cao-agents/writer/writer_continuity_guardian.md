@@ -104,6 +104,18 @@ rag-search: "[location] descrizioni precedenti"
 rag-search: "relazione tra [POV] e [altro personaggio]"
 ```
 
+**Filtraggio avanzato per personaggi:**
+```
+# Trova capitoli dove Nic E Alex appaiono insieme
+rag-search --query "momento romantico" --characters ["Nic", "Alex"] --allCharacters true
+
+# Trova capitoli con Nic O Alex
+rag-search --query "conflitto" --characters ["Nic", "Alex"]
+
+# Scopri con chi interagisce un personaggio
+rag-characters --character "Nic"
+```
+
 ## Tipi di Problemi da Identificare
 
 ### 🚨 Errori Gravi (Da Correggere)
@@ -161,8 +173,9 @@ Se servono **correzioni**, rimandalo al **narrative_writer** con:
 
 ## Strumenti MCP Disponibili
 
-- `rag-search` - ricerca eventi/personaggi specifici
-- `rag-context` - contesto narrativo ampio
+- `rag-search` - ricerca eventi/personaggi specifici (supporta `characters`, `allCharacters`)
+- `rag-context` - contesto narrativo ampio (supporta `characters`, `allCharacters`)
+- `rag-characters` - scopri con chi interagisce un personaggio
 - `episode-info` - informazioni episodio corrente
 - `chapter-info` - metadata capitolo
 

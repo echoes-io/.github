@@ -154,6 +154,35 @@ Il sistema utilizza **due MCP server** per funzionalità diverse:
 - Solo CAO MCP server per orchestrazione
 - Nessun accesso diretto ai dati Echoes
 
+#### Nuove Funzionalità RAG (v1.2.0)
+
+**Estrazione Automatica Personaggi (NER):**
+- I nomi dei personaggi vengono estratti automaticamente durante l'indicizzazione
+- Nessuna configurazione necessaria
+- Supporto multilingue (incluso italiano)
+
+**Filtraggio per Personaggi:**
+```bash
+# Trova capitoli dove Nic E Alex appaiono insieme
+rag-search --query "momento romantico" --characters ["Nic", "Alex"] --allCharacters true
+
+# Trova capitoli con Nic O Alex (almeno uno)
+rag-search --query "conflitto" --characters ["Nic", "Alex"]
+
+# Scopri con chi interagisce un personaggio
+rag-characters --character "Nic"
+```
+
+**Nuovo Tool `rag-characters`:**
+- Restituisce tutti i personaggi che appaiono in capitoli con un personaggio specifico
+- Utile per scoprire relazioni e interazioni
+- Output ordinato alfabeticamente
+
+**Parametri Aggiuntivi in `rag-search` e `rag-context`:**
+- `characters: string[]` - array di nomi personaggi
+- `allCharacters: boolean` - true = AND (tutti), false = OR (almeno uno)
+- I risultati includono `characterNames` estratti via NER
+
 #### Troubleshooting
 
 **RAG non trova capitoli?**
