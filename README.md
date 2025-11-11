@@ -127,30 +127,26 @@ Templates for content planning in timeline repositories:
 
 The project uses [CLI Agent Orchestrator](https://github.com/awslabs/cli-agent-orchestrator) for multi-agent workflows.
 
-#### Writer Agents (`cao-agents/writer/`)
+#### Echoes Agents (`cao-agents/`)
 
-Specialized agents for content creation:
-- **`writer`** - Main orchestrator, gathers narrative context
-- **`writer_narrative_writer`** - Creative writing
-- **`writer_warmth_emotion_agent`** - Emotional depth
-- **`writer_continuity_guardian`** - Narrative consistency
-- **`writer_style_editor`** - Style refinement
-- **`writer_metadata_manager`** - Frontmatter and database sync
+**Orchestrators (2):**
+- **`echoes_writer`** - Coordinates chapter writing workflow, gathers narrative context via MCP, delegates to specialized agents
+- **`echoes_web_dev`** - Coordinates web app development, discovers architecture dynamically, delegates to specialized agents
 
-See [`cao-agents/writer/README.md`](cao-agents/writer/README.md) for details.
+**Specialized Agents (2):**
+- **`echoes_continuity`** - Validates narrative continuity across timelines (characters, locations, events, relationships)
+- **`echoes_metadata`** - Generates YAML frontmatter, calculates statistics, syncs tracker database via MCP
 
-#### Web Development Agents (`cao-agents/web-dev/`)
+**Philosophy:** Lightweight orchestrators with dynamic context + minimal specialized agents. Generic tasks delegated to reusable Zweer agents.
 
-Specialized agents for web app development:
-- **`web_dev`** - Main orchestrator
-- **`web_dev_database_engineer`** - Drizzle schema and migrations
-- **`web_dev_ui_ux_designer`** - Design system and wireframes
-- **`web_dev_component_developer`** - React components
-- **`web_dev_integration_engineer`** - API routes and GitHub Actions
-- **`web_dev_test_engineer`** - Vitest and Playwright tests
-- **`web_dev_performance_optimizer`** - Next.js optimization
+#### Zweer Agents (reused from `~/dev/agents/`)
 
-See [`cao-agents/web-dev/README.md`](cao-agents/web-dev/README.md) for details.
+Echoes orchestrators delegate to generic Zweer agents for common tasks:
+
+**Writing:** `zweer_write_narrative`, `zweer_write_style`, `zweer_write_warmth`  
+**Web Dev:** `zweer_web_frontend`, `zweer_web_database`, `zweer_web_api_integration`  
+**Design:** `zweer_ui_designer`, `zweer_ui_ux`  
+**Quality:** `zweer_qa_testing`, `zweer_qa_performance`, `zweer_qa_security`, `zweer_qa_documentation`
 
 #### Installation
 
@@ -163,22 +159,28 @@ make install
 
 The Makefile installs:
 1. **Prerequisites:** tmux configuration, uv package manager, CAO tool
-2. **All agents:** Dynamically discovers and installs all agents from `cao-agents/*/` directories
+2. **All agents:** Dynamically discovers and installs all agents from `cao-agents/` directory
 
 **Manual Installation:**
 
 ```bash
-# Install specific agents
-cao install https://raw.githubusercontent.com/echoes-io/.github/main/cao-agents/writer/writer.md
-cao install https://raw.githubusercontent.com/echoes-io/.github/main/cao-agents/web-dev/web_dev.md
+# Install Echoes agents
+cao install cao-agents/echoes_writer.md
+cao install cao-agents/echoes_web_dev.md
+cao install cao-agents/echoes_continuity.md
+cao install cao-agents/echoes_metadata.md
+
+# Install Zweer agents (from ~/dev/agents/)
+npx @zweer/dev@latest cao install
+# ... other agents as needed
 ```
 
 **Usage:**
 
 ```bash
 # Launch orchestrators
-make launch-writer     # For content creation
-make launch-web-dev    # For web development
+cao chat echoes_writer      # For chapter writing
+cao chat echoes_web_dev     # For web development
 ```
 
 ### Amazon Q CLI Agents
