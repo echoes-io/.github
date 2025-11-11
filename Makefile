@@ -22,10 +22,10 @@ install-echoes: ## Install Echoes agents
 	@echo "✅ Echoes agents installed!"
 
 launch-writer: ## Launch echoes_writer agent for content creation
-	@cao chat echoes_writer
+	@cao launch --agents echoes_writer
 
 launch-web-dev: ## Launch echoes_web_dev agent for web development
-	@cao chat echoes_web_dev
+	@cao launch --agents echoes_web_dev
 
 server: ## Launch the CAO server
 	@cao-server
