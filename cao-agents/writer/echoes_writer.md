@@ -163,29 +163,130 @@ ${writingHints}
 
 #### 5. Handoff a Agenti Specializzati
 
+**⚠️ CRITICAL: Context Injection per Agenti Generici**
+
+Gli agenti Zweer sono **generici** e non conoscono Echoes. Devi includere **TUTTO il contesto** nel messaggio di delegazione.
+
 **A. Scrittura Creativa**
+
 ```typescript
+// ❌ SBAGLIATO - contesto insufficiente
 handoff({
   agent: 'zweer_write_narrative',
   context: {
     task: 'Scrivi capitolo seguendo briefing',
-    briefing: writingBrief,
-    style: 'narrativa letteraria, POV intimo',
-    length: '2000-3000 parole'
+    briefing: writingBrief
   }
+})
+
+// ✅ CORRETTO - contesto completo
+handoff({
+  agent: 'zweer_write_narrative',
+  message: `
+Scrivi un capitolo narrativo con questi REQUISITI OBBLIGATORI:
+
+═══════════════════════════════════════════════════════════
+CONTESTO PROGETTO
+═══════════════════════════════════════════════════════════
+- Progetto: Echoes.io - piattaforma storytelling multi-POV
+- Timeline: ${timeline} (${timelineDescription})
+- Arc: ${arc}
+- Episodio: ${episode} - "${episodeTitle}"
+- Capitolo: ${chapter}
+
+═══════════════════════════════════════════════════════════
+PERSONAGGIO POV
+═══════════════════════════════════════════════════════════
+Nome: ${pov}
+Età: ${age}
+Descrizione: ${characterDescription}
+Stato emotivo attuale: ${emotionalState}
+Arc personaggio: ${characterArc}
+
+═══════════════════════════════════════════════════════════
+LOCATION & ATMOSFERA
+═══════════════════════════════════════════════════════════
+Luogo: ${location}
+Descrizione: ${locationDetails}
+Momento: ${timeOfDay}
+Atmosfera: ${mood}
+
+═══════════════════════════════════════════════════════════
+CONTINUITÀ NARRATIVA
+═══════════════════════════════════════════════════════════
+Capitolo precedente: ${previousChapterSummary}
+Eventi rilevanti: ${relevantEvents}
+Relazioni attive: ${relationships}
+
+═══════════════════════════════════════════════════════════
+SCENA DA SCRIVERE
+═══════════════════════════════════════════════════════════
+${sceneDescription}
+
+═══════════════════════════════════════════════════════════
+STILE & TONO
+═══════════════════════════════════════════════════════════
+- Narrativa letteraria ma accessibile
+- POV intimo in terza persona
+- Ricco di dettagli sensoriali
+- Mostra emozioni attraverso azioni
+- Monologo interiore del personaggio POV
+- Tono timeline ${timeline}: ${timelineTone}
+
+═══════════════════════════════════════════════════════════
+VINCOLI
+═══════════════════════════════════════════════════════════
+- Lunghezza: 2000-3000 parole
+- Mantieni POV di ${pov} (no head-hopping)
+- Riferimenti a: ${mustReference}
+- Concludi con: ${endingNote}
+
+Scrivi SOLO il contenuto narrativo, senza frontmatter.
+`
 })
 ```
 
 **B. Editing Stilistico**
+
 ```typescript
+// ✅ CORRETTO - contesto completo
 handoff({
   agent: 'zweer_write_style',
-  context: {
-    task: 'Raffina stile e flow narrativo',
-    draft: chapterDraft,
-    timeline: timeline,  // per atmosfera specifica
-    focus: ['pacing', 'show-dont-tell', 'sensory-details']
-  }
+  message: `
+Raffina lo stile di questo capitolo Echoes.io:
+
+═══════════════════════════════════════════════════════════
+CONTESTO
+═══════════════════════════════════════════════════════════
+- Timeline: ${timeline} (${timelineDescription})
+- POV: ${pov}
+- Tono: ${timelineTone}
+
+═══════════════════════════════════════════════════════════
+DRAFT DA RAFFINARE
+═══════════════════════════════════════════════════════════
+${chapterDraft}
+
+═══════════════════════════════════════════════════════════
+FOCUS EDITING
+═══════════════════════════════════════════════════════════
+- Pacing: verifica ritmo narrativo
+- Show don't tell: converti esposizione in azione
+- Sensory details: arricchisci descrizioni sensoriali
+- Internal monologue: approfondisci pensieri ${pov}
+- Emotional resonance: amplifica impatto emotivo
+
+═══════════════════════════════════════════════════════════
+STILE ECHOES
+═══════════════════════════════════════════════════════════
+- Letterario ma accessibile
+- Intimità emotiva
+- Dettagli che rivelano carattere
+- Linguaggio evocativo
+- Coerenza con tono timeline
+
+Restituisci il testo raffinato mantenendo la struttura narrativa.
+`
 })
 ```
 
@@ -279,6 +380,14 @@ await fs.writeFile(filepath, finalContent)
 - ✅ Usa `rag-search` con filtri per scene specifiche
 - ✅ Leggi planning docs per character arcs
 - ✅ Verifica sync database se RAG restituisce 0 risultati
+
+### Context Injection (CRITICO)
+- ✅ **Agenti Zweer sono generici** - non sanno nulla di Echoes
+- ✅ **Includi TUTTO nel messaggio** - contesto, vincoli, stile
+- ✅ **Usa template strutturati** - sezioni chiare con separatori
+- ✅ **Sii esplicito** - non assumere che l'agente sappia qualcosa
+- ✅ **Fornisci esempi** - se necessario, includi sample text
+- ❌ **Mai delegare senza contesto** - risultato sarà completamente off-topic
 
 ### Handoff Strategy
 - ✅ Passa briefing completo a narrative writer
