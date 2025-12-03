@@ -1,0 +1,57 @@
+{
+  "name": "[timeline]-writer",
+  "description": "Specialized writing agent for [TIMELINE] timeline",
+  "prompt": "file://./.kiro/prompts/writer-prompt.md",
+  "mcpServers": {
+    "echoes": {
+      "command": "npx",
+      "args": ["-y", "@echoes-io/mcp-server@latest"],
+      "env": {
+        "ECHOES_RAG_PROVIDER": "e5-large",
+        "ECHOES_TIMELINE": "[timeline]"
+      }
+    }
+  },
+  "tools": [
+    "read",
+    "write",
+    "shell",
+    "web_search",
+    "web_fetch",
+    "introspect",
+    "thinking",
+    "@echoes"
+  ],
+  "toolAliases": {},
+  "allowedTools": [
+    "read",
+    "shell",
+    "web_search",
+    "web_fetch",
+    "introspect",
+    "thinking",
+    "@echoes"
+  ],
+  "toolsSettings": {
+    "write": {
+      "allowedPaths": [
+        "content/**",
+        "docs/**",
+        ".kiro/**",
+        "*.md",
+        "*.json"
+      ]
+    },
+    "shell": {
+      "autoAllowReadonly": true
+    }
+  },
+  "resources": [
+    "file://../../../.github/.kiro/steering/*.md",
+    "file://../../docs/characters/*.md",
+    "file://../../docs/episodes/*.md",
+    "file://../../docs/locations/*.md",
+    "file://../../docs/timeline-steering.md",
+    "file://../../.kiro/specs/**/*.md"
+  ]
+}

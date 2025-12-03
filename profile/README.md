@@ -11,6 +11,7 @@ Echoes is a platform for telling rich, layered stories from multiple perspective
 - **🌿 Anima** - Stories of growth, support, and tenderness
 - **❤️ Eros** - Tales of passion, intensity, and raw emotion  
 - **🌸 Bloom** - Narratives of discovery, balance, and blossoming
+- **💫 Pulse** - Personal diary entries, reflections, and authentic moments
 
 ## 🏗️ Architecture
 
@@ -40,6 +41,7 @@ Each chapter is a markdown file with structured frontmatter, enabling flexible o
 - **[echoes-timeline-anima](https://github.com/echoes-io/timeline-anima)** - Anima timeline content with 55 markdown chapters organized in arcs: matilde (5), anima (50)
 - **[echoes-timeline-eros](https://github.com/echoes-io/timeline-eros)** - Eros timeline content with 266 markdown chapters organized in arcs: ale (122), gio (57), work (87)
 - **[echoes-timeline-bloom](https://github.com/echoes-io/timeline-bloom)** - Bloom timeline content with 5 markdown chapters in arc: bloom (5)
+- **[echoes-timeline-pulse](https://github.com/echoes-io/timeline-pulse)** - Pulse timeline content - personal diary format with Nic's POV
 
 ### AI Services (✅ Complete)
 

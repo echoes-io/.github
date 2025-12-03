@@ -2,15 +2,35 @@
 
 This repository contains shared configurations and resources for the [echoes.io](https://github.com/echoes-io) organization.
 
+## 🚀 Quick Start
+
+**New to Echoes?** Start here:
+1. Read [`.kiro/steering/00-echoes-overview.md`](.kiro/steering/00-echoes-overview.md) - Project overview
+2. Follow [`.kiro/WALKTHROUGH.md`](.kiro/WALKTHROUGH.md) - Complete setup walkthrough
+3. Use [`.kiro/SETUP-CHECKLIST.md`](.kiro/SETUP-CHECKLIST.md) - Checklist per timeline
+
+**Setting up a timeline agent?** Use the automated setup script:
+
+```bash
+cd timeline-[nome]
+bash ../.github/scripts/setup-timeline-agent.sh [timeline]
+```
+
+Example:
+```bash
+cd timeline-anima
+bash ../.github/scripts/setup-timeline-agent.sh anima
+```
+
+Or follow [`.kiro/WALKTHROUGH.md`](.kiro/WALKTHROUGH.md) for manual step-by-step setup.
+
 ## 📁 Repository Contents
 
+- **`.kiro/steering/`** - **Shared documentation base for all Echoes agents** (NEW!)
 - **`profile/README.md`** - Organization profile (visible on https://github.com/echoes-io)
-- **`.amazonq/cli-agents/default.json`** - Main orchestrator agent for project-wide tasks
-- **`.github/workflows/publish-content.yml`** - Shared workflow for timeline content publishing
-- **`cao-agents/writer/`** - CAO agents for content creation workflow
-- **`cao-agents/web-dev/`** - CAO agents for web application development
 - **`template/`** - Templates for repositories and planning documentation
-- **`WRITING_WORKFLOW.md`** - Complete guide for writing timeline content
+- **`cao-agents/`** - Legacy CAO agents (deprecated, use Kiro agents instead)
+- **`WRITING_WORKFLOW.md`** - Legacy workflow guide (see `.kiro/steering/` for updated docs)
 
 ## 🚀 How to Use This Repository
 
@@ -123,9 +143,99 @@ Templates for content planning in timeline repositories:
 
 ## 🤖 AI Integration Setup
 
-### CLI Agent Orchestrator (CAO)
+### Kiro Agents (Recommended)
 
-The project uses [CLI Agent Orchestrator](https://github.com/awslabs/cli-agent-orchestrator) for multi-agent workflows.
+Each timeline repository uses a **Kiro agent** configured to inherit shared documentation from this repository.
+
+**Shared Documentation Base:**
+All agents automatically access documentation from `.kiro/steering/`:
+- `00-echoes-overview.md` - Project overview and architecture
+- `01-content-structure.md` - Content hierarchy and file organization
+- `02-writing-guidelines.md` - Narrative style and techniques
+- `03-metadata-frontmatter.md` - YAML frontmatter reference
+- `04-mcp-tools-reference.md` - Complete MCP tools guide
+- `05-workflow-writing.md` - Step-by-step writing workflow
+
+**Agent Configuration Example:**
+
+Location: `.kiro/agents/writer.json`
+
+```json
+{
+  "name": "anima-writer",
+  "description": "Specialized writing agent for ANIMA timeline",
+  "prompt": "file://./.kiro/prompts/writer-prompt.md",
+  "mcpServers": {
+    "echoes": {
+      "command": "npx",
+      "args": ["-y", "@echoes-io/mcp-server@latest"],
+      "env": {
+        "ECHOES_RAG_PROVIDER": "e5-large",
+        "ECHOES_TIMELINE": "anima"
+      }
+    }
+  },
+  "tools": [
+    "read",
+    "write",
+    "shell",
+    "web_search",
+    "web_fetch",
+    "introspect",
+    "thinking",
+    "@echoes"
+  ],
+  "allowedTools": [
+    "read",
+    "shell",
+    "web_search",
+    "web_fetch",
+    "introspect",
+    "thinking",
+    "@echoes"
+  ],
+  "toolsSettings": {
+    "write": {
+      "allowedPaths": [
+        "content/**",
+        "docs/**",
+        ".kiro/**",
+        "*.md",
+        "*.json"
+      ]
+    },
+    "shell": {
+      "autoAllowReadonly": true
+    }
+  },
+  "resources": [
+    "file://../../../.github/.kiro/steering/*.md",
+    "file://../../docs/characters/*.md",
+    "file://../../docs/episodes/*.md",
+    "file://../../docs/locations/*.md",
+    "file://../../docs/timeline-steering.md",
+    "file://../../.kiro/specs/**/*.md"
+  ]
+}
+```
+
+**Template files available in `template/`:**
+- `kiro-agent.json` - Agent configuration template
+- `.kiro/prompts/writer-prompt.md` - Generic prompt template
+- `.kiro/prompts/anima-writer-prompt.md` - Anima-specific prompt (4000 words, tenerezza)
+- `.kiro/prompts/eros-writer-prompt.md` - Eros-specific prompt (2000-3000 words, intensità)
+- `.kiro/prompts/bloom-writer-prompt.md` - Bloom-specific prompt (2000-3000 words, scoperta)
+- `.kiro/prompts/pulse-writer-prompt.md` - Pulse-specific prompt (2000-3000 words, diario)
+
+**Benefits:**
+- ✅ Centralized documentation - update once, applies to all agents
+- ✅ Consistent knowledge across timelines
+- ✅ Timeline-specific customization via local planning docs
+- ✅ Automatic updates when base documentation changes
+
+### CLI Agent Orchestrator (CAO) - Legacy
+
+⚠️ **Deprecated:** CAO agents in `cao-agents/` are legacy and will be phased out in favor of Kiro agents.
 
 #### Echoes Agents (`cao-agents/`)
 
