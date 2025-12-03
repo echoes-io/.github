@@ -1,7 +1,7 @@
 {
-  "name": "[timeline]-writer",
+  "name": "writer",
   "description": "Specialized writing agent for [TIMELINE] timeline",
-  "prompt": "file://./.kiro/prompts/writer-prompt.md",
+  "prompt": "file://../prompts/writer-prompt.md",
   "mcpServers": {
     "echoes": {
       "command": "npx",

@@ -142,7 +142,7 @@ Lo script:
    Sostituisci i placeholder:
    ```json
    {
-     "name": "anima-writer",  // [timeline]-writer
+     "name": "writer",  // Sempre "writer" per tutti gli agenti
      "description": "Specialized writing agent for ANIMA timeline",  // [TIMELINE]
      ...
      "mcpServers": {
@@ -208,7 +208,7 @@ Lo script:
 ```bash
 # Nome agente
 jq '.name' .kiro/agents/writer.json
-# → "anima-writer"
+# → "writer"
 
 # Timeline in env
 jq '.mcpServers.echoes.env.ECHOES_TIMELINE' .kiro/agents/writer.json
@@ -231,7 +231,7 @@ ls -la .kiro/prompts/writer-prompt.md
 
 # Prompt referenziato in agent.json
 jq '.prompt' .kiro/agents/writer.json
-# → "file://./.kiro/prompts/writer-prompt.md"
+# → "file://../prompts/writer-prompt.md"
 
 # Nessun placeholder rimasto (se personalizzato)
 grep -E '\[TIMELINE\]|\[timeline\]|\[LENGTH\]' .kiro/prompts/writer-prompt.md
@@ -245,7 +245,7 @@ grep -E '\[TIMELINE\]|\[timeline\]|\[LENGTH\]' .kiro/prompts/writer-prompt.md
 
 **Fix:** Verifica path in `agents/writer.json`:
 ```json
-"prompt": "file://./.kiro/prompts/writer-prompt.md"
+"prompt": "file://../prompts/writer-prompt.md"
 ```
 
 Path deve essere relativo a dove si trova `writer.json`.

@@ -162,9 +162,9 @@ Location: `.kiro/agents/writer.json`
 
 ```json
 {
-  "name": "anima-writer",
+  "name": "writer",
   "description": "Specialized writing agent for ANIMA timeline",
-  "prompt": "file://./.kiro/prompts/writer-prompt.md",
+  "prompt": "file://../prompts/writer-prompt.md",
   "mcpServers": {
     "echoes": {
       "command": "npx",

@@ -61,8 +61,8 @@ fi
 
 # Replace placeholders in agent.json
 echo "🔧 Personalizing configuration..."
-sed -i "s/\[timeline\]/${TIMELINE}/g" .kiro/agents/writer.json
 sed -i "s/\[TIMELINE\]/${TIMELINE_UPPER}/g" .kiro/agents/writer.json
+sed -i "s/\[timeline\]/${TIMELINE}/g" .kiro/agents/writer.json
 
 # Replace placeholders in prompt (if generic template)
 if [ ! -f "../.github/template/.kiro/prompts/${TIMELINE}-writer-prompt.md" ]; then

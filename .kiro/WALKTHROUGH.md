@@ -51,14 +51,14 @@ cp ../.github/template/.kiro/prompts/pulse-writer-prompt.md .kiro/prompts/writer
 **Personalizza `.kiro/agents/writer.json`:**
 
 Sostituisci i placeholder:
-- `[timeline]` → nome timeline (anima, eros, bloom, pulse)
-- `[TIMELINE]` → nome uppercase (ANIMA, EROS, BLOOM, PULSE)
+- `[TIMELINE]` → nome timeline uppercase (ANIMA, EROS, BLOOM, PULSE)
+- `[timeline]` → nome timeline lowercase (anima, eros, bloom, pulse)
 
 ```json
 {
-  "name": "anima-writer",
+  "name": "writer",
   "description": "Specialized writing agent for ANIMA timeline",
-  "prompt": "file://./.kiro/prompts/writer-prompt.md",
+  "prompt": "file://../prompts/writer-prompt.md",
   "mcpServers": {
     "echoes": {
       "command": "npx",

@@ -27,9 +27,9 @@ timeline-[nome]/
 
 ```json
 {
-  "name": "[timeline]-writer",
+  "name": "writer",
   "description": "Specialized writing agent for [TIMELINE] timeline",
-  "prompt": "file://./.kiro/prompts/writer-prompt.md",
+  "prompt": "file://../prompts/writer-prompt.md",
   "mcpServers": {
     "echoes": {
       "command": "npx",
@@ -87,8 +87,10 @@ timeline-[nome]/
 
 ### Placeholder da Sostituire
 
-- `[timeline]` → nome timeline lowercase (anima, eros, bloom, pulse)
 - `[TIMELINE]` → nome timeline uppercase (ANIMA, EROS, BLOOM, PULSE)
+- `[timeline]` → nome timeline lowercase (anima, eros, bloom, pulse)
+
+**Nota:** Il campo `name` è sempre `"writer"` per tutti gli agenti.
 
 ### Componenti Chiave
 
@@ -246,9 +248,9 @@ cp ../.github/template/.kiro/prompts/writer-prompt.md .kiro/prompts/writer-promp
 
 **In `.kiro/agents/writer.json`:**
 ```bash
-# Sostituisci [timeline] con nome timeline
-sed -i 's/\[timeline\]/anima/g' .kiro/agents/writer.json
+# Sostituisci placeholder (name rimane "writer")
 sed -i 's/\[TIMELINE\]/ANIMA/g' .kiro/agents/writer.json
+sed -i 's/\[timeline\]/anima/g' .kiro/agents/writer.json
 ```
 
 **In `.kiro/prompts/writer-prompt.md`:**
