@@ -35,8 +35,7 @@ timeline-[nome]/
       "command": "npx",
       "args": ["-y", "@echoes-io/mcp-server@latest"],
       "env": {
-        "ECHOES_RAG_PROVIDER": "e5-large",
-        "ECHOES_TIMELINE": "[timeline]"
+        "ECHOES_RAG_PROVIDER": "embeddinggemma"
       }
     }
   },
@@ -112,8 +111,7 @@ Il prompt è in un file separato per:
     "command": "npx",
     "args": ["-y", "@echoes-io/mcp-server@latest"],
     "env": {
-      "ECHOES_RAG_PROVIDER": "e5-large",
-      "ECHOES_TIMELINE": "anima"
+      "ECHOES_RAG_PROVIDER": "embeddinggemma"
     }
   }
 }

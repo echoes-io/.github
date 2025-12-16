@@ -64,8 +64,7 @@ Sostituisci i placeholder:
       "command": "npx",
       "args": ["-y", "@echoes-io/mcp-server@latest"],
       "env": {
-        "ECHOES_RAG_PROVIDER": "e5-large",
-        "ECHOES_TIMELINE": "anima"
+        "ECHOES_RAG_PROVIDER": "embeddinggemma"
       }
     }
   },
@@ -315,8 +314,7 @@ Una volta setup completato:
     "command": "npx",
     "args": ["-y", "@echoes-io/mcp-server@latest"],
     "env": {
-      "ECHOES_RAG_PROVIDER": "e5-large",
-      "ECHOES_TIMELINE": "[timeline]"
+      "ECHOES_RAG_PROVIDER": "embeddinggemma"
     }
   }
 }

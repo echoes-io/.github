@@ -170,8 +170,7 @@ Location: `.kiro/agents/writer.json`
       "command": "npx",
       "args": ["-y", "@echoes-io/mcp-server@latest"],
       "env": {
-        "ECHOES_RAG_PROVIDER": "e5-large",
-        "ECHOES_TIMELINE": "anima"
+        "ECHOES_RAG_PROVIDER": "embeddinggemma"
       }
     }
   },
