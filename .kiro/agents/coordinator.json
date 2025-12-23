@@ -3,8 +3,8 @@
   "name": "coordinator",
   "description": "Main agent for echoes.io - Multi-POV storytelling platform orchestrator",
   "prompt": "file://../prompts/default-prompt.md",
-  "tools": ["read", "write", "shell", "web_search", "web_fetch", "introspect", "thinking"],
-  "allowedTools": ["read", "shell", "web_search", "web_fetch", "introspect", "thinking"],
+  "tools": ["read", "write", "shell", "web_search", "web_fetch", "introspect", "thinking", "grep", "glob"],
+  "allowedTools": ["read", "shell", "web_search", "web_fetch", "introspect", "thinking", "grep", "glob"],
   "toolsSettings": {
     "write": {
       "allowedPaths": [
