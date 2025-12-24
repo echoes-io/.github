@@ -10,6 +10,7 @@ Create new story arc "{NAME}" in timeline {TIMELINE}.
    - Check `docs/timeline-steering.md` for existing arcs
    - Ensure name is lowercase, no spaces (use hyphens if needed)
    - Verify name doesn't conflict with existing arcs
+   - Use `stats` tool to see current arcs in the database
 
 ### Phase 2: Conversational Planning
 
@@ -87,7 +88,7 @@ Create new story arc "{NAME}" in timeline {TIMELINE}.
    > "Arc '{NAME}' is ready! Next steps:
    > - Use `@new-episode {NAME} 1` to create the first episode outline
    > - Create character sheets for new characters with `@new-character [name]`
-   > - Start writing chapters when ready with `@new-chapter {NAME} 1`"
+   > - Start writing chapters when ready with `@new-chapter {NAME} 1`
 
 ## Validation Checklist
 
@@ -102,6 +103,7 @@ Create new story arc "{NAME}" in timeline {TIMELINE}.
 ## Important Notes
 
 - **ALWAYS get user confirmation before creating** - never skip the planning phase
+- Use `stats` tool to check existing arcs
 - Arcs should have clear narrative purpose
 - Consult timeline overview for thematic consistency
 - Plan arc progression before writing chapters

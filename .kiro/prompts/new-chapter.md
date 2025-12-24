@@ -7,7 +7,7 @@ Write chapter {CHAPTER} for arc "{ARC}" in timeline {TIMELINE}.
 ### Phase 1: Conversational Planning
 
 1. **Gather Context First**
-   - Use `rag-context` tool with query: "arc {ARC} recent chapters and character development"
+   - Use `search-semantic` tool with query about recent events in arc {ARC}
    - Check `docs/episodes/` for episode structure and themes
    - Review previous chapters in arc for continuity
 
@@ -68,17 +68,17 @@ Write chapter {CHAPTER} for arc "{ARC}" in timeline {TIMELINE}.
    ---
    ```
 
-### Phase 3: Save and Sync
+### Phase 3: Save and Verify
 
 7. **Save Chapter**
    - Determine file path: `content/{ARC}/ep[NUM]-[slug]/ep[NUM]-ch{CHAPTER}-[pov]-[slug].md`
    - Save chapter with frontmatter
    - Show user the file path where it was saved
 
-8. **Sync Database**
-   - Run `words-count` tool (NOT bash `wc` command)
-   - Run `chapter-refresh` tool to sync tracker database
-   - Confirm to user: "Chapter saved and database synced!"
+8. **Verify Word Count**
+   - Run `words-count` tool on the saved file
+   - Confirm word count matches timeline target
+   - Tell user: "Chapter saved! Word count: [X] words"
 
 ## Validation Checklist
 
@@ -89,12 +89,12 @@ Before completing, verify:
 - [ ] POV is consistent throughout chapter
 - [ ] Outline was followed accurately
 - [ ] File saved to correct path with proper naming
-- [ ] Database synced with `chapter-refresh` tool
 
 ## Important Notes
 
 - **ALWAYS get user confirmation before writing** - never skip the planning phase
-- Use MCP tools (`words-count`, `chapter-refresh`, `rag-context`) NOT bash commands
+- Use `words-count` tool to verify word count (NOT bash `wc` command)
+- Use `search-semantic` to find relevant context from previous chapters
 - Check your agent prompt for timeline-specific tone and word count
 - Consult `docs/characters/`, `docs/episodes/`, `docs/locations/` for reference
 - Maintain narrative consistency across the arc

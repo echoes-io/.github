@@ -7,8 +7,9 @@ Expand chapter {CHAPTER} from arc "{ARC}" to reach {TARGET} words.
 ### Phase 1: Load and Analyze
 
 1. **Load Current Chapter**
-   - Use `chapter-info` tool with arc="{ARC}" and chapter={CHAPTER}
-   - Check current word count
+   - Find the chapter file: `content/{ARC}/ep[NUM]-*/ep[NUM]-ch{CHAPTER}-*.md`
+   - Read current content
+   - Run `words-count` tool to get current word count
    - Calculate words needed: {TARGET} - current
 
 2. **Analyze Expansion Opportunities**
@@ -68,15 +69,12 @@ Expand chapter {CHAPTER} from arc "{ARC}" to reach {TARGET} words.
    - Ensure target {TARGET} words reached
    - Adjust if needed
 
-### Phase 4: Save and Sync
+### Phase 4: Save
 
 8. **Save Expanded Chapter**
    - Overwrite existing file
-   - Show user what was added/enhanced
-
-9. **Sync Database**
-   - Run `chapter-refresh` tool
-   - Confirm to user: "Chapter expanded to {TARGET} words and database synced!"
+   - Run `words-count` tool to confirm final count
+   - Tell user: "Chapter expanded to [X] words!"
 
 ## Validation Checklist
 
@@ -86,12 +84,11 @@ Expand chapter {CHAPTER} from arc "{ARC}" to reach {TARGET} words.
 - [ ] POV and tone consistent with original
 - [ ] Pacing remains appropriate
 - [ ] Continuity maintained
-- [ ] Database synced
 
 ## Important Notes
 
 - **ALWAYS get user confirmation before expanding** - never skip the planning phase
 - Quality over quantity - expansion should enhance, not dilute
 - Stay true to the chapter's original purpose and themes
-- Use MCP tools for all operations
+- Use `words-count` tool to verify word counts
 - The expansion conversation is collaborative - iterate until user is happy

@@ -7,14 +7,14 @@ Revise chapter {CHAPTER} from arc "{ARC}" in timeline {TIMELINE}.
 ### Phase 1: Load and Analyze
 
 1. **Load Existing Chapter**
-   - Use `chapter-info` tool with arc="{ARC}" and chapter={CHAPTER}
+   - Find the chapter file: `content/{ARC}/ep[NUM]-*/ep[NUM]-ch{CHAPTER}-*.md`
    - Read current content and frontmatter
-   - Note current word count and metadata
+   - Run `words-count` tool to get current statistics
 
 2. **Analyze Current State**
    - Identify chapter's current strengths
    - Note potential areas for improvement
-   - Check continuity with surrounding chapters using `rag-context`
+   - Use `search-semantic` to check continuity with surrounding chapters
 
 ### Phase 2: Conversational Planning
 
@@ -59,16 +59,15 @@ Revise chapter {CHAPTER} from arc "{ARC}" in timeline {TIMELINE}.
    - Preserve what works well
    - Keep frontmatter metadata (update if needed)
 
-### Phase 4: Save and Sync
+### Phase 4: Save and Verify
 
 7. **Save Revised Chapter**
    - Overwrite existing file (same path)
    - Show user what was changed
 
-8. **Sync Database**
-   - Run `words-count` tool
-   - Run `chapter-refresh` tool
-   - Confirm to user: "Chapter revised and database synced!"
+8. **Verify Changes**
+   - Run `words-count` tool on the revised file
+   - Confirm to user: "Chapter revised! New word count: [X] words"
 
 ## Validation Checklist
 
@@ -78,12 +77,12 @@ Revise chapter {CHAPTER} from arc "{ARC}" in timeline {TIMELINE}.
 - [ ] Frontmatter updated if metadata changed
 - [ ] Word count appropriate for timeline
 - [ ] Continuity maintained with surrounding chapters
-- [ ] Database synced
 
 ## Important Notes
 
 - **ALWAYS get user confirmation before revising** - never skip the planning phase
-- Ask user for specific revision goals before starting
+- Read the chapter file directly from the filesystem
+- Use `words-count` tool to check statistics
+- Use `search-semantic` to find related chapters for context
 - Preserve the chapter's core narrative unless major rewrite requested
-- Use MCP tools for all operations
 - The revision conversation is collaborative - iterate until user is happy

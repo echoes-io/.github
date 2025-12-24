@@ -9,7 +9,7 @@ Create episode outline for episode {EPISODE} in arc "{ARC}".
 1. **Check Arc Context**
    - Review `docs/episodes/` for existing episodes in arc
    - Check previous episode to ensure continuity
-   - Use `rag-context` for arc narrative progression
+   - Use `search-semantic` to find recent narrative developments in arc {ARC}
    - Review `docs/timeline-steering.md` for arc overview
 
 ### Phase 2: Conversational Planning
@@ -112,4 +112,5 @@ Create episode outline for episode {EPISODE} in arc "{ARC}".
 - Episode outlines guide chapter writing
 - Update as episodes develop during writing
 - Consult arc overview in `docs/timeline-steering.md`
+- Use `search-semantic` to find relevant context from existing chapters
 - The episode planning is collaborative - iterate until user is happy

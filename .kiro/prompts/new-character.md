@@ -12,7 +12,8 @@ Create character sheet for "{NAME}" in timeline {TIMELINE}.
    - Check for similar names to avoid confusion
 
 2. **Gather Context**
-   - Use `rag-search` to find mentions of {NAME} in existing chapters
+   - Use `search-semantic` to find mentions of {NAME} in existing chapters
+   - Use `search-entities` to check if character already exists in the knowledge graph
    - Identify relationships with existing characters
    - Note timeline and arc context
 
@@ -34,7 +35,7 @@ Create character sheet for "{NAME}" in timeline {TIMELINE}.
 
 4. **Discuss and Refine**
    - Listen to user's character description
-   - If user says "search chapters", present findings from RAG search
+   - If user says "search chapters", use `search-semantic` and `search-entities` to find mentions
    - Create character sheet draft with:
      - Basic information (name, age, appearance, personality)
      - Current state (emotional, relationships, arc)
@@ -93,6 +94,8 @@ Create character sheet for "{NAME}" in timeline {TIMELINE}.
 ## Important Notes
 
 - **ALWAYS get user confirmation before saving** - never skip the planning phase
+- Use `search-semantic` to find character mentions in chapters
+- Use `search-entities` to explore existing character relationships
 - Consult existing chapters for character consistency
 - Link to related characters in relationships section
 - Update as character develops across episodes
