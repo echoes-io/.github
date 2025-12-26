@@ -4,7 +4,7 @@
 
 ### 1. Frontmatter Schema
 - ✅ **date**: Cambiato da ISO 8601 a formato `"YYYY-MM-DD, Description"` (es. `"2024-04-19, Friday"`)
-- ✅ **excerpt → summary**: Rinominato campo e cambiata descrizione (da "prime frasi" a "riassunto capitolo")
+- ✅ **summary → summary**: Rinominato campo e cambiata descrizione (da "prime frasi" a "riassunto capitolo")
 - ✅ **part**: Confermato come `number` (non string)
 - ✅ **outfit**: Chiarito che è per TUTTI i personaggi femminili principali, non solo POV
 

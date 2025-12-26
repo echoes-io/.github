@@ -353,7 +353,7 @@ try {
 
 **Lunghezze:**
 - `title`: max 100 caratteri
-- `excerpt`: max 300 caratteri
+- `summary`: max 300 caratteri
 - `pov`: non vuoto
 - `location`: non vuoto
 
@@ -383,11 +383,11 @@ timeline: "anima-special"
 # ✅ CORRETTO
 timeline: "anima"
 
-# ❌ ERRORE: excerpt troppo lungo
-excerpt: "Una descrizione lunghissima che supera i 300 caratteri e continua per molto tempo descrivendo ogni singolo dettaglio della scena in modo eccessivamente verboso e ridondante fino a superare ampiamente il limite massimo consentito per questo campo che dovrebbe essere conciso e catturare solo l'essenza del capitolo."
+# ❌ ERRORE: summary troppo lungo
+summary: "Una descrizione lunghissima che supera i 300 caratteri e continua per molto tempo descrivendo ogni singolo dettaglio della scena in modo eccessivamente verboso e ridondante fino a superare ampiamente il limite massimo consentito per questo campo che dovrebbe essere conciso e catturare solo l'essenza del capitolo."
 
 # ✅ CORRETTO
-excerpt: "Marie si svegliò con il sole negli occhi. Per un momento non ricordò dove fosse."
+summary: "Marie si svegliò con il sole negli occhi. Per un momento non ricordò dove fosse."
 
 # ❌ ERRORE: location generica
 location: "home"
@@ -398,20 +398,20 @@ location: "Apartment"
 
 ## Generazione Automatica
 
-### Excerpt da Contenuto
+### Summary da Contenuto
 
 ```typescript
-function generateExcerpt(content: string): string {
+function generateSummary(content: string): string {
   // Prendi prime 2-3 frasi
   const sentences = content.match(/[^.!?]+[.!?]+/g) || []
-  const excerpt = sentences.slice(0, 2).join(' ')
+  const summary = sentences.slice(0, 2).join(' ')
   
   // Tronca a 300 caratteri se necessario
-  if (excerpt.length > 300) {
-    return excerpt.substring(0, 297) + '...'
+  if (summary.length > 300) {
+    return summary.substring(0, 297) + '...'
   }
   
-  return excerpt
+  return summary
 }
 ```
 
@@ -468,7 +468,7 @@ timeline: anima
 arc: matilde
 episode: 1
 chapter: 3
-excerpt: "Marie si svegliò con il sole negli occhi. Per un momento non ricordò dove fosse."
+summary: "Marie si svegliò con il sole negli occhi. Per un momento non ricordò dove fosse."
 location: "Apartment"
 ---
 ```
@@ -485,7 +485,7 @@ arc: matilde
 episode: 1
 part: null
 chapter: 3
-excerpt: "Marie si svegliò con il sole negli occhi. Per un momento non ricordò dove fosse, poi sentì il calore accanto a lei e tutto tornò a posto."
+summary: "Marie si svegliò con il sole negli occhi. Per un momento non ricordò dove fosse, poi sentì il calore accanto a lei e tutto tornò a posto."
 location: "Apartment"
 outfit: "Light blue cotton pajamas"
 ---
@@ -502,7 +502,7 @@ timeline: eros
 arc: ale
 episode: 12
 chapter: 45
-excerpt: "Le dita di Ale tracciarono la linea della sua schiena con una lentezza deliberata."
+summary: "Le dita di Ale tracciarono la linea della sua schiena con una lentezza deliberata."
 location: "Bedroom"
 outfit: "Black silk robe"
 kink: "intensity, passion, vulnerability"
@@ -521,7 +521,7 @@ kink: "intensity, passion, vulnerability"
 - Sempre UTC timezone
 - Timestamp completo
 
-✅ **Excerpt conciso ma informativo**
+✅ **Summary conciso ma informativo**
 - Prime frasi del capitolo
 - Max 300 caratteri
 - Cattura atmosfera

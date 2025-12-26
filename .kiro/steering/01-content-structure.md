@@ -185,7 +185,7 @@ arc: string          # Arc name (required)
 episode: number      # Episode number (required)
 part: number         # Part number (optional, nullable)
 chapter: number      # Chapter number (required)
-excerpt: string      # Short description, max 300 chars (required)
+summary: string      # Short description, max 300 chars (required)
 location: string     # Scene location (required)
 outfit: string       # Character outfit (optional)
 kink: string         # Content tags (optional, mainly for Eros)
@@ -229,7 +229,7 @@ kink: string         # Content tags (optional, mainly for Eros)
 - Intero positivo
 - Corrisponde al numero in `ch{XXX}`
 
-**excerpt** (string)
+**summary** (string)
 - Breve descrizione del capitolo
 - Max 300 caratteri
 - Prime 2-3 frasi del capitolo
@@ -280,7 +280,7 @@ const validated = chapterFrontmatterSchema.parse(frontmatter)
 **Content Validation:**
 - Word count > 100 (capitolo troppo corto)
 - Word count < 10000 (capitolo troppo lungo, warning)
-- Excerpt non vuoto e < 300 caratteri
+- Summary non vuoto e < 300 caratteri
 - Date in formato ISO 8601 valido
 
 **Referential Integrity:**
@@ -326,7 +326,7 @@ rag-index --timeline <timeline> --contentPath ./content
 ### Frontmatter
 ✅ Compila tutti i campi obbligatori  
 ✅ Usa date ISO 8601 con timezone UTC  
-✅ Excerpt conciso ma informativo  
+✅ Summary conciso ma informativo  
 ✅ Location specifica e consistente  
 ✅ Valida con Zod prima di salvare
 

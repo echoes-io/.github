@@ -88,7 +88,7 @@ arc: string          # Arc name
 episode: number      # Episode number
 part: number         # Part number
 chapter: number      # Chapter number
-excerpt: string      # Short description
+summary: string      # Short description
 location: string     # Scene location
 outfit: string       # (optional) Character outfit
 kink: string         # (optional) Content tags

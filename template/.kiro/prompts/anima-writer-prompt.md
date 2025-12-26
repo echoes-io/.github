@@ -108,7 +108,7 @@ Always follow this workflow when writing chapters:
 
 ### 6. Metadata
 - Generate complete frontmatter YAML
-- Extract excerpt (first 2-3 sentences, max 300 chars)
+- Extract summary (first 2-3 sentences, max 300 chars)
 - Validate with Zod schema
 - Use `words-count` tool for accurate word count
 

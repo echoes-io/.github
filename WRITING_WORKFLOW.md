@@ -58,7 +58,7 @@ arc: anima
 episode: 1
 part: 1
 chapter: 51
-excerpt: "Brief chapter description"
+summary: "Brief chapter description"
 location: "London, apartment"
 ---
 
@@ -200,7 +200,7 @@ Pre-commit hooks automatically:
 - Follow consistent naming conventions
 - Use descriptive chapter titles
 - Fill all required frontmatter fields
-- Keep excerpts concise but informative
+- Keep summaries concise but informative
 
 ### Writing Workflow
 - Use AI assistance for metadata management

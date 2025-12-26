@@ -187,7 +187,7 @@ content/
 
 ### Per i Metadata
 ✅ Frontmatter completo e validato  
-✅ Excerpt conciso ma informativo (max 300 char)  
+✅ Summary conciso ma informativo (max 300 char)  
 ✅ Location specifica e consistente  
 ✅ Word count accurato  
 ✅ Date in formato ISO 8601

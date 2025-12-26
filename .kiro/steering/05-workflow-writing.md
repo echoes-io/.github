@@ -351,7 +351,7 @@ timeline: ${timeline}
 arc: ${arc}
 episode: ${episode}
 chapter: ${chapter}
-excerpt: "${excerpt}"
+summary: "${summary}"
 location: "${location}"
 ${outfit ? `outfit: "${outfit}"` : ''}
 ${kink ? `kink: "${kink}"` : ''}
@@ -360,15 +360,15 @@ ${kink ? `kink: "${kink}"` : ''}
 
 ### Estrai Metadata da Contenuto
 
-**Excerpt:**
+**Summary:**
 ```typescript
 // Prime 2-3 frasi del capitolo
 const sentences = content.match(/[^.!?]+[.!?]+/g) || []
-const excerpt = sentences.slice(0, 2).join(' ')
+const summary = sentences.slice(0, 2).join(' ')
 
 // Tronca a 300 caratteri se necessario
-if (excerpt.length > 300) {
-  excerpt = excerpt.substring(0, 297) + '...'
+if (summary.length > 300) {
+  summary = summary.substring(0, 297) + '...'
 }
 ```
 
@@ -510,7 +510,7 @@ console.log('📊 Word count:', chapterInfo.wordCount)
 
 6. METADATA
    - Genera frontmatter
-   - Estrai excerpt
+   - Estrai summary
    - Valida con Zod
    - Calcola stats
 
@@ -568,7 +568,7 @@ console.log('📊 Word count:', chapterInfo.wordCount)
 
 ✅ **Metadata accurato**
 - Frontmatter completo
-- Excerpt informativo
+- Summary informativo
 - Validazione Zod
 
 ✅ **Sync immediato**

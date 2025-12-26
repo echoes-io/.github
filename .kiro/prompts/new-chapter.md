@@ -61,7 +61,7 @@ Write chapter {CHAPTER} for arc "{ARC}" in timeline {TIMELINE}.
    arc: {ARC}
    episode: [episode number]
    chapter: {CHAPTER}
-   excerpt: [2-3 sentence description]
+   summary: [2-3 sentence description]
    location: [scene location from outline]
    outfit: [optional - character outfit description]
    kink: [optional - content tags if relevant]

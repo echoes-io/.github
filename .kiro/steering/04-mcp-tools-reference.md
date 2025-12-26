@@ -71,7 +71,7 @@ rag-index --timeline <timeline> --contentPath ./content
   location: string
   wordCount: number
   readingTime: number  // minuti
-  excerpt: string
+  summary: string
   outfit?: string
   kink?: string
 }
@@ -356,7 +356,7 @@ Array<{
   arc: string
   pov: string
   title: string
-  excerpt: string
+  summary: string
   similarity: number  // 0-1
 }>
 ```

@@ -90,7 +90,7 @@ Always follow this workflow when writing chapters:
 
 ### 6. Metadata
 - Generate complete frontmatter YAML
-- Extract excerpt (first 2-3 sentences, max 300 chars)
+- Extract summary (first 2-3 sentences, max 300 chars)
 - **Include outfit field** (important for Eros)
 - **Include kink field** if relevant
 - Validate with Zod schema

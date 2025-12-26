@@ -194,7 +194,7 @@ rag-search({
 | Frontmatter invalido | Verifica con Zod, controlla ISO 8601 date |
 | Location generica | Usa nome specifico ("Apartment" non "home") |
 | POV inconsistente | Un POV per capitolo, no head-hopping |
-| Excerpt troppo lungo | Max 300 char, prime 2-3 frasi |
+| Summary troppo lungo | Max 300 char, prime 2-3 frasi |
 
 ## 📚 Documenti Completi
 

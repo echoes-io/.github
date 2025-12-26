@@ -41,7 +41,7 @@ interface MetadataInput {
   pov: string            // POV character
   title: string          // Chapter title
   location: string       // Main location
-  excerpt?: string       // Brief description (optional)
+  summary?: string       // Brief description (optional)
   outfit?: string        // Character outfit (optional)
   kink?: string          // Content tags (optional)
   partNumber?: number    // Part number (optional)
@@ -73,7 +73,7 @@ arc: string          # Arc name
 episode: number      # Episode number
 part: number         # Part number (optional)
 chapter: number      # Chapter number
-excerpt: string      # Short description
+summary: string      # Short description
 location: string     # Scene location
 outfit: string       # (optional) Character outfit
 kink: string         # (optional) Content tags
@@ -86,8 +86,8 @@ kink: string         # (optional) Content tags
 
 ```typescript
 // If not provided, extract from content
-if (!excerpt) {
-  excerpt = extractExcerpt(content)  // First 2-3 sentences
+if (!summary) {
+  summary = extractSummary(content)  // First 2-3 sentences
 }
 
 if (!location && content.includes('location:')) {
@@ -124,7 +124,7 @@ arc: ${arc}
 episode: ${episode}
 ${partNumber ? `part: ${partNumber}` : ''}
 chapter: ${chapter}
-excerpt: ${excerpt}
+summary: ${summary}
 location: ${location}
 ${outfit ? `outfit: ${outfit}` : ''}
 ${kink ? `kink: ${kink}` : ''}
@@ -147,7 +147,7 @@ try {
     episode,
     part: partNumber,
     chapter,
-    excerpt,
+    summary,
     location,
     outfit,
     kink
@@ -215,7 +215,7 @@ return {
 - ✅ `arc` - Non-empty
 - ✅ `episode` - Positive number
 - ✅ `chapter` - Positive number
-- ✅ `excerpt` - Non-empty, max 300 characters
+- ✅ `summary` - Non-empty, max 300 characters
 - ✅ `location` - Non-empty
 
 ### Optional Fields
@@ -309,7 +309,7 @@ timeline: anima
 arc: matilde
 episode: 1
 chapter: 3
-excerpt: Marie wakes in the morning light, feeling for the first time the warmth of a presence beside her.
+summary: Marie wakes in the morning light, feeling for the first time the warmth of a presence beside her.
 location: Apartment
 outfit: Light blue cotton pajamas
 ---
@@ -319,7 +319,7 @@ outfit: Light blue cotton pajamas
 
 ## Best Practices
 
-### Excerpt Generation
+### Summary Generation
 - ✅ First 2-3 sentences of chapter
 - ✅ Max 300 characters
 - ✅ Complete sentence (don't truncate mid-sentence)
@@ -359,7 +359,7 @@ Input:
   location: Apartment
 
 Process:
-  1. Extract excerpt: "Marie opened her eyes in the morning light, feeling..."
+  1. Extract summary: "Marie opened her eyes in the morning light, feeling..."
   2. Calculate: wordCount=2847, readingTime=15min
   3. Generate YAML frontmatter
   4. Validate with Zod schema ✅
