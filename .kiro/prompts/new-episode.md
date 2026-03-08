@@ -105,6 +105,21 @@ Create episode outline for episode {EPISODE} in arc "{ARC}".
 - [ ] Structure has clear 3-act progression
 - [ ] Continuity with previous episodes maintained
 - [ ] File saved with correct naming
+- [ ] All characters have complete character sheets (see below)
+
+## Character Sheet Completeness Check
+
+Before finalizing the episode outline, verify for EVERY character in the episode:
+
+1. **Sheet exists?** Check `docs/characters/` for each character
+2. **Physical details present?** Hair, eyes, height, body type, distinguishing features
+3. **Biographical details present?** Age, job, living situation, key relationships
+4. **Voice notes present?** Speech patterns, quirks, mannerisms
+
+If any character is missing a sheet or has incomplete details, tell the user:
+> "⚠️ Before writing chapters, these character sheets need attention:
+> - [Character]: missing sheet — create with `@new-character [name]`
+> - [Character]: sheet exists but missing [specific fields]"
 
 ## Important Notes
 

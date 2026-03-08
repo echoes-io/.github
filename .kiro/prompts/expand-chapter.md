@@ -76,6 +76,20 @@ Expand chapter {CHAPTER} from arc "{ARC}" to reach {TARGET} words.
    - Run `words-count` tool to confirm final count
    - Tell user: "Chapter expanded to [X] words!"
 
+### Phase 5: Validation (Sub-agents)
+
+9. **Launch Validation Sub-agents**
+   After saving, spawn 4 sub-agents in parallel:
+   
+   - **character-checker**: "Check character consistency in [file path]. Verify physical details, biographical facts, outfit continuity, emotional state, voice distinctness, and catchphrase frequency for all characters."
+   - **continuity-checker**: "Check narrative continuity in [file path]. Verify temporal logic, event references, location transitions, and open threads from recent chapters."
+   - **style-checker**: "Check style and tone in [file path]. Verify timeline tone match, POV consistency, sensory richness, pacing variety, style contamination, and repetition."
+   - **structure-checker**: "Check structure and metadata in [file path]. Verify frontmatter completeness, filename convention, word count, and summary quality."
+
+10. **Review and Fix**
+    - Present issues grouped by severity (❌ Critical / ⚠️ Warning / ✅ Passed)
+    - Fix issues user approves, re-save, re-verify
+
 ## Validation Checklist
 
 - [ ] User confirmed the expansion plan before starting
@@ -84,10 +98,12 @@ Expand chapter {CHAPTER} from arc "{ARC}" to reach {TARGET} words.
 - [ ] POV and tone consistent with original
 - [ ] Pacing remains appropriate
 - [ ] Continuity maintained
+- [ ] Sub-agent validation passed (or issues addressed)
 
 ## Important Notes
 
 - **ALWAYS get user confirmation before expanding** - never skip the planning phase
+- **PROPORTIONALITY**: expansion should enhance existing content proportionally. If a scene was gentle, expanding it should make it richer, not transform it into something completely different in tone or intensity.
 - Quality over quantity - expansion should enhance, not dilute
 - Stay true to the chapter's original purpose and themes
 - Use `words-count` tool to verify word counts

@@ -80,6 +80,30 @@ Write chapter {CHAPTER} for arc "{ARC}" in timeline {TIMELINE}.
    - Confirm word count matches timeline target
    - Tell user: "Chapter saved! Word count: [X] words"
 
+### Phase 4: Validation (Sub-agents)
+
+9. **Launch Validation Sub-agents**
+   After saving the chapter, spawn 4 sub-agents in parallel to validate:
+   
+   - **character-checker**: "Check character consistency in [file path]. Verify physical details, biographical facts, outfit continuity, emotional state, voice distinctness, and catchphrase frequency for all characters."
+   - **continuity-checker**: "Check narrative continuity in [file path]. Verify temporal logic, event references, location transitions, and open threads from recent chapters."
+   - **style-checker**: "Check style and tone in [file path]. Verify timeline tone match, POV consistency, sensory richness, pacing variety, style contamination, and repetition."
+   - **structure-checker**: "Check structure and metadata in [file path]. Verify frontmatter completeness, filename convention, word count, and summary quality."
+
+10. **Review Findings**
+    - Collect all sub-agent reports
+    - Present issues to user grouped by severity:
+      - ❌ Critical: must fix before finalizing
+      - ⚠️ Warning: should fix, but not blocking
+      - ✅ Passed: no issues
+    - Ask: "Should I fix these issues?"
+
+11. **Apply Fixes**
+    - Fix issues user approves
+    - Re-save chapter
+    - Re-run `words-count` to confirm
+    - Sync database
+
 ## Validation Checklist
 
 Before completing, verify:
@@ -89,6 +113,7 @@ Before completing, verify:
 - [ ] POV is consistent throughout chapter
 - [ ] Outline was followed accurately
 - [ ] File saved to correct path with proper naming
+- [ ] Sub-agent validation passed (or issues addressed)
 
 ## Important Notes
 

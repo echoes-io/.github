@@ -69,6 +69,20 @@ Revise chapter {CHAPTER} from arc "{ARC}" in timeline {TIMELINE}.
    - Run `words-count` tool on the revised file
    - Confirm to user: "Chapter revised! New word count: [X] words"
 
+### Phase 5: Validation (Sub-agents)
+
+9. **Launch Validation Sub-agents**
+   After saving, spawn 4 sub-agents in parallel:
+   
+   - **character-checker**: "Check character consistency in [file path]. Verify physical details, biographical facts, outfit continuity, emotional state, voice distinctness, and catchphrase frequency for all characters."
+   - **continuity-checker**: "Check narrative continuity in [file path]. Verify temporal logic, event references, location transitions, and open threads from recent chapters."
+   - **style-checker**: "Check style and tone in [file path]. Verify timeline tone match, POV consistency, sensory richness, pacing variety, style contamination, and repetition."
+   - **structure-checker**: "Check structure and metadata in [file path]. Verify frontmatter completeness, filename convention, word count, and summary quality."
+
+10. **Review and Fix**
+    - Present issues grouped by severity (❌ Critical / ⚠️ Warning / ✅ Passed)
+    - Fix issues user approves, re-save, re-verify
+
 ## Validation Checklist
 
 - [ ] User confirmed the revision plan before starting
@@ -77,10 +91,12 @@ Revise chapter {CHAPTER} from arc "{ARC}" in timeline {TIMELINE}.
 - [ ] Frontmatter updated if metadata changed
 - [ ] Word count appropriate for timeline
 - [ ] Continuity maintained with surrounding chapters
+- [ ] Sub-agent validation passed (or issues addressed)
 
 ## Important Notes
 
 - **ALWAYS get user confirmation before revising** - never skip the planning phase
+- **PROPORTIONALITY**: when the user asks to add an element (sexual tension, conflict, humor), add a NUANCE, not an entire scene. Maintain the proportions of the original chapter. If the chapter had 0% sexual content and the user asks to add some, the result should have ~5-10%, not 40%.
 - Read the chapter file directly from the filesystem
 - Use `words-count` tool to check statistics
 - Use `search-semantic` to find related chapters for context
