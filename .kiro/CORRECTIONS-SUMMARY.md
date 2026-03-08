@@ -75,7 +75,6 @@
 ## 📚 Documentazione Aggiornata
 
 Tutti i documenti steering sono stati aggiornati con le informazioni corrette da:
-- `@echoes-io/models` README
 - `@echoes-io/mcp-server` README
 - Esempio capitolo Anima
 - Doc ufficiale Kiro

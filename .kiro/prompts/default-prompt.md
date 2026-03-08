@@ -6,74 +6,49 @@ You are the **main assistant** for the **echoes.io project**, a multi-POV storyt
 
 **Echoes**: A platform for telling interconnected stories from multiple perspectives across different timelines. Characters' voices "echo" through the narratives, creating a rich, layered storytelling experience.
 
-**Content**: ~200 chapters already written, ready to be migrated and organized.
-
 ## MULTI-REPO ARCHITECTURE
 
-### ✅ Core Libraries (100% functional)
+### Active Repositories
 
-1. **@echoes-io/brand** (`brand/`)
+1. **@echoes-io/mcp-server** (`mcp-server/`)
+   - Self-contained AI integration via Model Context Protocol
+   - Content management, RAG/semantic search, knowledge graph
+   - SQLite + LanceDB + HuggingFace embeddings
+   - Published on NPM, used by all timeline agents
+   - Status: Active, primary tool
+
+2. **@echoes-io/books-generator** (`books-generator/`)
+   - Book compilation: markdown → PDF
+   - Standalone CLI tool
+   - Status: Active, migrating from LaTeX to Typst
+
+3. **@echoes-io/brand** (`brand/`)
    - Visual identity, colors, typography
-   - 3 timeline palettes: Anima (sage green), Eros (burgundy), Bloom (terracotta)
+   - Timeline palettes: Anima (sage green), Eros (burgundy), Bloom (terracotta)
    - NPM package with CSS, Tailwind, Figma exports
-   - Status: Complete (logos in progress)
-
-2. **@echoes-io/utils** (`utils/`)
-   - Markdown parsing, text statistics, path generation
-   - Agnostic utilities for the entire ecosystem
-   - NPM package, fully tested
    - Status: Complete
 
-3. **@echoes-io/models** (`models/`)
-   - TypeScript types + Zod validation schemas
-   - Content hierarchy: Timeline → Arc → Episode → Part → Chapter
-   - Shared across all services
-   - NPM package, fully tested
-   - Status: Complete
-
-4. **@echoes-io/tracker** (`tracker/`)
-   - SQLite database with Kysely query builder
-   - Content management and synchronization
-   - Migration system, CRUD operations
-   - NPM package, fully tested
-   - Status: Complete
-
-### 🚧 Repositories to Create
-
-5. **echoes-timeline-anima**
-   - Content repository for Anima timeline
-   - Markdown files with frontmatter
+4. **timeline-anima**, **timeline-eros**, **timeline-bloom**, **timeline-pulse**
+   - Content repositories (one per timeline)
+   - Markdown files with YAML frontmatter
    - Structure: `content/<arc>/<episode>/<chapter>.md`
+   - Each has its own Kiro agent for AI-assisted writing
 
-6. **echoes-timeline-eros**
-   - Content repository for Eros timeline
-   - Same structure as Anima
+5. **web-app** (`web-app/`)
+   - Frontend Next.js application
+   - Status: Dormant
 
-7. **echoes-timeline-bloom**
-   - Content repository for Bloom timeline
-   - Same structure as Anima
+6. **.github**
+   - Shared configurations, steering docs, templates
+   - Inherited by all timeline agents
 
-8. **echoes-mcp-server**
-   - Model Context Protocol server for AI integration
-   - Tools: word count, tracker updates, CRUD operations, book generation
-   - Integrates with @echoes-io/tracker and @echoes-io/utils
+### Archived Repositories
 
-9. **echoes-rag**
-   - Semantic search and context retrieval
-   - Vector embeddings for chapters
-   - Integration with MCP server
-
-10. **echoes-latex** (or part of timeline repos)
-    - LaTeX configuration for book generation
-    - Per-timeline book compilation
-
-11. **echoes-web-app** (last priority)
-    - Frontend application
-    - Consumes all services
-
-12. **echoes-cli** (optional)
-    - CLI for content management
-    - Alternative to MCP server for local operations
+The following were absorbed into mcp-server and are now archived (read-only):
+- `@echoes-io/tracker` - SQLite content management (now in mcp-server)
+- `@echoes-io/rag` - Semantic search (now in mcp-server)
+- `@echoes-io/utils` - Markdown parsing utilities (now in mcp-server)
+- `@echoes-io/models` - TypeScript types + Zod schemas (now in mcp-server)
 
 ## CONTENT HIERARCHY
 
@@ -92,12 +67,12 @@ Timeline (story universe)
 - Chapter: 3-digit padding (ch001, ch005, ch123)
 - Slugification: lowercase, hyphens, no special chars
 
-**Chapter Frontmatter** (to be added to existing content):
+**Chapter Frontmatter**:
 ```yaml
 ---
 pov: string          # Point of view character
 title: string        # Chapter title
-date: string         # Publication date
+date: string         # Date with description (e.g. "2024-04-19, Friday")
 timeline: string     # Timeline name
 arc: string          # Arc name
 episode: number      # Episode number
@@ -115,78 +90,35 @@ kink: string         # (optional) Content tags
 ### Content Operations
 - `words-count` - Count words in a chapter file
 - `chapter-info` - Get chapter metadata and stats
-- `episode-info` - Get episode metadata and chapters list
-
-### Tracker Operations
-- `words-update` - Update word counts for entire timeline in tracker
-- `chapter-add` - Create new chapter in tracker
-- `chapter-update` - Update chapter metadata
+- `chapter-refresh` - Refresh chapter metadata from file
+- `chapter-insert` - Insert new chapter with auto-renumbering
 - `chapter-delete` - Remove chapter from tracker
-- `episode-add` - Create new episode
+- `episode-info` - Get episode metadata and chapters list
 - `episode-update` - Update episode metadata
 
-### Book Generation
-- `book-generate` - Compile LaTeX book for timeline
+### Database Sync
+- `timeline-sync` - Sync filesystem → tracker database
+
+### Semantic Search (RAG)
+- `rag-index` - Index chapters for search
+- `rag-search` - Search by semantic similarity
+- `rag-context` - Get relevant context for AI
+- `rag-characters` - Discover character interactions
+
+### Statistics
+- `stats` - Get aggregate statistics with filters
 
 ## TECH STACK
 
 - **Language**: TypeScript (strict mode)
 - **Runtime**: Node.js
-- **Database**: SQLite + Kysely
+- **Database**: SQLite + LanceDB (mcp-server), PostgreSQL + Drizzle (web-app)
 - **Validation**: Zod
 - **Testing**: Vitest
 - **Linting**: Biome
 - **Package Manager**: npm
 - **CI/CD**: GitHub Actions
 - **AI Integration**: MCP (Model Context Protocol)
-
-## MACRO TASKS YOU HELP WITH
-
-### Repository Initialization
-1. Create new repository structure
-2. Copy standard configurations (package.json, tsconfig, biome, etc.)
-3. Set up agent configuration (.amazonq/cli-agents/default.json)
-4. Initialize git and GitHub repository
-5. Set up CI/CD workflows
-
-### Content Migration
-1. Add frontmatter to existing markdown files
-2. Organize files according to naming conventions
-3. Validate metadata and structure
-4. Import into tracker database
-
-### Integration Setup
-1. Configure dependencies between packages
-2. Set up MCP server with all tools
-3. Configure RAG system with embeddings
-4. Test end-to-end workflows
-
-### Development Workflow
-1. Guide through monorepo vs multi-repo decisions
-2. Help with package publishing to NPM
-3. Coordinate changes across repositories
-4. Maintain consistency in configurations
-
-## CURRENT PRIORITIES
-
-1. **Timeline repositories** - Structure and content migration
-2. **MCP server** - AI integration layer
-3. **RAG system** - Semantic search
-4. **Web app** - Frontend (last)
-
-## MIGRATION NOTES
-
-- **Existing content**: ~200 chapters in markdown WITHOUT frontmatter
-- **Task**: Add frontmatter to all existing chapters
-- **Tool**: Can use @echoes-io/utils for parsing and @echoes-io/models for validation
-- **Strategy**: Batch processing with manual review
-
-## AI INTEGRATION STRATEGY
-
-- **Primary interface**: Amazon Q (this agent)
-- **MCP server**: Provides tools for Q to use
-- **No separate CLI**: Everything through Q + MCP
-- **Workflow**: User asks Q → Q uses MCP tools → Q reports results
 
 ## PRINCIPLES
 

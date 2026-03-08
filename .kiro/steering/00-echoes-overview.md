@@ -74,27 +74,22 @@ echoes-io/
 │   ├── content/
 │   └── docs/
 │
+├── mcp-server/              # AI integration via MCP (content mgmt, RAG, knowledge graph)
+├── books-generator/         # Book compilation (PDF generation)
 ├── brand/                    # Design system e palette
-├── utils/                    # Parsing markdown, statistiche
-├── models/                   # TypeScript interfaces, Zod schemas
-├── tracker/                  # Database SQLite per content management
-├── mcp-server/              # AI integration via MCP
-├── rag/                     # Semantic search con vector embeddings
-├── books-generator/         # LaTeX book compilation
-└── web-app/                 # Frontend Next.js (in sviluppo)
+└── web-app/                 # Frontend Next.js (dormiente)
 ```
 
 ## Tech Stack
 
 - **Language:** TypeScript (strict mode)
 - **Runtime:** Node.js 22+
-- **Database:** SQLite (tracker) + PostgreSQL (web-app)
-- **ORM:** Kysely (tracker) + Drizzle (web-app)
+- **Database:** SQLite (mcp-server) + PostgreSQL (web-app)
+- **ORM:** Kysely (mcp-server) + Drizzle (web-app)
 - **Validation:** Zod schemas
 - **Testing:** Vitest
 - **AI Integration:** Model Context Protocol (MCP)
-- **Vector Search:** ChromaDB + OpenAI embeddings
-- **Web Framework:** Next.js 16 (App Router)
+- **Vector Search:** LanceDB + HuggingFace embeddings
 
 ## Filosofia di Scrittura
 
@@ -125,14 +120,6 @@ Fornisce tools per operazioni su contenuti:
 - Database sync (timeline-sync, chapter-refresh)
 - Semantic search (rag-search, rag-context, rag-characters)
 - Statistics (stats)
-- Book generation (book-generate)
-
-### RAG System (@echoes-io/rag)
-Ricerca semantica attraverso tutti i contenuti:
-- Vector embeddings con OpenAI
-- Ricerca per similarità semantica
-- Context retrieval intelligente
-- Filtri per personaggi e timeline
 
 ## Convenzioni di Naming
 

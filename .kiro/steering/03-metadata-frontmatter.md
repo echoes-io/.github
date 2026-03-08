@@ -331,13 +331,12 @@ kink: "exploration, discovery"
 
 ### Zod Schema
 
-Il frontmatter è validato con Zod schema da `@echoes-io/models`:
+Il frontmatter è validato con Zod schema integrato in `@echoes-io/mcp-server`:
 
 ```typescript
-import { chapterFrontmatterSchema } from '@echoes-io/models'
+// La validazione avviene automaticamente durante timeline-sync
 
-try {
-  const validated = chapterFrontmatterSchema.parse(frontmatter)
+const validated = chapterFrontmatterSchema.parse(frontmatter)
   console.log('✅ Frontmatter valido')
 } catch (error) {
   console.error('❌ Errore validazione:', error.message)

@@ -383,15 +383,9 @@ if (summary.length > 300) {
 ### Valida Frontmatter
 
 ```typescript
-import { chapterFrontmatterSchema } from '@echoes-io/models'
+// La validazione avviene automaticamente durante timeline-sync
 
-try {
-  const validated = chapterFrontmatterSchema.parse(frontmatter)
-  console.log('✅ Frontmatter valido')
-} catch (error) {
-  console.error('❌ Errore:', error.message)
-  // Correggi errori
-}
+const validated = chapterFrontmatterSchema.parse(frontmatter)
 ```
 
 ### Calcola Statistiche

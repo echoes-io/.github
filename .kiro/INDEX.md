@@ -44,9 +44,7 @@ Documentazione nel root del repository.
 | File | Scopo | Quando Usare |
 |------|-------|--------------|
 | [../README.md](../README.md) | Documentazione principale repository | Overview generale |
-| [../SETUP-SUMMARY.md](../SETUP-SUMMARY.md) | Riepilogo setup per utente | Quick start, overview |
 | [../profile/README.md](../profile/README.md) | Profilo pubblico organizzazione | Info pubbliche Echoes |
-| [../WRITING_WORKFLOW.md](../WRITING_WORKFLOW.md) | Legacy workflow guide | Reference legacy (deprecated) |
 
 ## 🗂️ Organizzazione per Caso d'Uso
 

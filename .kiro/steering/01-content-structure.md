@@ -261,10 +261,10 @@ kink: string         # Content tags (optional, mainly for Eros)
 ## Validazione
 
 ### Zod Schema
-Tutti i frontmatter sono validati con Zod schema da `@echoes-io/models`:
+Tutti i frontmatter sono validati con Zod schema (integrato in `@echoes-io/mcp-server`):
 
 ```typescript
-import { chapterFrontmatterSchema } from '@echoes-io/models'
+// La validazione avviene automaticamente durante timeline-sync
 
 const validated = chapterFrontmatterSchema.parse(frontmatter)
 ```
