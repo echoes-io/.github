@@ -50,13 +50,21 @@ Create episode outline for episode {EPISODE} in arc "{ARC}".
 ### Phase 3: Save
 
 5. **Save Episode Outline**
-   - Save to: `docs/episodes/ep{EPISODE}-[slug].md`
+   - Save to: `docs/episodes/{ARC}-ep{EPISODE}-[slug].md`
+   - MUST include `chapters: [number]` in YAML frontmatter
    - Use 2-digit padding for episode number
    - Confirm to user: "Episode {EPISODE} outline saved!"
+
+6. **Update Arc README**
+   - If this is a new episode for an existing arc, verify `content/{ARC}/README.md` exists
+   - If arc README doesn't exist, create it with `status: active`
 
 ## Episode Outline Template
 
 ```markdown
+---
+chapters: [total planned chapters]
+---
 # Episode {EPISODE}: [Title]
 
 **Arc**: {ARC}  

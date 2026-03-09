@@ -46,6 +46,9 @@ kink: "intimacy, tenderness"  # optional (mainly Eros)
 
 ### Context Gathering
 ```typescript
+// Overview rapida di tutti gli archi
+timeline-overview({ contentPath })
+
 // Info episodio
 episode-info({ timeline, arc, episode })
 

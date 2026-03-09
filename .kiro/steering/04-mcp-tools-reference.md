@@ -500,6 +500,41 @@ const interactions = await mcp.call('rag-characters', {
 
 ## Statistics
 
+### timeline-overview
+
+**Descrizione:** Overview rapida di tutti gli archi: status, capitoli, parole, POV, ultima modifica
+
+**Parametri:**
+```typescript
+{
+  contentPath: string  // Path alla directory content/ (default: ./content)
+}
+```
+
+**Output:** Per ogni arco: status (planned/active/hiatus/complete), episodi con progresso (es. 21/30 ch), parole, avg words/chapter, POV, ultima modifica. Include episodi pianificati da `docs/episodes/` outline.
+
+**Fonti dati:**
+- Status arco: `content/{arc}/README.md` frontmatter (fallback: euristica)
+- Status episodio: campo `episodes:` nel README arco (fallback: euristica)
+- Capitoli pianificati: `docs/episodes/{arc}-{ep}-{slug}.md` frontmatter `chapters:`
+- Parole: parsing contenuto markdown (via `parseChapter`)
+
+**Euristica status (quando non c'è override esplicito):**
+- `planned` — 0 capitoli o avg < 500 parole
+- `active` — modificato negli ultimi 30 giorni
+- `hiatus` — non modificato da 30+ giorni
+- `complete` — solo da README esplicito
+
+**CLI:**
+```bash
+echoes overview ./content
+```
+
+**Quando usare:**
+- Panoramica rapida dello stato di tutti gli archi
+- Identificare archi in pausa o pianificati
+- Monitorare progresso scrittura
+
 ### stats
 
 **Descrizione:** Statistiche aggregate con filtri

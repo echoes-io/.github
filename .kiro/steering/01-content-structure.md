@@ -42,6 +42,27 @@ Timeline (universo narrativo)
 - Può contenere più episodi
 - Rappresenta una fase o tema narrativo
 
+**README.md con Status:**
+Ogni arc directory DEVE contenere un `README.md` con frontmatter:
+
+```yaml
+---
+status: planned | active | hiatus | complete
+episodes:                    # (opzionale) override status per episodio
+  ep01-titolo: complete
+  ep02-titolo: active
+---
+# Arco Nome
+```
+
+**Status validi:**
+- `planned` — non ancora iniziato
+- `active` — in lavorazione
+- `hiatus` — in pausa
+- `complete` — completato
+
+**Regola:** quando completi un episodio o un arco, aggiorna il README.md!
+
 ### Episode
 **Definizione:** Evento narrativo completo, composto da più capitoli
 
@@ -62,6 +83,11 @@ ep{XX}-{episode-title}
 - Titolo descrittivo (lowercase, trattini)
 - Contiene 5-15 capitoli tipicamente
 - Struttura narrativa completa (setup, sviluppo, risoluzione)
+
+**Versioni Archiviate:**
+- Directory con `-old-` nel nome (es. `ep01-old-london-calling/`) sono versioni archiviate
+- Vengono ignorate dal tool `timeline-overview` e non contano nelle statistiche
+- Usare per mantenere vecchie versioni durante riscritture
 
 ### Part (OPZIONALE)
 **Definizione:** Suddivisione opzionale di un episodio
@@ -127,8 +153,8 @@ timeline-{name}/
 │   │   ├── nic.md
 │   │   └── ...
 │   ├── episodes/                    # Episode outlines
-│   │   ├── ep01-new-life.md
-│   │   ├── ep02-discovery.md
+│   │   ├── arc-ep01-slug.md        # Naming: {arc}-{epXX}-{slug}.md
+│   │   ├── arc-ep02-slug.md
 │   │   └── ...
 │   └── locations/                   # Location descriptions
 │       ├── apartment.md
@@ -138,6 +164,21 @@ timeline-{name}/
 └── .kiro/                           # Kiro agent config
     └── agent.json
 ```
+
+### Episode Outline Frontmatter
+
+I file outline in `docs/episodes/` DEVONO avere frontmatter con il numero di capitoli pianificati:
+
+```yaml
+---
+chapters: 30
+---
+# Episode 1: Titolo
+```
+
+**Naming:** `{arc}-{epXX}-{slug}.md` (es. `cri-ep03-due-sangui.md`)
+
+Il tool `timeline-overview` usa questi file per mostrare episodi pianificati non ancora in `content/` e il progresso (`21/30 ch`).
 
 ### Esempio Concreto: Anima
 

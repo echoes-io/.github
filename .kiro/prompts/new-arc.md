@@ -79,7 +79,13 @@ Create new story arc "{NAME}" in timeline {TIMELINE}.
 
 6. **Create Arc Directory**
    - Create: `content/{NAME}/`
-   - Add `.gitkeep` if empty
+   - Create `content/{NAME}/README.md` with frontmatter:
+     ```yaml
+     ---
+     status: planned
+     ---
+     # Arco {NAME}
+     ```
    - Confirm to user: "Arc '{NAME}' created!"
 
 7. **Suggest Next Steps**

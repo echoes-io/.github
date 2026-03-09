@@ -510,6 +510,41 @@ kink: "intensity, passion, vulnerability"
 
 ## Best Practices
 
+### Arc README Frontmatter
+
+Ogni arc directory contiene un `README.md` con frontmatter per il tool `timeline-overview`:
+
+```yaml
+---
+status: planned | active | hiatus | complete
+episodes:                    # opzionale: override status episodi
+  ep01-titolo: complete
+  ep02-titolo: active
+---
+# Arco Nome
+```
+
+**Regole:**
+- Aggiornare `status` quando un arco viene completato o messo in pausa
+- Usare `episodes` per override quando l'euristica non basta (es. episodi completati ma non toccati di recente)
+- Status validi: `planned`, `active`, `hiatus`, `complete`
+
+### Episode Outline Frontmatter
+
+I file outline in `docs/episodes/` hanno frontmatter con il numero di capitoli pianificati:
+
+```yaml
+---
+chapters: 30
+---
+# Episode 1: Titolo
+```
+
+**Regole:**
+- `chapters` è il numero totale di capitoli pianificati per l'episodio
+- Naming file: `{arc}-{epXX}-{slug}.md` (es. `cri-ep03-due-sangui.md`)
+- Aggiornare se il piano cambia
+
 ### Compilazione Frontmatter
 
 ✅ **Compila tutti i campi required**

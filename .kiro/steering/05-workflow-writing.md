@@ -468,6 +468,22 @@ const chapterInfo = await mcp.call('chapter-info', {
 })
 
 console.log('✅ Capitolo salvato:', chapterInfo.title)
+```
+
+### F. Aggiorna Arc Status (se necessario)
+
+Se hai completato un episodio o un arco, aggiorna `content/{arc}/README.md`:
+
+```yaml
+---
+status: active
+episodes:
+  ep01-titolo: complete    # ← aggiungi quando completi un episodio
+---
+```
+
+Se l'intero arco è completo, cambia `status: complete`.
+Usa `timeline-overview` per verificare lo stato aggiornato.
 console.log('📊 Word count:', chapterInfo.wordCount)
 ```
 
