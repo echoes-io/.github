@@ -46,11 +46,12 @@
     }
   },
   "resources": [
-    "file://../../../.github/.kiro/steering/*.md",
-    "file://../../docs/characters/*.md",
-    "file://../../docs/episodes/*.md",
-    "file://../../docs/locations/*.md",
-    "file://../../docs/timeline-steering.md",
-    "file://../../.kiro/specs/**/*.md"
+    "file://../.github/.kiro/steering/steering-core.md",
+    "skill://../.github/.kiro/skills/**/SKILL.md",
+    "file://docs/characters/*.md",
+    "file://docs/episodes/*.md",
+    "file://docs/locations/*.md",
+    "file://docs/timeline-steering.md",
+    "file://.kiro/specs/**/*.md"
   ]
 }
