@@ -30,6 +30,42 @@ Read the chapter file provided in the query. Verify that style, tone, and prose 
 - **Variety**: the chapter should have varied sentence lengths and rhythms. Flag if >70% of sentences are the same type (all short/punchy OR all long/flowing).
 - **Appropriateness**: slow pacing for contemplative moments, fast for intense ones. Flag mismatches.
 
+### ⚠️ Anti-pattern Quantitativi (CRITICAL — usa grep/search, NON stimare)
+
+**REGOLA: Per ogni conteggio, USA lo strumento di ricerca nel file. NON stimare. NON approssimare. Se non puoi contare con certezza, scrivi "non verificato" invece di un numero inventato.**
+
+Cerca e conta le seguenti occorrenze nel capitolo:
+
+| Pattern | Max consentito | Come cercare |
+|---------|---------------|-------------|
+| `il tipo di` | 2 | Cerca "il tipo di" nel testo |
+| Tricolon `X, Y e Z` | 5-6 | Cerca pattern a tre elementi separati da virgole |
+| `come se` | 3-4 | Cerca "come se" nel testo |
+| `quello/a che` + em-dash | 4-5 | Cerca "quello che" e "quella che" vicino a "—" |
+| `il corpo` + verbo autonomo (sa/decide/risponde/ricorda/reagisce) | 2 | Cerca "il corpo" e "il mio corpo" |
+| Anglicismi (basically, obviously, ecc.) | 0 se Nic POV, 1-2 se Ale POV | Cerca parole inglesi nel testo |
+
+Per ogni pattern, riporta il **conteggio esatto** e le **righe specifiche**.
+
+### ⚠️ Differenziazione POV (CRITICAL)
+
+Verifica che la struttura del capitolo corrisponda al POV:
+
+**Se POV = Nic:**
+- Frasi tendenzialmente più lunghe e analitiche
+- Pensiero a lista/catalogo
+- Metafore IT (server, deploy, Excel, bug)
+- ZERO anglicismi (basically, obviously sono di ALE, non di Nic)
+- Paragrafi più densi
+
+**Se POV = Ale:**
+- Frasi più corte, sensoriali, frammentate
+- Pensiero per immagini
+- Anglicismi 1-2 max (basically, obviously)
+- Paragrafi più ritmici con stacchi
+
+Flag se il capitolo ha la struttura sbagliata per il suo POV.
+
 ### ⚠️ Style Contamination (CRITICAL)
 This is the most important check. Flag if:
 - **One technique dominates**: short punchy sentences used throughout the ENTIRE chapter instead of just intense moments. Long flowing sentences used everywhere instead of just contemplative moments.

@@ -112,8 +112,42 @@ Regole: emoji caratteristiche per personaggio, `**Io:**` per il POV, tono del pe
 - **Luoghi:** layout consistente, atmosfera riconoscibile, storia del luogo
 - **Eventi:** sequenza logica, nessuna contraddizione, setup e payoff
 
+## Anti-pattern — Limiti Quantitativi per Capitolo
+
+⚠️ **Verificare con grep DOPO ogni capitolo scritto, PRIMA dei subagent checker.**
+
+| Pattern | Max/capitolo | Note |
+|---------|-------------|------|
+| `il tipo di [noun] che` | 2 | Riscrivere con descrizione diretta |
+| Tricolon `X, Y e Z` / `X. Y. Z.` | 5-6 | Alternare con coppie, liste lunghe, immagini singole |
+| `come se` (simili) | 3-4 | Alternare con metafore dirette, paragoni senza "come" |
+| `quello/a che` + em-dash | 4-5 | Alternare con relative, apposizioni, frasi separate |
+| `il corpo [verb]` autonomo (sa/decide/risponde/ricorda) | 2 | Mostrare il corpo che agisce senza commentarlo |
+| Tag fisici ricorrenti (fossetta, neo, ecc.) | 1 | Max 5-6 per episodio intero |
+| Oggetti-ambiente ricorrenti (candela, divano, palo) | 1 con dettaglio, illimitati senza | Non ripetere il materiale/marca ogni volta |
+
+### Verifica meccanica post-scrittura
+```bash
+grep -c "il tipo di" capitolo.md    # ≤ 2
+grep -c "come se" capitolo.md       # ≤ 4
+grep -c "il corpo" capitolo.md      # controllare quanti sono autonomi
+```
+
+### Differenziazione strutturale POV
+
+I due POV devono suonare diversi NON solo nel vocabolario ma nella **struttura dei paragrafi**:
+
+| Aspetto | Nic | Ale |
+|---------|-----|-----|
+| Frasi | Più lunghe, analitiche, con incisi | Più corte, sensoriali, frammentate |
+| Pensiero | A lista (enumera, cataloga, calcola) | Per immagini (corpo, vestiti, spazi) |
+| Metafore | IT (server, deploy, Excel, bug, ping) | Fashion/finance, corpo come territorio |
+| Anglicismi | **ZERO** (usa "praticamente", "in pratica") | 1-2/capitolo (basically, obviously) |
+| Paragrafi | Più densi, meno frammentati | Più ritmici, con stacchi netti |
+| Riflessione | Analizza cause ed effetti | Sente prima, capisce dopo |
+
 ## Checklist
 
 **Pre-scrittura:** capitoli precedenti letti? Character sheet consultato? Episode outline letto? Obiettivi chiari?
 
-**Post-scrittura:** POV consistente? Dialoghi naturali? 3+ sensi? Tono timeline? Show don't tell? Lunghezza corretta?
+**Post-scrittura:** POV consistente? Dialoghi naturali? 3+ sensi? Tono timeline? Show don't tell? Lunghezza corretta? Anti-pattern sotto soglia? POV strutturalmente distinto?

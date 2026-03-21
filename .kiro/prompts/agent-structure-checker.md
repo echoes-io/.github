@@ -43,9 +43,15 @@ Use the `words-count` tool on the chapter file. Verify:
 - Is it ≤300 characters?
 
 ### Date Format
-- Must be "YYYY-MM-DD, Description" (e.g., "2024-04-19, Friday")
-- NOT ISO 8601 timestamp
-- Description should be meaningful (day of week, holiday, context)
+- Must be "YYYY-MM-DD, GiornoItaliano" (e.g., "2025-07-12, Sabato")
+- Day names MUST be in Italian: Lunedì, Martedì, Mercoledì, Giovedì, Venerdì, Sabato, Domenica
+- NOT ISO 8601 timestamp, NOT English day names
+- For multi-day chapters, use em-dash format: "YYYY-MM-DD, Giorno — YYYY-MM-DD, Giorno"
+- Verify the day of week is calendrically correct for the date
+
+### Part Field
+- If the episode has acts/parts, the `part` field should be present and match the act number
+- Flag if other chapters in the same episode have `part` but this one doesn't
 
 ## Output Format
 

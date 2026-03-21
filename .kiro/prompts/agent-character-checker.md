@@ -34,6 +34,8 @@ Outfit problems are among the most common errors. Check ALL of the following:
 - **Speech patterns**: does each character sound distinct in dialogue? Flag if two characters sound identical.
 - **Catchphrase/mannerism frequency**: a character's signature phrase or gesture should appear MAX 1-2 times per chapter. Count occurrences and flag if overused.
 - **Mannerism bleed**: flag if Character A is using Character B's distinctive mannerisms or speech patterns.
+- **Anglicism discipline (Arco Ale)**: "basically" and "obviously" are ALE's verbal tics. Nic must NEVER use them — he uses Italian equivalents ("praticamente", "in pratica"). Flag any anglicism in Nic's narration or dialogue that isn't IT jargon (deploy, bug, server are OK).
+- **Physical tag repetition**: character-specific physical tags (e.g. "fossetta sulla guancia sinistra", "occhi marroni con sfumature verdi") should appear MAX 1 time per chapter. Use search to count. Flag if overused.
 
 ### Character Sheet Completeness
 - If a character appears in the chapter but has NO character sheet in your resources, flag: "⚠️ No character sheet found for [name]"

@@ -102,10 +102,19 @@ Opzionali: `part` (number|null), `outfit` (string — tutti i personaggi femmini
 1. IDENTIFICA → timeline, arc, episode, chapter, pov
 2. CONTEXT    → sync db se necessario, episode-info, rag-context, planning docs
 3. SCRIVI     → segui struttura apertura/sviluppo/chiusura, tono timeline
-4. VALIDA     → continuità (RAG), checklist qualità
-5. METADATA   → frontmatter completo, words-count
-6. SYNC       → chapter-refresh o timeline-sync, rag-index
+4. ANTIPATTERN → grep meccanico: "il tipo di" ≤2, "come se" ≤4, anglicismi (0 Nic, ≤2 Ale)
+5. VALIDA     → continuità (RAG), checklist qualità, subagent checker
+6. METADATA   → frontmatter completo, words-count
+7. SYNC       → chapter-refresh o timeline-sync, rag-index
 ```
+
+### Step 4 — Check Anti-pattern (OBBLIGATORIO prima dei subagent)
+```bash
+grep -c "il tipo di" capitolo.md    # ≤ 2
+grep -c "come se" capitolo.md       # ≤ 4
+grep -ci "basically\|obviously" capitolo.md  # 0 se Nic, ≤ 2 se Ale
+```
+Se sopra soglia, fixare PRIMA di lanciare i checker.
 
 ## Arc README
 
