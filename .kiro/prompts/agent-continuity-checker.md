@@ -33,7 +33,16 @@ Read the chapter file provided in the query. Verify that all narrative elements 
 - **Dangling threads**: flag obvious setups from recent chapters (last 3-5) that should be acknowledged.
 
 ### Cross-Chapter Repetition (when checking full episodes)
+
 When checking multiple chapters at once, track recurring descriptive phrases across chapters:
+
+### Cross-Arc References ("Echi Paralleli" Rule)
+Echoes uses an autonomous arc architecture. Each arc is a standalone story. Flag ANY of these:
+- **Direct ex names**: mentioning a woman from another arc by name (e.g., "Ele", "Cri", "Manu")
+- **Counting exes**: "the third woman after the separation", "two relationships ago"
+- **Closing gaps**: "for six months I didn't see anyone", "after X I understood that..."
+- **Direct arc references**: "after Ele I learned...", "like with Cri..."
+- **Allowed**: oblique references without names — "I had a relationship where we didn't fuck for three years", "a woman once taught me that..."
 - **Object descriptions**: if "il divano di cashmere" or "la candela Jo Malone" appears with the same detail (material, scent, etc.) in 5+ chapters, flag as overused. The detail should be established once, then referenced without repeating the qualifier.
 - **Physical tags**: if a character's physical feature (e.g. "fossetta sulla guancia sinistra") appears in 5+ chapters, flag. Max 5-6 per episode.
 - **Contradictions**: if the same object is described differently in different chapters (e.g. "quarzo" in one, "marmo" in another), flag as critical.
@@ -66,6 +75,9 @@ When checking multiple chapters at once, track recurring descriptive phrases acr
 
 ### Props/Objects
 - ✅ No issues / ❌ [issue]
+
+### Cross-Arc References
+- ✅ No direct references / ❌ [specific reference to another arc]
 
 ### Open Threads
 - ⚠️ [setup from ch X that should be addressed]

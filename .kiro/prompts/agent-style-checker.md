@@ -26,6 +26,21 @@ Read the chapter file provided in the query. Verify that style, tone, and prose 
 - **Emotional telling**: flag phrases like "she was sad", "he felt angry" — emotions should be shown through actions, physical reactions, dialogue.
 - **Relationship telling**: flag "they loved each other" — show it through behavior.
 
+### Anti-AI Voice Patterns (from Resonance)
+Flag ANY of these — they are the strongest signals of AI-generated text:
+- **Meaning inflation**: "a pivotal moment", "fundamentally changed", "marks a before and after", "represents" — replace with concrete facts
+- **Explanatory gerunds**: "sitting down, feeling the weight of..." — split or cut
+- **Artificial symmetry**: three adjectives in a row, balanced parallel structures — break the pattern
+- **Generic openings**: "The morning arrived...", "Sunlight filtered...", "It was a day when..." — enter the action
+- **Reflective closings**: "And in that moment I understood...", "Something had shifted..." — end ON the moment, not after it
+- **AI vocabulary**: "intricate", "nuance", "profoundly", "a mix of X and Y" — use concrete words
+- **Mechanical transitions**: "After a moment of silence", "With a sigh" — cut or replace with action
+
+### Chapter Ending Quality (from Resonance commercial patterns)
+- **Non-resolution**: does the chapter end on non-resolution? Can the reader close the book satisfied? If yes → flag.
+- **Last line length**: count words in the final line. Target ≤10 (ideal), ≤15 (acceptable). Flag if >15.
+- **End ON the moment**: flag if the chapter has reflection/processing AFTER the emotional beat. The beat should be the last thing.
+
 ### Pacing
 - **Variety**: the chapter should have varied sentence lengths and rhythms. Flag if >70% of sentences are the same type (all short/punchy OR all long/flowing).
 - **Appropriateness**: slow pacing for contemplative moments, fast for intense ones. Flag mismatches.

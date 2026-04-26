@@ -32,6 +32,7 @@ Outfit problems are among the most common errors. Check ALL of the following:
 
 ### Voice & Mannerisms
 - **Speech patterns**: does each character sound distinct in dialogue? Flag if two characters sound identical.
+- **Processing order (from Resonance)**: Nic ALWAYS processes rational→emotional→physical. Female leads vary by arc (check arc structure). Flag if the chapter opens with the wrong processing order for the POV character. Example: if POV is Nic but the chapter opens with a physical sensation before any thought → wrong order.
 - **Catchphrase/mannerism frequency**: a character's signature phrase or gesture should appear MAX 1-2 times per chapter. Count occurrences and flag if overused.
 - **Mannerism bleed**: flag if Character A is using Character B's distinctive mannerisms or speech patterns.
 - **Anglicism discipline (Arco Ale)**: "basically" and "obviously" are ALE's verbal tics. Nic must NEVER use them — he uses Italian equivalents ("praticamente", "in pratica"). Flag any anglicism in Nic's narration or dialogue that isn't IT jargon (deploy, bug, server are OK).

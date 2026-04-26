@@ -24,6 +24,9 @@ All required fields must be present and non-empty:
 - `outfit`: flag if MISSING in Eros timeline (it's expected there). Check that it describes female characters' outfits, not just POV.
 - `kink`: optional, mainly for Eros.
 - `part`: number or null.
+- `heat`: number 0-5. Expected in Eros and Pulse. Flag if missing.
+- `hook_type`: one of EMOTIONAL_CLIFF, TENSION_PEAK, QUESTION, REVELATION, INTERRUPTION, UNSPOKEN, RESOLUTION. Expected in Eros. Flag if missing.
+- `word_count`: number. Expected in all timelines. Flag if missing or doesn't match actual count (±5%).
 
 ### Filename Convention
 The filename must match: `ep{XX}-ch{XXX}-{pov}-{title-slug}.md`
