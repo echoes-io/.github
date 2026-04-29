@@ -1,130 +1,173 @@
 # Echoes — Core Steering
 
-Echoes è una piattaforma di storytelling multi-POV. Le voci dei personaggi risuonano attraverso narrative interconnesse in diverse timeline.
+Echoes is a multi-timeline storytelling platform. Characters' voices resonate across interconnected narratives. Primary language: English. Italian and other languages downstream.
 
-## Timeline
+## Timelines
 
-| Timeline | Tema | Tono | Lunghezza capitolo |
-|----------|------|------|--------------------|
-| 🌿 Anima | Crescita, tenerezza | Morbido, contemplativo | 4000 parole |
-| ❤️ Eros | Passione, intensità | Diretto, sensoriale | 2000-3000 parole |
-| 🌸 Bloom | Scoperta, fioritura | Poetico, evocativo (protagonista: Ro) | 2000-3000 parole |
-| 💫 Pulse | Diario personale | Conversazionale (POV: sempre Nic) | 2000-3000 parole |
+| Timeline | Theme | Tone | Chapter length | Format |
+|----------|-------|------|:--------------:|--------|
+| ❤️ **Eros** | Passion, intensity, male interiority | Direct, sensorial, explicit | 1,800-2,200w | Serial (Ream), drip-feed |
+| 🌿 **Anima** | Growth, tenderness, family | Soft, contemplative, immersive | ~4,000w | Novels (Amazon KDP) |
+| 💫 **Pulse** | Fragments, desire, standalone truths | Two voices: NIC (confessional) + LEI (intimate) | 1,000-1,500w | One-shots & mini-series (Substack) |
+| 🌸 **Bloom** | Discovery, blossoming | Poetic, evocative | TBD | Separate scope — not covered by Resonance |
 
-## Gerarchia Contenuti
+**Note**: Bloom is an independent project with its own rules. This steering document covers Eros, Anima, and Pulse only.
 
+## Content Hierarchy
+
+### Eros & Anima
 ```
-Timeline → Arc → Episode → [Part (opzionale)] → Chapter (.md)
+Timeline → Arc → Episode/Volume → Chapter (.md)
 ```
 
-- Part è OPZIONALE, chapter dipende da episode (non da part)
-- Un capitolo = un file markdown con frontmatter YAML
+### Pulse
+```
+Timeline → Filone (nic/lei) → Series → Piece (.md)
+```
+
+A chapter/piece = one markdown file with YAML frontmatter.
 
 ## Naming Conventions
 
-- Episode directory: `ep{XX}-{title-slug}` (2 cifre: ep01, ep12)
-- Chapter file: `ep{XX}-ch{XXX}-{pov}-{title-slug}.md` (3 cifre: ch001, ch015)
-- POV nel filename: lowercase (marie, nic, ale)
-- Arc directory: lowercase, no spazi
+### Eros
+- Arc directory: lowercase (`ale`, `cri`, `work`)
+- Episode directory: `ep{XX}-{title-slug}` (2 digits: ep01, ep03)
+- Chapter file: `ep{XX}-ch{XXX}-{pov}-{title-slug}.md` (3 digits: ch001, ch015)
+
+### Anima
+- Arc directory: lowercase (`london`, `milan`)
+- Volume directory: `vol{X}-{title-slug}` (vol1, vol2)
+- Chapter file: `vol{X}-ch{XXX}-{pov}-{title-slug}.md`
+
+### Pulse
+- Filone directory: `nic/` or `lei/`
+- Series directory: lowercase (`vale`, `gio`, `cri`, `ale`, `ele`)
+- Piece file: `{series}-{XX}-{title-slug}.md` (vale-01-la-mezza-bottiglia.md)
+
+### General
+- POV in filename: lowercase (nic, ale, cri, marie)
+- All directories: lowercase, no spaces, hyphens for slugs
 
 ## Filesystem
 
+### Eros
 ```
-timeline-{name}/
+timeline-eros/
 ├── content/{arc}/{epXX-title}/{epXX-chXXX-pov-title}.md
-├── docs/characters/    # Character sheets
-├── docs/episodes/      # Episode outlines (frontmatter: chapters: N)
-├── docs/locations/     # Location descriptions
-└── docs/timeline-steering.md
+├── docs/characters/{arc}/   # Character sheets per arc
+├── docs/episodes/           # Episode outlines
+├── docs/locations/          # Location descriptions
+└── .kiro/                   # Agent config
 ```
 
-## Frontmatter (campi required)
+### Anima
+```
+timeline-anima/
+├── content/{arc}/{volX-title}/{volX-chXXX-pov-title}.md
+├── docs/characters/{arc}/   # Character sheets per arc
+├── docs/episodes/           # Episode/volume outlines
+├── docs/locations/          # Location descriptions
+└── .kiro/                   # Agent config
+```
 
+### Pulse
+```
+timeline-pulse/
+├── content/{filone}/{series}/{series-XX-title}.md
+├── docs/characters/         # Pulse-exclusive characters only
+├── docs/pulse-structure.md  # Master document (voices, calendar, echoes)
+└── .kiro/                   # Agent config
+```
+
+## Frontmatter
+
+### Eros & Anima (required)
 ```yaml
 ---
-pov: string          # lowercase (marie, nic, ale)
+pov: string          # lowercase (nic, ale, cri, marie)
 title: string        # max 100 char
-date: string         # "YYYY-MM-DD, Description" (es. "2024-04-19, Friday")
-timeline: string     # anima | eros | bloom | pulse
 arc: string          # lowercase
-episode: number      # intero positivo
-chapter: number      # intero positivo
-summary: string      # riassunto capitolo, max 300 char (NON le prime frasi)
-location: string     # specifico ("Apartment", non "home")
+episode: number      # (Eros) or volume number (Anima)
+chapter: number      # integer
+date: string         # "YYYY-MM-DD, Description"
+location: string     # specific ("Apartment, Navigli", not "home")
+summary: string      # max 300 char (NOT the first sentences)
 ---
 ```
 
-Opzionali: `part` (number|null), `outfit` (string — tutti i personaggi femminili, non solo POV), `kink` (string — principalmente Eros).
+Optional: `outfit` (string), `heat` (0-5, Eros), `hook_type` (string, Eros), `word_count` (number).
 
-## Regole Critiche
-
-### SEMPRE
-1. Un POV per capitolo — NO head-hopping mai
-2. Show don't tell — emozioni attraverso azioni e dettagli fisici
-3. Almeno 3 sensi per scena (vista, udito, tatto, olfatto, gusto)
-4. Monologo interiore ricco — deep dive nei pensieri del POV
-5. Descrizioni outfit personaggi femminili in TUTTE le timeline
-6. Usare `words-count` MCP tool per conteggio parole (NON bash `wc`)
-7. Sync database dopo ogni capitolo scritto
-8. Consultare planning docs (characters, episodes, locations) prima di scrivere
-9. Verificare continuità con capitoli precedenti via RAG
-
-### MAI
-1. Head-hopping (accedere ai pensieri di personaggi non-POV)
-2. Location generiche ("home", "outside", "somewhere")
-3. Summary = prime frasi del capitolo (deve essere un vero riassunto)
-4. Saltare il context gathering prima della scrittura
-5. Date in formato ISO timestamp (usare "YYYY-MM-DD, Description")
-
-## Formato Messaggi
-
-```markdown
-**Nome 🦆:** Testo messaggio
-**Io:** Risposta del POV
+### Pulse (required)
+```yaml
+---
+pov: string          # lowercase (nic, cri, ale, ele, gio, vale)
+title: string
+filone: string       # nic | lei
+series: string       # vale, gio, cri, ale, ele
+part: number         # within the series
+heat: number         # 0-5
+word_count: number
+tags: list           # ["confessione", "nostalgia", "desiderio"]
+---
 ```
 
-## Struttura Capitolo
+Optional: `date` (string), `location` (string), `outfit` (string).
 
-- Apertura (200-300 parole): hook, stabilisce POV/location/atmosfera
-- Sviluppo (1500-2000 parole): scena principale, dialoghi, monologo interiore
-- Chiusura (200-300 parole): risoluzione, riflessione, immagine finale
+## Critical Rules
 
-## MCP Tools Disponibili
+### ALWAYS
+1. One POV per chapter — NO head-hopping, ever
+2. Show don't tell — emotions through actions and physical details
+3. At least 3 senses per scene (sight, sound, touch, smell, taste)
+4. Rich internal monologue — deep dive into POV character's thoughts
+5. Female character outfits described in ALL timelines
+6. Consult planning docs (characters, episodes, locations) before writing
+7. Verify continuity with previous chapters
+8. Write in English (primary). Italian loanwords where character-appropriate
+
+### NEVER
+1. Head-hopping (accessing non-POV characters' thoughts)
+2. Generic locations ("home", "outside", "somewhere")
+3. Summary = first sentences of the chapter (must be a real summary)
+4. Skip context gathering before writing
+5. Cross-arc direct references in Eros/Pulse (oblique echoes only — see "Echi Paralleli")
+
+## MCP Tools
 
 - Content: `chapter-info`, `episode-info`, `chapter-refresh`, `chapter-insert`, `chapter-delete`, `episode-update`, `words-count`
 - Sync: `timeline-sync`
 - RAG: `rag-index`, `rag-search`, `rag-context`, `rag-characters`
 - Stats: `stats`, `timeline-overview`
 
-## Workflow Rapido
+## Workflow
 
 ```
-1. IDENTIFICA → timeline, arc, episode, chapter, pov
-2. CONTEXT    → sync db se necessario, episode-info, rag-context, planning docs
-3. SCRIVI     → segui struttura apertura/sviluppo/chiusura, tono timeline
-4. ANTIPATTERN → grep meccanico: "il tipo di" ≤2, "come se" ≤4, anglicismi (0 Nic, ≤2 Ale)
-5. VALIDA     → continuità (RAG), checklist qualità, subagent checker
-6. METADATA   → frontmatter completo, words-count
-7. SYNC       → chapter-refresh o timeline-sync, rag-index
+1. IDENTIFY  → timeline, arc, episode/series, chapter/piece, pov
+2. CONTEXT   → planning docs, previous chapter, character sheets
+3. WRITE     → follow timeline-specific prompt (see each repo's writer-prompt.md)
+4. VALIDATE  → anti-AI check, continuity, quality gates
+5. METADATA  → complete frontmatter, word count
+6. SYNC      → update databases if available
 ```
 
-### Step 4 — Check Anti-pattern (OBBLIGATORIO prima dei subagent)
-```bash
-grep -c "il tipo di" capitolo.md    # ≤ 2
-grep -c "come se" capitolo.md       # ≤ 4
-grep -ci "basically\|obviously" capitolo.md  # 0 se Nic, ≤ 2 se Ale
-```
-Se sopra soglia, fixare PRIMA di lanciare i checker.
+Each timeline has its own detailed writer prompt in `.kiro/prompts/writer-prompt.md` that overrides general guidelines with timeline-specific rules.
+
+## Reference Documents (in resonance/)
+
+| Document | Purpose |
+|----------|---------|
+| `nic-continuity-bible.md` | Who Nic is — fixed backstory, family, details |
+| `commercial-patterns-guide.md` | The 5 non-negotiables + all pattern rules (Eros) |
+| `anti-ai-voice-guide-en.md` | What to avoid so writing sounds human |
+| `architettura-echi-paralleli.md` | Each arc is autonomous, no cross-dependencies |
+| `{arc}-arc-structure.md` | Chapter-by-chapter outline per arc |
+| `writer-workflow.md` | 8-step workflow for Eros writer |
 
 ## Arc README
 
-Ogni arc ha `content/{arc}/README.md`:
+Each arc has `content/{arc}/README.md`:
 ```yaml
 ---
 status: planned | active | hiatus | complete
-episodes:
-  ep01-titolo: complete
 ---
 ```
-
-Aggiornare quando si completa un episodio o arco.
