@@ -1,0 +1,70 @@
+{
+  "name": "writer",
+  "description": "Specialized writing agent for ANIMA timeline",
+  "prompt": "file://../../timeline-anima/.kiro/prompts/writer-prompt.md",
+  "mcpServers": {
+    "echoes": {
+      "command": "npx",
+      "args": ["-y", "@echoes-io/mcp-server@latest", "serve"],
+      "env": {
+        "ECHOES_EMBEDDING_DTYPE": "q4",
+        "ECHOES_EMBEDDING_MODEL": "onnx-community/embeddinggemma-300m-ONNX",
+        "ECHOES_GEMINI_MODEL": "gemini-3-flash-preview"
+      }
+    }
+  },
+  "tools": [
+    "read",
+    "write",
+    "shell",
+    "web_search",
+    "web_fetch",
+    "introspect",
+    "thinking",
+    "use_subagent",
+    "@echoes"
+  ],
+  "toolAliases": {},
+  "allowedTools": [
+    "read",
+    "shell",
+    "web_search",
+    "web_fetch",
+    "introspect",
+    "thinking",
+    "use_subagent",
+    "@echoes"
+  ],
+  "toolsSettings": {
+    "write": {
+      "allowedPaths": [
+        "content/**",
+        "docs/**",
+        ".kiro/**",
+        "*.md",
+        "*.json"
+      ]
+    },
+    "shell": {
+      "autoAllowReadonly": true
+    },
+    "subagent": {
+      "availableAgents": ["anima-character-checker", "anima-continuity-checker", "anima-style-checker", "anima-structure-checker"],
+      "trustedAgents": ["anima-character-checker", "anima-continuity-checker", "anima-style-checker", "anima-structure-checker"]
+    }
+  },
+  "resources": [
+    "file://../steering/steering-core.md",
+    "skill://../skills/**/SKILL.md",
+    "file://../../timeline-anima/docs/characters/*.md",
+    "file://../../timeline-anima/docs/episodes/*.md",
+    "file://../../timeline-anima/docs/locations/*.md",
+    "file://../../timeline-anima/docs/timeline-steering.md",
+    "file://../../timeline-anima/.kiro/specs/**/*.md",
+    "file://../../resonance/output/nic-continuity-bible.md",
+    "file://../../resonance/output/anti-ai-voice-guide-en.md",
+    "file://../../resonance/output/architettura-echi-paralleli.md",
+    "file://../../resonance/output/london-arc-structure.md",
+    "file://../../resonance/output/milan-arc-structure.md"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "character-checker",
+  "description": "Validates character consistency in BLOOM chapters",
+  "prompt": "file://../prompts/agent-character-checker.md",
+  "mcpServers": {
+    "echoes": {
+      "command": "npx",
+      "args": ["-y", "@echoes-io/mcp-server@latest", "serve"],
+      "env": {
+        "ECHOES_EMBEDDING_DTYPE": "q4",
+        "ECHOES_EMBEDDING_MODEL": "onnx-community/embeddinggemma-300m-ONNX",
+        "ECHOES_GEMINI_MODEL": "gemini-3-flash-preview"
+      }
+    }
+  },
+  "tools": ["read", "thinking", "@echoes"],
+  "allowedTools": ["read", "thinking", "@echoes"],
+  "resources": [
+    "file://../../timeline-bloom/docs/characters/**/*.md",
+    "file://../../timeline-bloom/docs/timeline-steering.md"
+  ]
+}

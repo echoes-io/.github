@@ -1,0 +1,12 @@
+{
+  "name": "style-checker",
+  "description": "Validates style, tone, and prose quality in PULSE chapters",
+  "prompt": "file://../prompts/agent-style-checker.md",
+  "tools": ["read", "thinking"],
+  "allowedTools": ["read", "thinking"],
+  "resources": [
+    "file://../steering/02-writing-guidelines.md",
+    "file://../../timeline-pulse/docs/timeline-steering.md",
+    "file://../../timeline-pulse/.kiro/prompts/writer-prompt.md"
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "name": "writer",
+  "description": "Specialized writing agent for EROS timeline",
+  "prompt": "file://../../timeline-eros/.kiro/prompts/writer-prompt.md",
+  "mcpServers": {
+    "echoes": {
+      "command": "npx",
+      "args": ["-y", "@echoes-io/mcp-server@latest", "serve"],
+      "env": {
+        "ECHOES_EMBEDDING_DTYPE": "q4",
+        "ECHOES_EMBEDDING_MODEL": "onnx-community/embeddinggemma-300m-ONNX",
+        "ECHOES_GEMINI_MODEL": "gemini-3-flash-preview"
+      }
+    }
+  },
+  "tools": [
+    "read",
+    "write",
+    "shell",
+    "web_search",
+    "web_fetch",
+    "introspect",
+    "thinking",
+    "use_subagent",
+    "@echoes"
+  ],
+  "toolAliases": {},
+  "allowedTools": [
+    "read",
+    "shell",
+    "web_search",
+    "web_fetch",
+    "introspect",
+    "thinking",
+    "use_subagent",
+    "@echoes"
+  ],
+  "toolsSettings": {
+    "write": {
+      "allowedPaths": [
+        "content/**",
+        "docs/**",
+        ".kiro/**",
+        "*.md",
+        "*.json"
+      ]
+    },
+    "shell": {
+      "autoAllowReadonly": true
+    },
+    "subagent": {
+      "availableAgents": ["eros-character-checker", "eros-continuity-checker", "eros-style-checker", "eros-structure-checker"],
+      "trustedAgents": ["eros-character-checker", "eros-continuity-checker", "eros-style-checker", "eros-structure-checker"]
+    }
+  },
+  "resources": [
+    "file://../steering/steering-core.md",
+    "skill://../skills/**/SKILL.md",
+    "file://../../timeline-eros/.kiro/specs/**/*.md",
+    "file://../../timeline-eros/.kiro/steering/**/*.md",
+    "file://../../resonance/output/nic-continuity-bible.md",
+    "file://../../resonance/output/commercial-patterns-guide.md",
+    "file://../../resonance/output/writer-workflow.md",
+    "file://../../resonance/output/anti-ai-voice-guide-en.md",
+    "file://../../resonance/output/architettura-echi-paralleli.md",
+    "file://../../resonance/output/nic-scar-graph.md",
+    "file://../../resonance/output/timeline-master.md",
+    "file://../../resonance/output/innovations-per-arc.md"
+  ]
+}

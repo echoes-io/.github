@@ -1,0 +1,65 @@
+{
+  "name": "writer",
+  "description": "Specialized writing agent for BLOOM timeline",
+  "prompt": "file://../../timeline-bloom/.kiro/prompts/writer-prompt.md",
+  "mcpServers": {
+    "echoes": {
+      "command": "npx",
+      "args": ["-y", "@echoes-io/mcp-server@latest", "serve"],
+      "env": {
+        "ECHOES_EMBEDDING_DTYPE": "q4",
+        "ECHOES_EMBEDDING_MODEL": "onnx-community/embeddinggemma-300m-ONNX",
+        "ECHOES_GEMINI_MODEL": "gemini-3-flash-preview"
+      }
+    }
+  },
+  "tools": [
+    "read",
+    "write",
+    "shell",
+    "web_search",
+    "web_fetch",
+    "introspect",
+    "thinking",
+    "use_subagent",
+    "@echoes"
+  ],
+  "toolAliases": {},
+  "allowedTools": [
+    "read",
+    "shell",
+    "web_search",
+    "web_fetch",
+    "introspect",
+    "thinking",
+    "use_subagent",
+    "@echoes"
+  ],
+  "toolsSettings": {
+    "write": {
+      "allowedPaths": [
+        "content/**",
+        "docs/**",
+        ".kiro/**",
+        "*.md",
+        "*.json"
+      ]
+    },
+    "shell": {
+      "autoAllowReadonly": true
+    },
+    "subagent": {
+      "availableAgents": ["bloom-character-checker", "bloom-continuity-checker", "bloom-style-checker", "bloom-structure-checker"],
+      "trustedAgents": ["bloom-character-checker", "bloom-continuity-checker", "bloom-style-checker", "bloom-structure-checker"]
+    }
+  },
+  "resources": [
+    "file://../steering/steering-core.md",
+    "skill://../skills/**/SKILL.md",
+    "file://../../timeline-bloom/docs/characters/*.md",
+    "file://../../timeline-bloom/docs/episodes/*.md",
+    "file://../../timeline-bloom/docs/locations/*.md",
+    "file://../../timeline-bloom/docs/timeline-steering.md",
+    "file://../../timeline-bloom/.kiro/specs/**/*.md"
+  ]
+}

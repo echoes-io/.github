@@ -1,0 +1,21 @@
+{
+  "name": "structure-checker",
+  "description": "Validates metadata, frontmatter, and structural requirements in PULSE chapters",
+  "prompt": "file://../prompts/agent-structure-checker.md",
+  "mcpServers": {
+    "echoes": {
+      "command": "npx",
+      "args": ["-y", "@echoes-io/mcp-server@latest", "serve"],
+      "env": {
+        "ECHOES_EMBEDDING_DTYPE": "q4",
+        "ECHOES_EMBEDDING_MODEL": "onnx-community/embeddinggemma-300m-ONNX",
+        "ECHOES_GEMINI_MODEL": "gemini-3-flash-preview"
+      }
+    }
+  },
+  "tools": ["read", "thinking", "@echoes"],
+  "allowedTools": ["read", "thinking", "@echoes"],
+  "resources": [
+    "file://../steering/03-metadata-frontmatter.md"
+  ]
+}

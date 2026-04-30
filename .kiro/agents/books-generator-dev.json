@@ -1,0 +1,42 @@
+{
+  "name": "dev",
+  "description": "Specialized assistant for the Books Generator - LaTeX book compilation system",
+  "prompt": "file://../../books-generator/.kiro/prompts/default-prompt.md",
+  "tools": [
+    "read",
+    "write",
+    "shell",
+    "web_search",
+    "web_fetch",
+    "introspect",
+    "thinking",
+    "code",
+    "grep",
+    "glob"
+  ],
+  "toolAliases": {},
+  "allowedTools": [
+    "read",
+    "shell",
+    "web_search",
+    "web_fetch",
+    "introspect",
+    "thinking",
+    "code",
+    "grep",
+    "glob"
+  ],
+  "toolsSettings": {
+    "write": {
+      "allowedPaths": ["lib/**", "test/**", "templates/**", "*.md", "*.json", "*.ts"]
+    },
+    "shell": {
+      "autoAllowReadonly": true
+    }
+  },
+  "resources": [
+    "file://../../books-generator/README.md",
+    "file://../../books-generator/templates/",
+    "file://../../books-generator/lib/"
+  ]
+}

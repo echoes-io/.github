@@ -1,0 +1,36 @@
+{
+  "name": "resonance",
+  "description": "Commercial intelligence agent for Echoes — analyzes bestsellers, designs arc structures, and creates writer/reviewer agents for serial fiction",
+  "prompt": "file://../../resonance/.kiro/prompts/default-prompt.md",
+  "tools": ["read", "write", "shell", "web_search", "web_fetch", "introspect", "thinking", "grep", "glob"],
+  "allowedTools": ["read", "shell", "web_search", "web_fetch", "introspect", "thinking", "grep", "glob"],
+  "toolsSettings": {
+    "write": {
+      "allowedPaths": [
+        "analyses/**",
+        "patterns/**",
+        "gap-analysis/**",
+        "output/**",
+        "reference/**",
+        "agents/**",
+        "*.md",
+        ".kiro/**"
+      ]
+    },
+    "shell": {
+      "autoAllowReadonly": true
+    }
+  },
+  "toolAliases": {},
+  "resources": [
+    "file://../../resonance/README.md",
+    "file://../../resonance/.kiro/steering/steering-core.md",
+    "file://../../resonance/output/commercial-patterns-guide.md",
+    "file://../../resonance/patterns/summary.md",
+    "file://../../resonance/output/architettura-echi-paralleli.md",
+    "file://../../resonance/output/timeline-master.md",
+    "file://../../resonance/output/nic-continuity-bible.md",
+    "file://../../resonance/output/nic-scar-graph.md",
+    "file://../../resonance/reference/catalog.md"
+  ]
+}

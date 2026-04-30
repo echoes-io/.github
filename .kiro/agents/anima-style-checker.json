@@ -1,0 +1,12 @@
+{
+  "name": "style-checker",
+  "description": "Validates style, tone, and prose quality in ANIMA chapters",
+  "prompt": "file://../prompts/agent-style-checker.md",
+  "tools": ["read", "thinking"],
+  "allowedTools": ["read", "thinking"],
+  "resources": [
+    "file://../steering/02-writing-guidelines.md",
+    "file://../../timeline-anima/docs/timeline-steering.md",
+    "file://../../timeline-anima/.kiro/prompts/writer-prompt.md"
+  ]
+}
