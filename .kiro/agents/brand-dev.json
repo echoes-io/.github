@@ -1,7 +1,7 @@
 {
-  "name": "dev",
+  "name": "brand-dev",
   "description": "Agent for echoes-io/brand - Brand identity and visual assets for the Echoes project",
-  "prompt": "file://../../brand/.kiro/prompts/default-prompt.md",
+  "prompt": "file://../../../brand/.kiro/prompts/default-prompt.md",
   "tools": ["read", "write", "shell", "web_search", "web_fetch", "introspect", "thinking", "code", "grep", "glob"],
   "toolAliases": {},
   "allowedTools": ["read", "shell", "web_search", "web_fetch", "introspect", "thinking", "code", "grep", "glob"],
@@ -22,7 +22,6 @@
     }
   },
   "resources": [
-    "file://../../brand/README.md",
-    "file://../../brand/guidelines.md"
+    "file://../../../brand/README.md"
   ]
 }

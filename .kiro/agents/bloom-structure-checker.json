@@ -1,5 +1,5 @@
 {
-  "name": "structure-checker",
+  "name": "bloom-structure-checker",
   "description": "Validates metadata, frontmatter, and structural requirements in BLOOM chapters",
   "prompt": "file://../prompts/agent-structure-checker.md",
   "mcpServers": {

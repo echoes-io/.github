@@ -1,5 +1,5 @@
 {
-  "name": "character-checker",
+  "name": "pulse-character-checker",
   "description": "Validates character consistency in PULSE chapters",
   "prompt": "file://../prompts/agent-character-checker.md",
   "mcpServers": {
@@ -16,7 +16,7 @@
   "tools": ["read", "thinking", "@echoes"],
   "allowedTools": ["read", "thinking", "@echoes"],
   "resources": [
-    "file://../../timeline-pulse/docs/characters/**/*.md",
-    "file://../../timeline-pulse/docs/timeline-steering.md"
+    "file://../../../timeline-pulse/docs/characters/**/*.md",
+    "file://../../../timeline-pulse/docs/pulse-structure.md"
   ]
 }

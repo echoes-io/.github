@@ -1,7 +1,7 @@
 {
-  "name": "writer",
+  "name": "eros-writer",
   "description": "Specialized writing agent for EROS timeline",
-  "prompt": "file://../../timeline-eros/.kiro/prompts/writer-prompt.md",
+  "prompt": "file://../../../timeline-eros/.kiro/prompts/writer-prompt.md",
   "mcpServers": {
     "echoes": {
       "command": "npx",
@@ -56,15 +56,17 @@
   "resources": [
     "file://../steering/steering-core.md",
     "skill://../skills/**/SKILL.md",
-    "file://../../timeline-eros/.kiro/specs/**/*.md",
-    "file://../../timeline-eros/.kiro/steering/**/*.md",
-    "file://../../resonance/output/nic-continuity-bible.md",
-    "file://../../resonance/output/commercial-patterns-guide.md",
-    "file://../../resonance/output/writer-workflow.md",
-    "file://../../resonance/output/anti-ai-voice-guide-en.md",
-    "file://../../resonance/output/architettura-echi-paralleli.md",
-    "file://../../resonance/output/nic-scar-graph.md",
-    "file://../../resonance/output/timeline-master.md",
-    "file://../../resonance/output/innovations-per-arc.md"
+    "file://../../../timeline-eros/docs/characters/**/*.md",
+    "file://../../../timeline-eros/docs/episodes/*.md",
+    "file://../../../timeline-eros/docs/locations/*.md",
+    "file://../../../timeline-eros/docs/timeline-steering.md",
+    "file://../../../resonance/output/nic-continuity-bible.md",
+    "file://../../../resonance/output/commercial-patterns-guide.md",
+    "file://../../../resonance/output/writer-workflow.md",
+    "file://../../../resonance/output/anti-ai-voice-guide-en.md",
+    "file://../../../resonance/output/architettura-echi-paralleli.md",
+    "file://../../../resonance/output/nic-scar-graph.md",
+    "file://../../../resonance/output/timeline-master.md",
+    "file://../../../resonance/output/innovations-per-arc.md"
   ]
 }

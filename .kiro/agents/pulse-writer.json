@@ -1,7 +1,7 @@
 {
-  "name": "writer",
+  "name": "pulse-writer",
   "description": "Specialized writing agent for PULSE timeline",
-  "prompt": "file://../../timeline-pulse/.kiro/prompts/writer-prompt.md",
+  "prompt": "file://../../../timeline-pulse/.kiro/prompts/writer-prompt.md",
   "mcpServers": {
     "echoes": {
       "command": "npx",
@@ -56,15 +56,14 @@
   "resources": [
     "file://../steering/steering-core.md",
     "skill://../skills/**/SKILL.md",
-    "file://../../timeline-pulse/docs/pulse-structure.md",
-    "file://../../timeline-pulse/docs/characters/*.md",
-    "file://../../timeline-pulse/.kiro/specs/**/*.md",
-    "file://../../resonance/output/nic-continuity-bible.md",
-    "file://../../resonance/output/anti-ai-voice-guide-en.md",
-    "file://../../resonance/output/architettura-echi-paralleli.md",
-    "file://../../timeline-eros/docs/characters/cri/cri.md",
-    "file://../../timeline-eros/docs/characters/ele/ele.md",
-    "file://../../timeline-eros/docs/characters/ele/dani.md",
-    "file://../../timeline-eros/docs/characters/ale/ale.md"
+    "file://../../../timeline-pulse/docs/pulse-structure.md",
+    "file://../../../timeline-pulse/docs/characters/*.md",
+    "file://../../../resonance/output/nic-continuity-bible.md",
+    "file://../../../resonance/output/anti-ai-voice-guide-en.md",
+    "file://../../../resonance/output/architettura-echi-paralleli.md",
+    "file://../../../timeline-eros/docs/characters/cri/cri.md",
+    "file://../../../timeline-eros/docs/characters/ele/ele.md",
+    "file://../../../timeline-eros/docs/characters/ele/dani.md",
+    "file://../../../timeline-eros/docs/characters/ale/ale.md"
   ]
 }

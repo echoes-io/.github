@@ -1,7 +1,7 @@
 {
-  "name": "dev",
+  "name": "mcp-server-dev",
   "description": "Agent for echoes-mcp-server - Model Context Protocol server for AI integration",
-  "prompt": "file://../../mcp-server/.kiro/prompts/default-prompt.md",
+  "prompt": "file://../../../mcp-server/.kiro/prompts/default-prompt.md",
   "tools": [
     "read",
     "write",
@@ -43,8 +43,8 @@
     }
   },
   "resources": [
-    "file://../../mcp-server/README.md",
-    "file://../../mcp-server/.kiro/specs/v6/requirements.md",
-    "file://../../mcp-server/package.json"
+    "file://../../../mcp-server/README.md",
+    "file://../../../mcp-server/.kiro/specs/v6/requirements.md",
+    "file://../../../mcp-server/package.json"
   ]
 }

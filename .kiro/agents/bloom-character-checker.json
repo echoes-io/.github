@@ -1,5 +1,5 @@
 {
-  "name": "character-checker",
+  "name": "bloom-character-checker",
   "description": "Validates character consistency in BLOOM chapters",
   "prompt": "file://../prompts/agent-character-checker.md",
   "mcpServers": {
@@ -16,7 +16,6 @@
   "tools": ["read", "thinking", "@echoes"],
   "allowedTools": ["read", "thinking", "@echoes"],
   "resources": [
-    "file://../../timeline-bloom/docs/characters/**/*.md",
-    "file://../../timeline-bloom/docs/timeline-steering.md"
+    "file://../../../timeline-bloom/docs/timeline-steering.md"
   ]
 }

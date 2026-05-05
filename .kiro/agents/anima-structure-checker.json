@@ -1,5 +1,5 @@
 {
-  "name": "structure-checker",
+  "name": "anima-structure-checker",
   "description": "Validates metadata, frontmatter, and structural requirements in ANIMA chapters",
   "prompt": "file://../prompts/agent-structure-checker.md",
   "mcpServers": {

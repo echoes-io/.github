@@ -1,5 +1,5 @@
 {
-  "name": "continuity-checker",
+  "name": "eros-continuity-checker",
   "description": "Validates narrative continuity in EROS chapters",
   "prompt": "file://../prompts/agent-continuity-checker.md",
   "mcpServers": {
@@ -16,7 +16,7 @@
   "tools": ["read", "thinking", "@echoes"],
   "allowedTools": ["read", "thinking", "@echoes"],
   "resources": [
-    "file://../../timeline-eros/docs/episodes/*.md",
-    "file://../../timeline-eros/docs/timeline-steering.md"
+    "file://../../../timeline-eros/docs/episodes/*.md",
+    "file://../../../timeline-eros/docs/timeline-steering.md"
   ]
 }

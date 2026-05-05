@@ -1,5 +1,5 @@
 {
-  "name": "structure-checker",
+  "name": "eros-structure-checker",
   "description": "Validates metadata, frontmatter, and structural requirements in EROS chapters",
   "prompt": "file://../prompts/agent-structure-checker.md",
   "mcpServers": {

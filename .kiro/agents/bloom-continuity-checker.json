@@ -1,5 +1,5 @@
 {
-  "name": "continuity-checker",
+  "name": "bloom-continuity-checker",
   "description": "Validates narrative continuity in BLOOM chapters",
   "prompt": "file://../prompts/agent-continuity-checker.md",
   "mcpServers": {
@@ -16,7 +16,6 @@
   "tools": ["read", "thinking", "@echoes"],
   "allowedTools": ["read", "thinking", "@echoes"],
   "resources": [
-    "file://../../timeline-bloom/docs/episodes/*.md",
-    "file://../../timeline-bloom/docs/timeline-steering.md"
+    "file://../../../timeline-bloom/docs/timeline-steering.md"
   ]
 }

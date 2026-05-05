@@ -1,7 +1,7 @@
 {
-  "name": "dev",
+  "name": "books-generator-dev",
   "description": "Specialized assistant for the Books Generator - LaTeX book compilation system",
-  "prompt": "file://../../books-generator/.kiro/prompts/default-prompt.md",
+  "prompt": "file://../../../books-generator/.kiro/prompts/default-prompt.md",
   "tools": [
     "read",
     "write",
@@ -35,8 +35,8 @@
     }
   },
   "resources": [
-    "file://../../books-generator/README.md",
-    "file://../../books-generator/templates/",
-    "file://../../books-generator/lib/"
+    "file://../../../books-generator/README.md",
+    "file://../../../books-generator/templates/",
+    "file://../../../books-generator/lib/"
   ]
 }

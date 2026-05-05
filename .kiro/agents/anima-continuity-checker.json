@@ -1,5 +1,5 @@
 {
-  "name": "continuity-checker",
+  "name": "anima-continuity-checker",
   "description": "Validates narrative continuity in ANIMA chapters",
   "prompt": "file://../prompts/agent-continuity-checker.md",
   "mcpServers": {
@@ -16,7 +16,7 @@
   "tools": ["read", "thinking", "@echoes"],
   "allowedTools": ["read", "thinking", "@echoes"],
   "resources": [
-    "file://../../timeline-anima/docs/episodes/*.md",
-    "file://../../timeline-anima/docs/timeline-steering.md"
+    "file://../../../timeline-anima/docs/episodes/*.md",
+    "file://../../../timeline-anima/docs/timeline-steering.md"
   ]
 }

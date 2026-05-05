@@ -1,7 +1,7 @@
 {
-  "name": "writer",
+  "name": "bloom-writer",
   "description": "Specialized writing agent for BLOOM timeline",
-  "prompt": "file://../../timeline-bloom/.kiro/prompts/writer-prompt.md",
+  "prompt": "file://../../../timeline-bloom/.kiro/prompts/writer-prompt.md",
   "mcpServers": {
     "echoes": {
       "command": "npx",
@@ -56,10 +56,6 @@
   "resources": [
     "file://../steering/steering-core.md",
     "skill://../skills/**/SKILL.md",
-    "file://../../timeline-bloom/docs/characters/*.md",
-    "file://../../timeline-bloom/docs/episodes/*.md",
-    "file://../../timeline-bloom/docs/locations/*.md",
-    "file://../../timeline-bloom/docs/timeline-steering.md",
-    "file://../../timeline-bloom/.kiro/specs/**/*.md"
+    "file://../../../timeline-bloom/docs/timeline-steering.md"
   ]
 }

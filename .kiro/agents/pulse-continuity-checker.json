@@ -1,5 +1,5 @@
 {
-  "name": "continuity-checker",
+  "name": "pulse-continuity-checker",
   "description": "Validates narrative continuity in PULSE chapters",
   "prompt": "file://../prompts/agent-continuity-checker.md",
   "mcpServers": {
@@ -16,7 +16,6 @@
   "tools": ["read", "thinking", "@echoes"],
   "allowedTools": ["read", "thinking", "@echoes"],
   "resources": [
-    "file://../../timeline-pulse/docs/episodes/*.md",
-    "file://../../timeline-pulse/docs/timeline-steering.md"
+    "file://../../../timeline-pulse/docs/pulse-structure.md"
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "name": "character-checker",
+  "name": "eros-character-checker",
   "description": "Validates character consistency in EROS chapters",
   "prompt": "file://../prompts/agent-character-checker.md",
   "mcpServers": {
@@ -16,7 +16,7 @@
   "tools": ["read", "thinking", "@echoes"],
   "allowedTools": ["read", "thinking", "@echoes"],
   "resources": [
-    "file://../../timeline-eros/docs/characters/**/*.md",
-    "file://../../timeline-eros/docs/timeline-steering.md"
+    "file://../../../timeline-eros/docs/characters/**/*.md",
+    "file://../../../timeline-eros/docs/timeline-steering.md"
   ]
 }

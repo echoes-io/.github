@@ -20,7 +20,7 @@
   },
   "toolAliases": {},
   "resources": [
-    "file://README.md",
-    "file://.kiro/**/*.md"
+    "file://../../README.md",
+    "file://../**/*.md"
   ]
 }
