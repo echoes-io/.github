@@ -161,7 +161,7 @@ await mcp.call('chapter-refresh', {
   arc: 'matilde',
   episode: 1,
   chapter: 3,
-  filePath: '/path/to/timeline-anima/content/matilde/ep01-inizio/ep01-ch003-marie-awakening.md'
+  filePath: '/path/to/timeline-anima/content/matilde/ep01-inizio/ch003-marie-awakening.md'
 })
 ```
 
@@ -435,7 +435,7 @@ const context = await mcp.call('rag-context', {
 })
 
 // context.context contiene testo formattato:
-// "Capitolo ep01-ch001 (Marie - Awakening):
+// "Capitolo ch001 (Marie - Awakening):
 //  Marie si svegliò con il sole negli occhi..."
 ```
 

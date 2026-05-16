@@ -8,29 +8,28 @@ Echoes is a platform for telling rich, layered stories from multiple perspective
 
 ### Timelines
 
-- **🌿 Anima** - Stories of growth, support, and tenderness
-- **❤️ Eros** - Tales of passion, intensity, and raw emotion
-- **🌸 Bloom** - Narratives of discovery, balance, and blossoming
-- **💫 Pulse** - Personal diary entries, reflections, and authentic moments
+- **❤️ Eros** — Passion, intensity, raw emotion. Explicit, dual POV, serial.
+- **🌿 Anima** — Growth, tenderness, transformation. Literary, single POV, novels.
+- **✨ Glow** — Lightness, pleasure, adult joy. Explicit, single POV, serial.
+- **🌸 Bloom** — Discovery, balance, blossoming.
+- **💫 Pulse** — Intimate voices, fragments, confessions. Standalone pieces.
 
 ## 🏗️ Architecture
 
 ### Content Repositories
 
-- **[timeline-anima](https://github.com/echoes-io/timeline-anima)** - 55 chapters across arcs: matilde (5), anima (50)
-- **[timeline-eros](https://github.com/echoes-io/timeline-eros)** - 266 chapters across arcs: ale (122), gio (57), work (87)
-- **[timeline-bloom](https://github.com/echoes-io/timeline-bloom)** - 5 chapters in arc: bloom (5)
-- **[timeline-pulse](https://github.com/echoes-io/timeline-pulse)** - Personal diary format, Nic's POV
+- **[timeline-eros](https://github.com/echoes-io/timeline-eros)** — Arcs: ale, ele, cri, manu, ro, work
+- **[timeline-anima](https://github.com/echoes-io/timeline-anima)** — Arcs: london, milan
+- **[timeline-glow](https://github.com/echoes-io/timeline-glow)** — Arcs: vale, gio
+- **[timeline-bloom](https://github.com/echoes-io/timeline-bloom)** — Arc: bloom
+- **[timeline-pulse](https://github.com/echoes-io/timeline-pulse)** — LEI voices (cri, ale, ele) + Nic backstory
 
 ### Tools & Services
 
-- **[@echoes-io/mcp-server](https://github.com/echoes-io/mcp-server)** - AI integration via MCP: content management, RAG/semantic search, knowledge graph
-- **[@echoes-io/books-generator](https://github.com/echoes-io/books-generator)** - Book compilation: markdown → PDF
-- **[@echoes-io/brand](https://github.com/echoes-io/brand)** - Visual identity: timeline palettes, typography, design tokens
-
-### Planned
-
-- **web-app** - Frontend application (dormant)
+- **[@echoes-io/mcp-server](https://github.com/echoes-io/mcp-server)** — AI integration via MCP: content management, RAG/semantic search, knowledge graph
+- **[@echoes-io/books-generator](https://github.com/echoes-io/books-generator)** — Book compilation: markdown → PDF
+- **[@echoes-io/brand](https://github.com/echoes-io/brand)** — Visual identity: timeline palettes, typography, design tokens
+- **[@echoes-io/resonance](https://github.com/echoes-io/resonance)** — Commercial intelligence: pattern analysis, arc structures, agent design
 
 ## 🛠️ Tech Stack
 
@@ -39,17 +38,15 @@ Echoes is a platform for telling rich, layered stories from multiple perspective
 - **AI**: Model Context Protocol + HuggingFace embeddings
 - **Validation**: Zod schemas
 - **Testing**: Vitest
-- **CI/CD**: GitHub Actions + semantic-release
+- **CI/CD**: GitHub Actions
 
 ## 📚 Content Structure
 
 ```
-Timeline → Arc → Episode → Chapter (.md with YAML frontmatter)
+Timeline → Arc → [Episode/Volume] → Chapter (.md with YAML frontmatter)
 ```
 
-326+ chapters organized with consistent naming: `ep01-ch001-pov-title.md`
-
-Each chapter includes structured metadata for POV, timeline, location, and content statistics.
+Chapter filename: `ch{YYY}-{pov}-{title-slug}.md`
 
 ---
 

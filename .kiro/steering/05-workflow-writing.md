@@ -408,17 +408,18 @@ const stats = await mcp.call('words-count', {
 ### A. Genera Filename
 
 ```typescript
-const filename = `ep${episode.toString().padStart(2, '0')}-ch${chapter.toString().padStart(3, '0')}-${pov.toLowerCase()}-${titleSlug}.md`
+const filename = `ch${chapter.toString().padStart(3, '0')}-${pov.toLowerCase()}-${titleSlug}.md`
 
-// Esempio: ep01-ch006-marie-awakening.md
+// Esempio: ch006-nic-the-message.md
 ```
 
 ### B. Determina Path
 
 ```typescript
-// Trova episode directory
+// Trova episode directory (Eros) o arc directory (Glow/Pulse)
 const episodeDir = findEpisodeDirectory(arc, episode)
-// → content/matilde/ep01-inizio/
+// Eros: content/ale/ep01-london-calling/
+// Glow:  content/vale/
 
 const filepath = `${episodeDir}/${filename}`
 ```

@@ -53,11 +53,12 @@ Each timeline repository uses a **Kiro agent** configured to inherit shared docu
 - `04-mcp-tools-reference.md` - Complete MCP tools guide
 - `05-workflow-writing.md` - Step-by-step writing workflow
 
-**Timeline-specific prompt templates** in `template/.kiro/prompts/`:
-- `anima-writer-prompt.md` - 4000 words, tenerezza
-- `eros-writer-prompt.md` - 2000-3000 words, intensità
-- `bloom-writer-prompt.md` - 2000-3000 words, scoperta
-- `pulse-writer-prompt.md` - 2000-3000 words, diario
+**Timeline-specific prompt templates** — each timeline repo has its own writer prompt in `.kiro/prompts/writer-prompt.md`:
+- **Eros** - ~2,000 words, dual POV, explicit, intense
+- **Anima** - ~4,000 words, single POV, tender, not explicit
+- **Glow** - ~2,000 words, single POV, explicit, light/comic
+- **Pulse** - 1,000-1,500 words, standalone, confessional
+- **Bloom** - ~2,000 words, separate scope
 
 ### MCP Server Integration
 

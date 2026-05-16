@@ -20,9 +20,9 @@ Timeline → Arc → Episode → Chapter
 ```
 
 **Naming:**
-- Episode: `ep01`, `ep02`, `ep12` (2 cifre)
-- Chapter: `ch001`, `ch015`, `ch123` (3 cifre)
-- File: `ep01-ch001-marie-title.md`
+- Episode dir: `ep01-{slug}` (2 cifre)
+- Chapter file: `ch001-{pov}-{slug}.md` (3 cifre)
+- Example: `content/ale/ep01-london-calling/ch001-nic-the-message.md`
 
 ## 📝 Frontmatter Essenziale
 

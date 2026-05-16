@@ -402,7 +402,6 @@ const validated = chapterFrontmatterSchema.parse(frontmatter)
 - `chapter`: intero positivo
 
 **Coerenza Filename:**
-- `ep{episode}` nel filename = `episode` nel frontmatter
 - `ch{chapter}` nel filename = `chapter` nel frontmatter
 - `{pov}` nel filename = `pov` nel frontmatter
 

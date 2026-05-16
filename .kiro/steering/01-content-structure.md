@@ -115,54 +115,74 @@ ep{XX}-{episode-title}
 
 **Naming Convention:**
 ```
-ep{XX}-ch{XXX}-{pov}-{title-slug}.md
+ch{YYY}-{pov}-{title-slug}.md
 ```
 
 **Esempi:**
-- `ep01-ch001-marie-awakening.md`
-- `ep03-ch015-nic-reflection.md`
-- `ep12-ch045-ale-intensity.md`
+- `ch001-nic-the-message.md`
+- `ch015-ale-the-crack.md`
+- `ch003-cri-milano.md`
 
 **Caratteristiche:**
-- Numero progressivo all'interno dell'episodio
+- Numero progressivo all'interno dell'episodio/arco
 - POV singolo (no head-hopping)
-- Lunghezza ideale: 2000-3000 parole
+- Lunghezza: dipende dalla timeline (Eros ~2,000w, Anima ~4,000w, Glow ~2,000w, Pulse 1,000-1,500w)
 - Frontmatter YAML completo
 
 ## Struttura Filesystem
 
-### Layout Standard
+### Layout per Timeline
 
+**Eros:**
 ```
-timeline-{name}/
-├── content/                          # Tutti i capitoli
-│   ├── {arc-name}/                  # Arc directory
-│   │   ├── ep01-{episode-title}/   # Episode directory
-│   │   │   ├── ep01-ch001-{pov}-{title}.md
-│   │   │   ├── ep01-ch002-{pov}-{title}.md
-│   │   │   └── ...
-│   │   ├── ep02-{episode-title}/
-│   │   │   └── ...
-│   │   └── ...
-│   └── {another-arc}/
+timeline-eros/
+├── content/
+│   └── {arc}/
+│       └── ep{XX}-{episode-slug}/
+│           ├── ch001-{pov}-{slug}.md
+│           ├── ch002-{pov}-{slug}.md
+│           └── ...
+├── docs/
+│   ├── characters/{arc}/
+│   ├── episodes/
+│   └── locations/
+└── .kiro/
+```
+
+**Anima:**
+```
+timeline-anima/
+├── content/
+│   └── {arc}/
+│       └── vol{N}-{volume-slug}/
+│           ├── ch001-{pov}-{slug}.md
+│           └── ...
+├── docs/
+└── .kiro/
+```
+
+**Glow:**
+```
+timeline-glow/
+├── content/
+│   └── {arc}/
+│       ├── ch001-{pov}-{slug}.md
+│       ├── ch002-{pov}-{slug}.md
 │       └── ...
-│
-├── docs/                            # Planning documents
-│   ├── characters/                  # Character sheets
-│   │   ├── marie.md
-│   │   ├── nic.md
-│   │   └── ...
-│   ├── episodes/                    # Episode outlines
-│   │   ├── arc-ep01-slug.md        # Naming: {arc}-{epXX}-{slug}.md
-│   │   ├── arc-ep02-slug.md
-│   │   └── ...
-│   └── locations/                   # Location descriptions
-│       ├── apartment.md
-│       ├── office.md
-│       └── ...
-│
-└── .kiro/                           # Kiro agent config
-    └── agent.json
+├── docs/
+└── .kiro/
+```
+
+**Pulse:**
+```
+timeline-pulse/
+├── content/
+│   └── lei/
+│       └── {arc}/
+│           ├── ch001-{pov}-{slug}.md
+│           └── ...
+├── docs/
+└── .kiro/
 ```
 
 ### Episode Outline Frontmatter
@@ -185,19 +205,18 @@ Il tool `timeline-overview` usa questi file per mostrare episodi pianificati non
 ```
 timeline-anima/
 ├── content/
-│   ├── matilde/
-│   │   └── ep01-inizio/
-│   │       ├── ep01-ch001-marie-awakening.md
-│   │       ├── ep01-ch002-marie-morning.md
-│   │       ├── ep01-ch003-marie-reflection.md
-│   │       ├── ep01-ch004-nic-perspective.md
-│   │       └── ep01-ch005-marie-evening.md
+│   ├── london/
+│   │   └── vol1-somewhere-else/
+│   │       ├── ch001-nic-arrival.md
+│   │       ├── ch002-nic-the-pub.md
+│   │       ├── ch003-marie-morning.md
+│   │       └── ...
 │   │
-│   └── anima/
-│       ├── ep01-new-life/
-│       │   ├── ep01-ch001-marie-beginning.md
+│   └── milan/
+│       ├── vol1-la-cosa-facile/
+│       │   ├── ch001-nic-beginning.md
 │       │   └── ...
-│       ├── ep02-growth/
+│       ├── vol2-la-cosa-giusta/
 │       │   └── ...
 │       └── ...
 │
