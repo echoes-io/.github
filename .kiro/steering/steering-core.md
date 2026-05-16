@@ -4,114 +4,125 @@ Echoes is a multi-timeline storytelling platform. Characters' voices resonate ac
 
 ## Timelines
 
-| Timeline | Theme | Tone | Chapter length | Format |
-|----------|-------|------|:--------------:|--------|
-| ❤️ **Eros** | Passion, intensity, male interiority | Direct, sensorial, explicit | 1,800-2,200w | Serial (Ream), drip-feed |
-| 🌿 **Anima** | Growth, tenderness, family | Soft, contemplative, immersive | ~4,000w | Novels (Amazon KDP) |
-| 💫 **Pulse** | Fragments, desire, standalone truths | Two voices: NIC (confessional) + LEI (intimate) | 1,000-1,500w | One-shots & mini-series (Substack) |
-| 🌸 **Bloom** | Discovery, blossoming | Poetic, evocative | TBD | Separate scope — not covered by Resonance |
+| Timeline | Theme | Tone | Chapter length | Format | Platform |
+|----------|-------|------|:--------------:|--------|----------|
+| ❤️ **Eros** | Passion, intensity, male interiority | Direct, sensorial, explicit | 1,800-2,200w | Serial, drip-feed | Ream |
+| 🌿 **Anima** | Growth, tenderness, family | Soft, contemplative, immersive | ~4,000w | Novels | Amazon KDP |
+| ✨ **Glow** | Lightness, pleasure, adult joy | Light, comic, warm, explicit | 1,800-2,200w | Serial, mini-arcs | Ream |
+| 💫 **Pulse** | Intimate voices, fragments, confessions | Confessional, varied, explicit | 1,000-1,500w | Standalone | Substack |
+| 🌸 **Bloom** | Discovery, blossoming | Poetic, evocative | ~2,000w | Separate scope | — |
 
-**Note**: Bloom is an independent project with its own rules. This steering document covers Eros, Anima, and Pulse only.
+**Note**: Bloom is an independent project with its own rules.
 
 ## Content Hierarchy
 
-### Eros & Anima
 ```
-Timeline → Arc → Episode/Volume → Chapter (.md)
-```
-
-### Pulse
-```
-Timeline → Filone (nic/lei) → Series → Piece (.md)
+Timeline → Arc → [Episode/Volume] → Chapter (.md)
 ```
 
-A chapter/piece = one markdown file with YAML frontmatter.
+- **Eros**: has episodes (ep01, ep02, ep03)
+- **Anima**: has volumes (vol1, vol2, vol3)
+- **Glow**: flat (no episodes — arc is linear)
+- **Pulse**: flat (standalone pieces per arc)
 
 ## Naming Conventions
 
-### Eros
-- Arc directory: lowercase (`ale`, `cri`, `work`)
-- Episode directory: `ep{XX}-{title-slug}` (2 digits: ep01, ep03)
-- Chapter file: `ep{XX}-ch{XXX}-{pov}-{title-slug}.md` (3 digits: ch001, ch015)
+### Chapter Filename (ALL timelines)
 
-### Anima
-- Arc directory: lowercase (`london`, `milan`)
-- Volume directory: `vol{X}-{title-slug}` (vol1, vol2)
-- Chapter file: `vol{X}-ch{XXX}-{pov}-{title-slug}.md`
+```
+ch{YYY}-{pov}-{title-slug}.md
+```
 
-### Pulse
-- Filone directory: `nic/` or `lei/`
-- Series directory: lowercase (`vale`, `gio`, `cri`, `ale`, `ele`)
-- Piece file: `{series}-{XX}-{title-slug}.md` (vale-01-la-mezza-bottiglia.md)
+- `ch` prefix + 3-digit zero-padded number: ch001, ch015, ch123
+- `pov`: lowercase character name (nic, ale, cri, vale, giogio, marie)
+- `title-slug`: lowercase, hyphens, no special chars
 
-### General
-- POV in filename: lowercase (nic, ale, cri, marie)
+**Examples:**
+- `ch001-nic-the-message.md`
+- `ch015-ale-the-crack.md`
+- `ch003-cri-milano.md`
+- `ch007-nic-the-arrival.md`
+
+### Directory Structure
+
+**Eros** (arc → episode → chapters):
+```
+content/{arc}/ep{XX}-{slug}/ch{YYY}-{pov}-{slug}.md
+```
+Example: `content/ale/ep01-london-calling/ch001-nic-the-message.md`
+
+**Anima** (arc → volume → chapters):
+```
+content/{arc}/vol{N}-{slug}/ch{YYY}-{pov}-{slug}.md
+```
+Example: `content/london/vol1-somewhere-else/ch001-nic-arrival.md`
+
+**Glow** (arc → chapters):
+```
+content/{arc}/ch{YYY}-{pov}-{slug}.md
+```
+Example: `content/vale/ch001-nic-the-half-bottle.md`
+
+**Pulse** (filone → arc → chapters):
+```
+content/lei/{arc}/ch{YYY}-{pov}-{slug}.md
+```
+Example: `content/lei/cri/ch001-cri-milano.md`
+
+### General Rules
 - All directories: lowercase, no spaces, hyphens for slugs
-
-## Filesystem
-
-### Eros
-```
-timeline-eros/
-├── content/{arc}/{epXX-title}/{epXX-chXXX-pov-title}.md
-├── docs/characters/{arc}/   # Character sheets per arc
-├── docs/episodes/           # Episode outlines
-├── docs/locations/          # Location descriptions
-└── .kiro/                   # Agent config
-```
-
-### Anima
-```
-timeline-anima/
-├── content/{arc}/{volX-title}/{volX-chXXX-pov-title}.md
-├── docs/characters/{arc}/   # Character sheets per arc
-├── docs/episodes/           # Episode/volume outlines
-├── docs/locations/          # Location descriptions
-└── .kiro/                   # Agent config
-```
-
-### Pulse
-```
-timeline-pulse/
-├── content/{filone}/{series}/{series-XX-title}.md
-├── docs/characters/         # Pulse-exclusive characters only
-├── docs/pulse-structure.md  # Master document (voices, calendar, echoes)
-└── .kiro/                   # Agent config
-```
+- POV in filename: lowercase (nic, ale, cri, marie, vale, giogio)
+- Episode dirs: 2-digit padding (ep01, ep03)
+- Chapter files: 3-digit padding (ch001, ch015)
 
 ## Frontmatter
 
-### Eros & Anima (required)
+### Required Fields (ALL timelines)
+
 ```yaml
 ---
-pov: string          # lowercase (nic, ale, cri, marie)
-title: string        # max 100 char
-arc: string          # lowercase
-episode: number      # (Eros) or volume number (Anima)
-chapter: number      # integer
-date: string         # "YYYY-MM-DD, Description"
-location: string     # specific ("Apartment, Navigli", not "home")
-summary: string      # max 300 char (NOT the first sentences)
+pov: string          # lowercase character name
+title: string        # max 100 chars, evocative
+date: string         # "YYYY-MM-DD" or "YYYY-MM-DD, Description"
+timeline: string     # eros | anima | glow | bloom | pulse
+arc: string          # lowercase (ale, cri, vale, london, etc.)
+episode: number      # episode/volume number (1 if timeline has no episodes)
+chapter: number      # sequential integer (matches ch{YYY} in filename)
+summary: string      # max 300 chars — a real summary, NOT the first sentences
+location: string     # specific ("Apartment, Navigli" — never "home" or "outside")
 ---
 ```
 
-Optional: `outfit` (string), `heat` (0-5, Eros), `hook_type` (string, Eros), `word_count` (number).
+### Optional Fields
 
-### Pulse (required)
 ```yaml
 ---
-pov: string          # lowercase (nic, cri, ale, ele, gio, vale)
-title: string
-filone: string       # nic | lei
-series: string       # vale, gio, cri, ale, ele
-part: number         # within the series
-heat: number         # 0-5
-word_count: number
-tags: list           # ["confessione", "nostalgia", "desiderio"]
+part: number         # only if episode is divided into parts (rare)
+outfit: string       # female characters' outfits (required for Eros/Glow, optional elsewhere)
+kink: string         # comma-separated content tags (Eros/Glow)
+heat: number         # 0-5 sexual intensity (required for Eros/Glow, optional elsewhere)
 ---
 ```
 
-Optional: `date` (string), `location` (string), `outfit` (string).
+### Heat Scale
+
+| Heat | Meaning |
+|:----:|---------|
+| 0 | No physical content. Conversation, reflection, pure plot. |
+| 1 | Tension, body awareness. Looks, proximity. No contact. |
+| 2 | Physical contact: kisses, touches, build-up. Scene rises but doesn't arrive. |
+| 3 | Sex present but not central. Partial, interrupted, or less detailed. |
+| 4 | Explicit, detailed sex scene. One or two acts described fully. |
+| 5 | Sex-dominant chapter. Multiple acts, very detailed, sex IS the chapter. |
+
+### Frontmatter Validation Rules
+
+- `chapter` in frontmatter MUST match `ch{YYY}` in filename (ch007 → chapter: 7)
+- `pov` in frontmatter MUST match `{pov}` in filename
+- `timeline` MUST be one of: eros, anima, glow, bloom, pulse
+- `summary` is a REAL summary of what happens — never the opening lines
+- `location` must be specific (place name, not "home" or "there")
+- `date` format: ISO date, optionally with description after comma
 
 ## Critical Rules
 
@@ -124,13 +135,16 @@ Optional: `date` (string), `location` (string), `outfit` (string).
 6. Consult planning docs (characters, episodes, locations) before writing
 7. Verify continuity with previous chapters
 8. Write in English (primary). Italian loanwords where character-appropriate
+9. Complete frontmatter with ALL required fields before finishing
 
 ### NEVER
 1. Head-hopping (accessing non-POV characters' thoughts)
 2. Generic locations ("home", "outside", "somewhere")
 3. Summary = first sentences of the chapter (must be a real summary)
 4. Skip context gathering before writing
-5. Cross-arc direct references in Eros/Pulse (oblique echoes only — see "Echi Paralleli")
+5. Cross-arc direct references in Eros/Glow/Pulse (oblique echoes only — see "Echi Paralleli")
+6. Wrong filename format (always `ch{YYY}-{pov}-{slug}.md`)
+7. Missing or incomplete frontmatter
 
 ## MCP Tools
 
@@ -142,11 +156,11 @@ Optional: `date` (string), `location` (string), `outfit` (string).
 ## Workflow
 
 ```
-1. IDENTIFY  → timeline, arc, episode/series, chapter/piece, pov
+1. IDENTIFY  → timeline, arc, episode/volume, chapter, pov
 2. CONTEXT   → planning docs, previous chapter, character sheets
 3. WRITE     → follow timeline-specific prompt (see each repo's writer-prompt.md)
 4. VALIDATE  → anti-AI check, continuity, quality gates
-5. METADATA  → complete frontmatter, word count
+5. METADATA  → complete frontmatter (ALL required fields), correct filename
 6. SYNC      → update databases if available
 ```
 
@@ -162,12 +176,4 @@ Each timeline has its own detailed writer prompt in `.kiro/prompts/writer-prompt
 | `architettura-echi-paralleli.md` | Each arc is autonomous, no cross-dependencies |
 | `{arc}-arc-structure.md` | Chapter-by-chapter outline per arc |
 | `writer-workflow.md` | 8-step workflow for Eros writer |
-
-## Arc README
-
-Each arc has `content/{arc}/README.md`:
-```yaml
----
-status: planned | active | hiatus | complete
----
-```
+| `writer-agent-glow-prompt.md` | Glow-specific writing rules |
