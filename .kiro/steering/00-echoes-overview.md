@@ -18,7 +18,13 @@ Ogni timeline rappresenta un universo narrativo diverso, con personaggi le cui e
 **Tema:** Passione, intensità, emozione cruda  
 **Atmosfera:** Desiderio, tensione, esplorazione fisica ed emotiva  
 **Tono:** Diretto, sensoriale, senza filtri  
-**Protagoniste:** Ale, Gio, altre figure in relazioni intense
+**Protagoniste:** Ale, Ele, Cri, Manu, altre figure in relazioni intense
+
+### ✨ Glow
+**Tema:** Leggerezza, piacere, gioia adulta  
+**Atmosfera:** Chimica, complicità, sesso come linguaggio naturale  
+**Tono:** Leggero, comico, caldo, esplicito  
+**Protagoniste:** Vale, Gio — relazioni sane e scelte
 
 ### 🌸 Bloom
 **Tema:** Scoperta, equilibrio, fioritura  
@@ -27,10 +33,10 @@ Ogni timeline rappresenta un universo narrativo diverso, con personaggi le cui e
 **Protagonista:** Ro
 
 ### 💫 Pulse
-**Tema:** Diario personale, riflessioni, vita quotidiana  
-**Atmosfera:** Intima, autentica, stream of consciousness  
-**Tono:** Diretto, personale, senza protagonista femminile fissa  
-**POV:** Nic (sempre), soggetti variabili
+**Tema:** Diario personale, voci intime, frammenti  
+**Atmosfera:** Intima, autentica, confessionale  
+**Tono:** Diretto, personale, vario  
+**POV:** Nic + LEI (voci femminili standalone)
 
 ## Architettura Tecnica
 
@@ -66,11 +72,15 @@ echoes-io/
 │   ├── content/
 │   └── docs/
 │
+├── timeline-glow/            # Timeline Glow
+│   ├── content/
+│   └── docs/
+│
 ├── timeline-bloom/           # Timeline Bloom
 │   ├── content/
 │   └── docs/
 │
-├── timeline-pulse/           # Timeline Pulse (nuovo!)
+├── timeline-pulse/           # Timeline Pulse
 │   ├── content/
 │   └── docs/
 │
@@ -124,27 +134,49 @@ Fornisce tools per operazioni su contenuti:
 ## Convenzioni di Naming
 
 ### File Capitoli
-**Formato:** `ep{episode}-ch{chapter}-{pov}-{title-slug}.md`
+**Formato:** `ch{chapter}-{pov}-{title-slug}.md`
 
 **Esempi:**
-- `ep01-ch001-marie-awakening.md`
-- `ep03-ch015-nic-reflection.md`
-- `ep12-ch045-ale-intensity.md`
+- `ch001-nic-the-message.md`
+- `ch015-ale-the-crack.md`
+- `ch003-cri-milano.md`
 
 **Regole:**
-- Episode: 2 cifre con zero padding (ep01, ep02, ep12)
 - Chapter: 3 cifre con zero padding (ch001, ch015, ch123)
-- POV: nome personaggio lowercase (marie, nic, ale, gio)
+- POV: nome personaggio lowercase (nic, ale, cri, marie, vale, gio, giogio)
 - Title: slug lowercase con trattini
 
-### Directory Structure
+### Directory Structure per Timeline
+
+**Eros** (ha episodi):
 ```
 content/
-└── {arc-name}/
-    └── ep{XX}-{episode-title}/
-        ├── ep{XX}-ch{XXX}-{pov}-{title}.md
-        ├── ep{XX}-ch{XXX}-{pov}-{title}.md
-        └── ...
+└── {arc}/
+    └── ep{XX}-{episode-slug}/
+        └── ch{YYY}-{pov}-{slug}.md
+```
+
+**Anima** (ha volumi):
+```
+content/
+└── {arc}/
+    └── vol{N}-{volume-slug}/
+        └── ch{YYY}-{pov}-{slug}.md
+```
+
+**Glow** (arco lineare, no episodi):
+```
+content/
+└── {arc}/
+    └── ch{YYY}-{pov}-{slug}.md
+```
+
+**Pulse** (standalone per arco):
+```
+content/
+└── lei/
+    └── {arc}/
+        └── ch{YYY}-{pov}-{slug}.md
 ```
 
 ## Workflow Base

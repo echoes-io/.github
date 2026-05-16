@@ -17,7 +17,8 @@ chapter: number      # Chapter number (required)
 summary: string      # Chapter summary (required)
 location: string     # Scene location (required)
 outfit: string       # Main female characters' outfits (optional)
-kink: string         # Content tags (optional, mainly Eros)
+kink: string         # Content tags (optional)
+heat: number         # Sexual intensity 0-5 (optional, required for Eros/Glow)
 ---
 ```
 
@@ -106,6 +107,7 @@ date: "2024-01-01, New Year"
 ```yaml
 timeline: anima
 timeline: eros
+timeline: glow
 timeline: bloom
 timeline: pulse
 ```
@@ -128,15 +130,22 @@ timeline: pulse
 
 **Anima:**
 ```yaml
-arc: matilde
-arc: anima
+arc: london
+arc: milan
 ```
 
 **Eros:**
 ```yaml
 arc: ale
-arc: gio
+arc: cri
+arc: ele
 arc: work
+```
+
+**Glow:**
+```yaml
+arc: vale
+arc: gio
 ```
 
 **Bloom:**
@@ -146,8 +155,9 @@ arc: bloom
 
 **Pulse:**
 ```yaml
-arc: diary
-arc: reflections
+arc: cri
+arc: ale
+arc: ele
 ```
 
 ### episode (number)
@@ -323,9 +333,38 @@ kink: "exploration, discovery"
 
 **Timeline Usage:**
 - **Eros:** Usato frequentemente
+- **Glow:** Usato frequentemente
 - **Anima:** Raramente (solo per momenti intimi)
 - **Bloom:** Occasionalmente
-- **Pulse:** Raramente
+- **Pulse:** Frequentemente
+
+### heat (number, optional)
+
+**Definizione:** Livello di intensità sessuale/fisica del capitolo, da 0 a 5.
+
+**Scala:**
+
+| Heat | Significato | Esempio |
+|:----:|-------------|---------|
+| 0 | Nessun contenuto fisico. Conversazione, riflessione, plot puro. | Capitolo di backstory, scena con GioGio |
+| 1 | Tensione, consapevolezza del corpo dell'altro. Sguardi, vicinanza. Nessun contatto. | Primo incontro, cena con chimica |
+| 2 | Contatto fisico: baci, tocchi, build-up. La scena sale ma non arriva. | Bacio interrotto, mani che esplorano |
+| 3 | Scena sessuale presente ma non centrale. Parziale, interrotta, o descritta con meno dettaglio. | Sesso rapido, scena tagliata prima/dopo, orale breve |
+| 4 | Scena sessuale esplicita e dettagliata. Uno o due atti descritti per intero. | Sesso completo, una posizione/atto dominante |
+| 5 | Capitolo a dominanza sessuale. Multipli atti, molto dettagliato, il sesso È il capitolo. | Notte intera, multiple posizioni, anale, scene estese |
+
+**Regole:**
+- Intero da 0 a 5
+- Obbligatorio per Eros e Glow
+- Opzionale per Anima (max 3), Bloom, Pulse
+
+**Esempi:**
+```yaml
+heat: 0    # Scena con GioGio, nessun contenuto fisico
+heat: 2    # Bacio + tensione, interrotto
+heat: 4    # Sesso esplicito, una scena completa
+heat: 5    # Notte intera, multiple scene
+```
 
 ## Validazione
 

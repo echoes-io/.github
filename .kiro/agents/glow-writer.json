@@ -1,7 +1,7 @@
 {
-  "name": "pulse-writer",
-  "description": "Specialized writing agent for PULSE timeline",
-  "prompt": "file://../../../timeline-pulse/.kiro/prompts/writer-prompt.md",
+  "name": "glow-writer",
+  "description": "Specialized writing agent for GLOW timeline",
+  "prompt": "file://../../../timeline-glow/.kiro/prompts/writer-prompt.md",
   "mcpServers": {
     "echoes": {
       "command": "npx",
@@ -49,19 +49,17 @@
       "autoAllowReadonly": true
     },
     "subagent": {
-      "availableAgents": ["pulse-character-checker", "pulse-continuity-checker", "pulse-style-checker", "pulse-structure-checker"],
-      "trustedAgents": ["pulse-character-checker", "pulse-continuity-checker", "pulse-style-checker", "pulse-structure-checker"]
+      "availableAgents": ["glow-character-checker", "glow-continuity-checker", "glow-style-checker", "glow-structure-checker"],
+      "trustedAgents": ["glow-character-checker", "glow-continuity-checker", "glow-style-checker", "glow-structure-checker"]
     }
   },
   "resources": [
     "file://../steering/steering-core.md",
     "skill://../skills/**/SKILL.md",
-    "file://../../../timeline-pulse/docs/pulse-structure.md",
+    "file://../../../timeline-glow/docs/glow-structure.md",
+    "file://../../../timeline-glow/docs/characters/*.md",
     "file://../../../resonance/output/nic-continuity-bible.md",
     "file://../../../resonance/output/anti-ai-voice-guide-en.md",
-    "file://../../../resonance/output/architettura-echi-paralleli.md",
-    "file://../../../timeline-eros/docs/characters/cri/cri.md",
-    "file://../../../timeline-eros/docs/characters/ele/ele.md",
-    "file://../../../timeline-eros/docs/characters/ale/ale.md"
+    "file://../../../resonance/output/architettura-echi-paralleli.md"
   ]
 }

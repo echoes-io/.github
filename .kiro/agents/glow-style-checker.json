@@ -1,0 +1,7 @@
+{
+  "name": "glow-style-checker",
+  "description": "Validates writing style in GLOW chapters",
+  "prompt": "file://../prompts/agent-style-checker.md",
+  "tools": ["read", "thinking"],
+  "allowedTools": ["read", "thinking"]
+}
