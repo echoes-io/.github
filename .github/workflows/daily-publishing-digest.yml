@@ -1,0 +1,77 @@
+name: Daily Publishing Digest
+
+on:
+  schedule:
+    - cron: '0 6 * * *' # 8:00 CET (6:00 UTC)
+  workflow_dispatch: # Manual trigger for testing
+
+jobs:
+  digest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get today's publishing tasks
+        id: tasks
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const today = new Date().toISOString().split('T')[0];
+            const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+            const dayName = dayNames[new Date().getDay()];
+
+            // Search open issues across the org that mention today's date
+            const { data } = await github.rest.search.issuesAndPullRequests({
+              q: `org:echoes-io is:issue is:open "${today}"`,
+              sort: 'created',
+              per_page: 50
+            });
+
+            if (data.total_count === 0) {
+              core.setOutput('has_tasks', 'false');
+              return;
+            }
+
+            // Filter: only issues that have the date in the publish line
+            const tasks = data.items.filter(issue => {
+              const body = issue.body || '';
+              return body.includes(`**Publish:** ${today}`);
+            });
+
+            if (tasks.length === 0) {
+              core.setOutput('has_tasks', 'false');
+              return;
+            }
+
+            // Build message
+            let message = `📅 *${today} (${dayName})* — ${tasks.length} task:\n\n`;
+            for (const issue of tasks) {
+              const repo = issue.repository_url.split('/').pop();
+              message += `• ${issue.title}\n  ↳ _${repo}_ · [#${issue.number}](${issue.html_url})\n`;
+            }
+
+            core.setOutput('has_tasks', 'true');
+            core.setOutput('message', message);
+
+      - name: Send Telegram notification
+        if: steps.tasks.outputs.has_tasks == 'true'
+        uses: actions/github-script@v7
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        with:
+          script: |
+            const message = `${{ steps.tasks.outputs.message }}`;
+            const url = `https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/sendMessage`;
+            const res = await fetch(url, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                chat_id: process.env.TELEGRAM_CHAT_ID,
+                text: message,
+                parse_mode: 'Markdown',
+                disable_web_page_preview: true
+              })
+            });
+            const data = await res.json();
+            if (!data.ok) {
+              core.setFailed(`Telegram error: ${data.description}`);
+            }
