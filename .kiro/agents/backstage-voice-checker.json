@@ -1,0 +1,14 @@
+{
+  "name": "backstage-voice-checker",
+  "description": "Validates voice authenticity in Backstage content (BtC character voice / BtS author voice)",
+  "prompt": "file://../../../backstage/.kiro/prompts/voice-checker-prompt.md",
+  "tools": ["read", "thinking"],
+  "allowedTools": ["read", "thinking"],
+  "resources": [
+    "file://../../../backstage/docs/strategy.md",
+    "file://../../../resonance/output/anti-ai-voice-guide-en.md",
+    "file://../../../timeline-eros/docs/characters/**/*.md",
+    "file://../../../timeline-glow/docs/characters/*.md",
+    "file://../../../timeline-anima/docs/characters/*.md"
+  ]
+}
