@@ -1,0 +1,53 @@
+{
+  "name": "publisher-dev",
+  "description": "Development agent for echoes-io/publisher — automated publishing pipeline (Substack + Ream)",
+  "prompt": "file://../../../publisher/.kiro/prompts/default-prompt.md",
+  "tools": [
+    "read",
+    "write",
+    "shell",
+    "web_search",
+    "web_fetch",
+    "introspect",
+    "thinking",
+    "code",
+    "grep",
+    "glob"
+  ],
+  "toolAliases": {},
+  "allowedTools": [
+    "read",
+    "shell",
+    "web_search",
+    "web_fetch",
+    "introspect",
+    "thinking",
+    "code",
+    "grep",
+    "glob"
+  ],
+  "toolsSettings": {
+    "write": {
+      "allowedPaths": [
+        "lib/**",
+        "cli/**",
+        "test/**",
+        "docs/**",
+        ".kiro/**",
+        "*.md",
+        "*.json",
+        "*.ts"
+      ]
+    },
+    "shell": {
+      "autoAllowReadonly": true
+    }
+  },
+  "resources": [
+    "file://../../../publisher/README.md",
+    "file://../../../publisher/docs/substack-api.md",
+    "file://../../../publisher/docs/ream-api.md",
+    "file://../../../resonance/output/platform-strategy-v2.md",
+    "file://../../../backstage/docs/publishing-schedule.md"
+  ]
+}
