@@ -5,9 +5,11 @@
   "mcpServers": {
     "echoes": {
       "command": "npx",
-      "args": ["-y", "@echoes-io/mcp-server@latest"],
+      "args": ["-y", "@echoes-io/mcp-server@latest", "serve"],
       "env": {
-        "ECHOES_RAG_PROVIDER": "embeddinggemma"
+        "ECHOES_EMBEDDING_DTYPE": "q4",
+        "ECHOES_EMBEDDING_MODEL": "onnx-community/embeddinggemma-300m-ONNX",
+        "ECHOES_GEMINI_MODEL": "gemini-3-flash-preview"
       }
     }
   },
@@ -19,6 +21,7 @@
     "web_fetch",
     "introspect",
     "thinking",
+    "use_subagent",
     "@echoes"
   ],
   "toolAliases": {},
@@ -29,6 +32,7 @@
     "web_fetch",
     "introspect",
     "thinking",
+    "use_subagent",
     "@echoes"
   ],
   "toolsSettings": {
@@ -43,6 +47,10 @@
     },
     "shell": {
       "autoAllowReadonly": true
+    },
+    "subagent": {
+      "availableAgents": ["character-checker", "continuity-checker", "style-checker", "structure-checker"],
+      "trustedAgents": ["character-checker", "continuity-checker", "style-checker", "structure-checker"]
     }
   },
   "resources": [

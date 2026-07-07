@@ -16,7 +16,7 @@
   "tools": ["read", "thinking", "@echoes"],
   "allowedTools": ["read", "thinking", "@echoes"],
   "resources": [
-    "file://../../../timeline-glow/docs/glow-structure.md",
+    "file://../../../timeline-glow/docs/timeline-steering.md",
     "file://../../../timeline-glow/docs/characters/*.md"
   ]
 }

@@ -56,7 +56,7 @@
   "resources": [
     "file://../steering/steering-core.md",
     "skill://../skills/**/SKILL.md",
-    "file://../../../timeline-pulse/docs/pulse-structure.md",
+    "file://../../../timeline-pulse/docs/timeline-steering.md",
     "file://../../../resonance/output/nic-continuity-bible.md",
     "file://../../../resonance/output/anti-ai-voice-guide-en.md",
     "file://../../../resonance/output/architettura-echi-paralleli.md",

@@ -16,6 +16,6 @@
   "tools": ["read", "thinking", "@echoes"],
   "allowedTools": ["read", "thinking", "@echoes"],
   "resources": [
-    "file://../../../timeline-pulse/docs/pulse-structure.md"
+    "file://../../../timeline-pulse/docs/timeline-steering.md"
   ]
 }

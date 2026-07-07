@@ -22,6 +22,7 @@
     }
   },
   "resources": [
-    "file://../../../brand/README.md"
+    "file://../../../brand/README.md",
+    "file://../../../brand/guidelines.md"
   ]
 }

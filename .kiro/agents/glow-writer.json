@@ -56,7 +56,7 @@
   "resources": [
     "file://../steering/steering-core.md",
     "skill://../skills/**/SKILL.md",
-    "file://../../../timeline-glow/docs/glow-structure.md",
+    "file://../../../timeline-glow/docs/timeline-steering.md",
     "file://../../../timeline-glow/docs/characters/*.md",
     "file://../../../resonance/output/nic-continuity-bible.md",
     "file://../../../resonance/output/anti-ai-voice-guide-en.md",

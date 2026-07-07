@@ -6,7 +6,7 @@
   "allowedTools": ["read", "thinking"],
   "resources": [
     "file://../steering/02-writing-guidelines.md",
-    "file://../../../timeline-pulse/docs/pulse-structure.md",
+    "file://../../../timeline-pulse/docs/timeline-steering.md",
     "file://../../../timeline-pulse/.kiro/prompts/writer-prompt.md"
   ]
 }
