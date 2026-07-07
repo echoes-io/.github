@@ -1,0 +1,31 @@
+name: Notify Timelines — Agents Template Updated
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'agents-template/**'
+  workflow_dispatch:
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        timeline: [timeline-eros, timeline-anima, timeline-glow, timeline-bloom, timeline-pulse]
+    steps:
+      - name: Generate token
+        id: app-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.ECHOES_SYNC_APP_ID }}
+          private-key: ${{ secrets.ECHOES_SYNC_APP_PRIVATE_KEY }}
+          owner: echoes-io
+          repositories: ${{ matrix.timeline }}
+
+      - name: Dispatch to ${{ matrix.timeline }}
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ steps.app-token.outputs.token }}
+          repository: echoes-io/${{ matrix.timeline }}
+          event-type: agents-template-updated
