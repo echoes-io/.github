@@ -16,6 +16,7 @@ part: number         # Part number (optional, nullable)
 chapter: number      # Chapter number (required)
 summary: string      # Chapter summary (required)
 location: string     # Scene location (required)
+header_image: string # AI image generation prompt for chapter header (required)
 outfit: string       # Main female characters' outfits (optional)
 kink: string         # Content tags (optional)
 heat: number         # Sexual intensity 0-5 (optional, required for Eros/Glow)
@@ -256,6 +257,47 @@ location: "a place"     # ❌ Inutile
 - Sii specifico (non "casa" ma "Apartment di Marie")
 - Consistente attraverso i capitoli
 - Consulta location docs per dettagli
+
+### header_image (string)
+
+**Definizione:** Prompt in inglese per generare l'immagine header del capitolo via AI tool.
+
+**Regole:**
+- Sempre in INGLESE (AI image tools work better in English)
+- Una descrizione specifica di UNA singola immagine
+- Descrive l'atmosfera/contorno del capitolo, NON la scena stessa
+- Non mostra mai volti, corpi espliciti, o il contenuto narrativo del capitolo
+- Segue il mood board dell'arco (vedi `resonance/output/visual-identity-guide.md`)
+
+**Cosa descrivere:**
+- Un oggetto con peso emotivo (vestiti, telefono, tazza, chiavi)
+- Un luogo con atmosfera (finestra, porta, corridoio, terrazzo)
+- Una texture o luce (ombra, riflesso, vapore, neon)
+- Mani, spalle, sagome di spalle — mai facce
+
+**Cosa NON descrivere:**
+- La scena del capitolo (mai didascalico)
+- Volti o corpi riconoscibili
+- Testo leggibile su schermi
+- Contenuto sessuale esplicito
+
+**Esempi Validi:**
+```yaml
+header_image: "Phone screen glowing blue in the dark, thumb hovering over send, sheets visible in background"
+header_image: "Black stilettos on hotel bathroom floor, one toppled sideways, steam from shower visible"
+header_image: "Empty elevator, brushed steel walls, single reflection blurred in the mirror panel"
+header_image: "Two beer bottles on wooden outdoor table, garden blurred behind, charcoal grill smoking"
+```
+
+**Esempi NON Validi:**
+```yaml
+header_image: "A woman putting on lingerie"  # ❌ Didascalico, mostra la scena
+header_image: "Nic looking at Ale"           # ❌ Volti, personaggi
+header_image: "Romantic couple"              # ❌ Generico, cliché
+header_image: ""                             # ❌ Vuoto
+```
+
+**Reference:** Consultare `resonance/output/visual-identity-guide.md` per palette, soggetti ricorrenti e regole per-arco.
 
 ## Campi Opzionali
 
@@ -500,13 +542,14 @@ function extractOutfit(content: string): string | null {
 ---
 pov: marie
 title: "Awakening"
-date: "2025-12-02T10:30:00.000Z"
+date: "2025-12-02, Tuesday"
 timeline: anima
 arc: matilde
 episode: 1
 chapter: 3
 summary: "Marie si svegliò con il sole negli occhi. Per un momento non ricordò dove fosse."
 location: "Apartment"
+header_image: "Morning light through sheer curtains, an unmade bed with warm sheets, a single pillow indented"
 ---
 ```
 
@@ -516,7 +559,7 @@ location: "Apartment"
 ---
 pov: marie
 title: "Awakening"
-date: "2025-12-02T10:30:00.000Z"
+date: "2025-12-02, Tuesday"
 timeline: anima
 arc: matilde
 episode: 1
@@ -524,6 +567,7 @@ part: null
 chapter: 3
 summary: "Marie si svegliò con il sole negli occhi. Per un momento non ricordò dove fosse, poi sentì il calore accanto a lei e tutto tornò a posto."
 location: "Apartment"
+header_image: "Morning light through sheer curtains, an unmade bed with warm sheets, a single pillow indented"
 outfit: "Light blue cotton pajamas"
 ---
 ```
@@ -534,13 +578,14 @@ outfit: "Light blue cotton pajamas"
 ---
 pov: ale
 title: "Intensity"
-date: "2025-12-02T10:30:00.000Z"
+date: "2025-12-02, Tuesday"
 timeline: eros
 arc: ale
 episode: 12
 chapter: 45
 summary: "Le dita di Ale tracciarono la linea della sua schiena con una lentezza deliberata."
 location: "Bedroom"
+header_image: "Silk robe draped over the arm of a chair, bedroom window showing city lights, warm lamp glow"
 outfit: "Black silk robe"
 kink: "intensity, passion, vulnerability"
 ---

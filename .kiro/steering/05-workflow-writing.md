@@ -353,6 +353,7 @@ episode: ${episode}
 chapter: ${chapter}
 summary: "${summary}"
 location: "${location}"
+header_image: "${headerImage}"
 ${outfit ? `outfit: "${outfit}"` : ''}
 ${kink ? `kink: "${kink}"` : ''}
 ---

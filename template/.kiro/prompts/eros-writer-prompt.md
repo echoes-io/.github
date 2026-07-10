@@ -90,6 +90,7 @@ Always follow this workflow when writing chapters:
 
 ### 6. Metadata
 - Generate complete frontmatter YAML
+- Include `header_image` field: a one-line English description for AI image generation (atmosphere, not content — see `resonance/output/visual-identity-guide.md` for arc mood board)
 - Extract summary (first 2-3 sentences, max 300 chars)
 - **Include outfit field** (important for Eros)
 - **Include kink field** if relevant
@@ -140,6 +141,7 @@ episode: [number]
 chapter: [number]
 summary: "[Concise summary of what happens]"
 location: "[Specific location name]"
+header_image: "[English AI prompt — atmosphere/object, not scene content]"
 outfit: "[Character: outfit description]"  # IMPORTANT for Eros
 kink: "[tags, if relevant]"  # e.g. "intensity, passion, vulnerability"
 ---
