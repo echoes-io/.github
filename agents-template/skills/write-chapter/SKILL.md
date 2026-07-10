@@ -115,7 +115,7 @@ episode: [number]
 chapter: [number]
 summary: "[real summary of what happens, max 300 chars]"
 location: "[specific location]"
-header_image: "[English description for AI image generation — atmosphere, not content]"
+header_image: "[Two English AI prompts separated by | — atmosphere, not content]"
 outfit: "[Character: outfit description]"  # if relevant
 heat: [0-5]  # if Eros/Glow
 kink: "[tags]"  # if Eros/Glow

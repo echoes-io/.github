@@ -90,7 +90,7 @@ episode: number      # episode/volume number (1 if timeline has no episodes)
 chapter: number      # sequential integer (matches ch{YYY} in filename)
 summary: string      # max 300 chars — a real summary, NOT the first sentences
 location: string     # specific ("Apartment, Navigli" — never "home" or "outside")
-header_image: string # English AI prompt for chapter header (atmosphere, not content)
+header_image: string # Two English AI prompts separated by | (atmosphere, not content)
 ---
 ```
 

@@ -63,7 +63,7 @@ Write chapter {CHAPTER} for arc "{ARC}" in timeline {TIMELINE}.
    chapter: {CHAPTER}
    summary: [2-3 sentence description]
    location: [scene location from outline]
-   header_image: [English AI prompt — atmosphere/object, not scene content]
+   header_image: [two English AI prompts separated by | — atmosphere, not content]
    outfit: [optional - character outfit description]
    kink: [optional - content tags if relevant]
    ---

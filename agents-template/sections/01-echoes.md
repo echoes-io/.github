@@ -49,7 +49,7 @@ episode: number      # episode/volume number
 chapter: number      # sequential (matches ch{YYY} in filename)
 summary: string      # max 300 chars — a REAL summary, not opening lines
 location: string     # specific ("Apartment, Navigli" — never "home")
-header_image: string # English AI prompt for chapter header image (atmosphere, not content)
+header_image: string # Two English AI prompts separated by | (atmosphere, not content)
 ---
 ```
 

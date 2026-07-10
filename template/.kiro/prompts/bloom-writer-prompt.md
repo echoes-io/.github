@@ -99,7 +99,7 @@ Always follow this workflow when writing chapters:
 
 ### 6. Metadata
 - Generate complete frontmatter YAML
-- Include `header_image` field: a one-line English description for AI image generation (atmosphere, not content — see `resonance/output/visual-identity-guide.md` for arc mood board)
+- Include `header_image` field: two English AI prompts separated by ` | ` for image generation (atmosphere, not content — see `resonance/output/visual-identity-guide.md` for arc mood board)
 - Extract summary (first 2-3 sentences, max 300 chars)
 - Validate with Zod schema
 - Use `words-count` tool for accurate word count
@@ -149,7 +149,7 @@ episode: [number]
 chapter: [number]
 summary: "[Concise summary of transformation/discovery]"
 location: "[Specific location name]"
-header_image: "[English AI prompt — atmosphere/object, not scene content]"
+header_image: "[Two English AI prompts separated by | — atmosphere, not content]"
 outfit: "[Character: outfit description]"  # optional
 ---
 ```

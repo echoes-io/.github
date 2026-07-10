@@ -16,7 +16,7 @@ part: number         # Part number (optional, nullable)
 chapter: number      # Chapter number (required)
 summary: string      # Chapter summary (required)
 location: string     # Scene location (required)
-header_image: string # AI image generation prompt for chapter header (required)
+header_image: string # Two AI image prompts separated by | (required)
 outfit: string       # Main female characters' outfits (optional)
 kink: string         # Content tags (optional)
 heat: number         # Sexual intensity 0-5 (optional, required for Eros/Glow)
@@ -260,14 +260,19 @@ location: "a place"     # ❌ Inutile
 
 ### header_image (string)
 
-**Definizione:** Prompt in inglese per generare l'immagine header del capitolo via AI tool.
+**Definizione:** Due prompt in inglese per generare immagini del capitolo via AI tool, separati da `|` (pipe).
+
+**Formato:** `"[prompt A] | [prompt B]"`
+
+Ogni capitolo ha due immagini — non c'è gerarchia tra le due. Sono opzioni equivalenti da usare in base al contesto di pubblicazione (header sulla piattaforma, card social, anteprime, condivisioni).
 
 **Regole:**
 - Sempre in INGLESE (AI image tools work better in English)
-- Una descrizione specifica di UNA singola immagine
-- Descrive l'atmosfera/contorno del capitolo, NON la scena stessa
-- Non mostra mai volti, corpi espliciti, o il contenuto narrativo del capitolo
-- Segue il mood board dell'arco (vedi `resonance/output/visual-identity-guide.md`)
+- Due descrizioni separate da ` | ` (spazio-pipe-spazio)
+- Ogni descrizione è specifica di UNA singola immagine
+- Descrivono l'atmosfera/contorno del capitolo, NON la scena stessa
+- Non mostrano mai volti, corpi espliciti, o il contenuto narrativo del capitolo
+- Seguono il mood board dell'arco (vedi `resonance/output/visual-identity-guide.md`)
 
 **Cosa descrivere:**
 - Un oggetto con peso emotivo (vestiti, telefono, tazza, chiavi)
@@ -283,10 +288,9 @@ location: "a place"     # ❌ Inutile
 
 **Esempi Validi:**
 ```yaml
-header_image: "Phone screen glowing blue in the dark, thumb hovering over send, sheets visible in background"
-header_image: "Black stilettos on hotel bathroom floor, one toppled sideways, steam from shower visible"
-header_image: "Empty elevator, brushed steel walls, single reflection blurred in the mirror panel"
-header_image: "Two beer bottles on wooden outdoor table, garden blurred behind, charcoal grill smoking"
+header_image: "Phone screen glowing blue in the dark, thumb hovering over send, sheets visible in background | A pub window at night, warm amber light inside, rain on the glass, blurred figure alone at the bar"
+header_image: "Black stilettos on hotel bathroom floor, one toppled sideways, steam from shower visible | Hotel corridor, door ajar, warm light spilling out, a heel visible in the gap"
+header_image: "Empty elevator, brushed steel walls, single reflection blurred in the mirror panel | Office desk after hours, a single monitor glow, a woman's scarf forgotten on the chair"
 ```
 
 **Esempi NON Validi:**
@@ -294,6 +298,7 @@ header_image: "Two beer bottles on wooden outdoor table, garden blurred behind, 
 header_image: "A woman putting on lingerie"  # ❌ Didascalico, mostra la scena
 header_image: "Nic looking at Ale"           # ❌ Volti, personaggi
 header_image: "Romantic couple"              # ❌ Generico, cliché
+header_image: "Only one prompt here"         # ❌ Manca il secondo prompt (usa |)
 header_image: ""                             # ❌ Vuoto
 ```
 
@@ -549,7 +554,7 @@ episode: 1
 chapter: 3
 summary: "Marie si svegliò con il sole negli occhi. Per un momento non ricordò dove fosse."
 location: "Apartment"
-header_image: "Morning light through sheer curtains, an unmade bed with warm sheets, a single pillow indented"
+header_image: "Morning light through sheer curtains, an unmade bed with warm sheets, a single pillow indented | A coffee cup on a windowsill, steam rising, rooftops blurred in the background"
 ---
 ```
 
@@ -567,7 +572,7 @@ part: null
 chapter: 3
 summary: "Marie si svegliò con il sole negli occhi. Per un momento non ricordò dove fosse, poi sentì il calore accanto a lei e tutto tornò a posto."
 location: "Apartment"
-header_image: "Morning light through sheer curtains, an unmade bed with warm sheets, a single pillow indented"
+header_image: "Morning light through sheer curtains, an unmade bed with warm sheets, a single pillow indented | A coffee cup on a windowsill, steam rising, rooftops blurred in the background"
 outfit: "Light blue cotton pajamas"
 ---
 ```
@@ -585,7 +590,7 @@ episode: 12
 chapter: 45
 summary: "Le dita di Ale tracciarono la linea della sua schiena con una lentezza deliberata."
 location: "Bedroom"
-header_image: "Silk robe draped over the arm of a chair, bedroom window showing city lights, warm lamp glow"
+header_image: "Silk robe draped over the arm of a chair, bedroom window showing city lights, warm lamp glow | A hand gripping white sheets, knuckles tense, morning light slicing across the bed"
 outfit: "Black silk robe"
 kink: "intensity, passion, vulnerability"
 ---

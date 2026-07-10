@@ -19,7 +19,7 @@ part: number         # Part number (optional, nullable)
 chapter: number      # Chapter number (required)
 summary: string      # Chapter summary (required)
 location: string     # Scene location (required)
-header_image: string # AI image prompt for chapter header (required)
+header_image: string # Two AI image prompts separated by | (required)
 outfit: string       # Main female characters' outfits (optional)
 kink: string         # Content tags (optional, mainly Eros)
 ---
@@ -77,15 +77,16 @@ summary: "Marie si sveglia nell'appartamento di Nic. Riflette sulla notte passat
 - ❌ "home", "outside", "somewhere"
 
 ### header_image (string)
-- English-language prompt for AI image generation (chapter header)
+- Two English-language prompts for AI image generation, separated by ` | ` (pipe)
+- Format: `"[prompt A] | [prompt B]"` — two equivalent options for different publication contexts
 - Describes ATMOSPHERE, not the chapter's content (never didascalic)
-- One object, place, or texture with emotional weight
+- One object, place, or texture with emotional weight per prompt
 - Never faces, explicit bodies, or readable text
 - Reference: `resonance/output/visual-identity-guide.md` for per-arc palette and subjects
 - Examples:
-  - `"Phone screen glowing blue in the dark, thumb hovering over send, sheets in background"`
-  - `"Black stilettos on hotel bathroom floor, one toppled sideways, steam from shower visible"`
-  - `"Empty elevator, brushed steel walls, single reflection blurred in mirror panel"`
+  - `"Phone screen glowing blue in the dark, thumb hovering over send | A pub window at night, warm amber light, rain on glass"`
+  - `"Black stilettos on hotel bathroom floor, one toppled sideways | Hotel corridor, door ajar, warm light spilling out"`
+  - `"Empty elevator, brushed steel walls, reflection blurred | Office desk after hours, monitor glow, scarf on chair"`
 
 ## Campi Opzionali
 
@@ -149,7 +150,7 @@ episode: 1
 chapter: 3
 summary: "Marie si svegliò con il sole negli occhi. Per un momento non ricordò dove fosse."
 location: "Apartment"
-header_image: "Morning light through sheer curtains, an unmade bed with warm sheets, a single pillow indented"
+header_image: "Morning light through sheer curtains, an unmade bed with warm sheets, a single pillow indented | A coffee cup on a windowsill, steam rising, rooftops blurred behind"
 ---
 ```
 
@@ -165,7 +166,7 @@ episode: 12
 chapter: 45
 summary: "Le dita di Ale tracciarono la linea della sua schiena con una lentezza deliberata."
 location: "Bedroom"
-header_image: "Silk robe draped over the arm of a chair, bedroom window showing city lights, warm lamp glow"
+header_image: "Silk robe draped over the arm of a chair, bedroom window showing city lights | A hand gripping white sheets, knuckles tense, morning light slicing across the bed"
 outfit: "Black silk robe"
 kink: "intensity, passion, vulnerability"
 ---

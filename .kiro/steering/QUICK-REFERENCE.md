@@ -37,7 +37,7 @@ episode: 1                    # required, number
 chapter: 3                    # required, number
 summary: "Chapter summary..."  # required, riassunto capitolo
 location: "Apartment"         # required, specific
-header_image: "Morning light through curtains, unmade bed, pillow indented"  # required, English
+header_image: "Morning light through curtains, unmade bed, pillow indented | Coffee cup on windowsill, steam rising, rooftops behind"  # required, English, two prompts separated by |
 outfit: "Marie: green sweater; Angi: black dress"  # optional, female chars
 kink: "intimacy, tenderness"  # optional (mainly Eros)
 ---
