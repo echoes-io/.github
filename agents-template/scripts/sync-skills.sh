@@ -1,117 +1,92 @@
-#!/usr/bin/env bash
-set -euo pipefail
+#!/bin/bash
+set -e
 
-# sync-skills.sh — Copies universal skills from .github/agents-template/skills/ to a timeline repo.
-# Also copies resonance files into the appropriate skill references/ directories.
+# sync-skills.sh — Sync universal skills from .github to timeline repo
 #
 # Usage:
-#   ./sync-skills.sh <path-to-github-repo> <path-to-timeline-repo> [--check]
+#   bash sync-skills.sh <github-repo-path> <timeline-repo-path> [--check]
 #
-# Examples:
-#   ./sync-skills.sh ../.github .
-#   ./sync-skills.sh ../.github . --check
+# Universal skills (synced from .github/agents-template/skills/):
+#   anti-ai-check, echi-paralleli, nic-bible, timeline-master, write-chapter
 #
-# With --check: exits 1 if any universal skill is out of sync.
+# Local skills (NOT synced — managed per-timeline):
+#   arc-*, commercial-patterns, innovations-per-arc, nic-scar-graph, image-maker
 
-GITHUB_REPO="${1:?Usage: sync-skills.sh <github-repo-path> <timeline-repo-path> [--check]}"
-TIMELINE_REPO="${2:?Usage: sync-skills.sh <github-repo-path> <timeline-repo-path> [--check]}"
+GITHUB_REPO="${1:?Usage: $0 <github-repo-path> <timeline-repo-path> [--check]}"
+TIMELINE_REPO="${2:?Usage: $0 <github-repo-path> <timeline-repo-path> [--check]}"
 CHECK_MODE="${3:-}"
 
-SOURCE_SKILLS="${GITHUB_REPO}/agents-template/skills"
-TARGET_SKILLS="${TIMELINE_REPO}/.agents/skills"
+SOURCE_DIR="$GITHUB_REPO/agents-template/skills"
+TARGET_DIR="$TIMELINE_REPO/.agents/skills"
 
-# Validate
-if [[ ! -d "$SOURCE_SKILLS" ]]; then
-  echo "ERROR: source skills directory not found: $SOURCE_SKILLS" >&2
+# Universal skills to sync
+UNIVERSAL_SKILLS=(
+  anti-ai-check
+  echi-paralleli
+  nic-bible
+  timeline-master
+  write-chapter
+)
+
+# Validate paths
+if [ ! -d "$SOURCE_DIR" ]; then
+  echo "❌ Error: $SOURCE_DIR not found"
   exit 1
 fi
 
-CHANGES=0
+if [ ! -d "$TARGET_DIR" ]; then
+  echo "❌ Error: $TARGET_DIR not found"
+  exit 1
+fi
 
-# Sync each universal skill
-for skill_dir in "$SOURCE_SKILLS"/*/; do
-  skill_name=$(basename "$skill_dir")
-  target_dir="${TARGET_SKILLS}/${skill_name}"
-
-  if [[ "$CHECK_MODE" == "--check" ]]; then
-    # Check mode: compare
-    if [[ ! -d "$target_dir" ]]; then
-      echo "MISSING: $target_dir" >&2
-      CHANGES=$((CHANGES + 1))
+# Check mode
+if [ "$CHECK_MODE" = "--check" ]; then
+  OUT_OF_SYNC=0
+  for skill in "${UNIVERSAL_SKILLS[@]}"; do
+    if [ ! -d "$TARGET_DIR/$skill" ]; then
+      echo "❌ Missing: $skill"
+      OUT_OF_SYNC=1
       continue
     fi
-    # Compare SKILL.md
-    if ! diff -q "${skill_dir}/SKILL.md" "${target_dir}/SKILL.md" > /dev/null 2>&1; then
-      echo "OUT OF SYNC: ${target_dir}/SKILL.md" >&2
-      CHANGES=$((CHANGES + 1))
+    # Compare all files in the skill directory
+    if ! diff -rq "$SOURCE_DIR/$skill" "$TARGET_DIR/$skill" > /dev/null 2>&1; then
+      echo "❌ Out of sync: $skill"
+      OUT_OF_SYNC=1
     fi
+  done
+
+  if [ $OUT_OF_SYNC -eq 0 ]; then
+    echo "✅ All universal skills are in sync"
+    exit 0
   else
-    # Sync mode: copy
-    mkdir -p "$target_dir"
-    # Copy SKILL.md always
-    cp "${skill_dir}/SKILL.md" "${target_dir}/SKILL.md"
-    # Copy references/ if exists in source (only files that don't exist locally or are from template)
-    if [[ -d "${skill_dir}/references" ]]; then
-      mkdir -p "${target_dir}/references"
-      # Only copy template references, not overwrite local ones
-      for ref_file in "${skill_dir}/references/"*; do
-        if [[ -f "$ref_file" ]]; then
-          ref_name=$(basename "$ref_file")
-          cp "$ref_file" "${target_dir}/references/${ref_name}"
-        fi
-      done
-    fi
-    echo "SYNCED: $skill_name"
-  fi
-done
-
-# Sync resonance files into skill references (if resonance exists)
-RESONANCE_DIR="${GITHUB_REPO}/../resonance/output"
-if [[ -d "$RESONANCE_DIR" && "$CHECK_MODE" != "--check" ]]; then
-  # nic-bible: copy full bible
-  if [[ -f "${RESONANCE_DIR}/nic-continuity-bible.md" && -d "${TARGET_SKILLS}/nic-bible" ]]; then
-    mkdir -p "${TARGET_SKILLS}/nic-bible/references"
-    cp "${RESONANCE_DIR}/nic-continuity-bible.md" "${TARGET_SKILLS}/nic-bible/references/full-bible.md"
-    echo "SYNCED: nic-bible/references/full-bible.md (from resonance)"
-  fi
-
-  # timeline-master: copy timeline
-  if [[ -f "${RESONANCE_DIR}/timeline-master.md" && -d "${TARGET_SKILLS}/timeline-master" ]]; then
-    mkdir -p "${TARGET_SKILLS}/timeline-master/references"
-    cp "${RESONANCE_DIR}/timeline-master.md" "${TARGET_SKILLS}/timeline-master/references/timeline-master.md"
-    echo "SYNCED: timeline-master/references/timeline-master.md (from resonance)"
-  fi
-
-  # write-chapter: copy workflow
-  if [[ -f "${RESONANCE_DIR}/writer-workflow.md" && -d "${TARGET_SKILLS}/write-chapter" ]]; then
-    mkdir -p "${TARGET_SKILLS}/write-chapter/references"
-    cp "${RESONANCE_DIR}/writer-workflow.md" "${TARGET_SKILLS}/write-chapter/references/writer-workflow.md"
-    echo "SYNCED: write-chapter/references/writer-workflow.md (from resonance)"
-  fi
-
-  # anti-ai-check: copy full guide
-  if [[ -f "${RESONANCE_DIR}/anti-ai-voice-guide-en.md" && -d "${TARGET_SKILLS}/anti-ai-check" ]]; then
-    mkdir -p "${TARGET_SKILLS}/anti-ai-check/references"
-    cp "${RESONANCE_DIR}/anti-ai-voice-guide-en.md" "${TARGET_SKILLS}/anti-ai-check/references/full-guide.md"
-    echo "SYNCED: anti-ai-check/references/full-guide.md (from resonance)"
-  fi
-
-  # echi-paralleli: copy full doc
-  if [[ -f "${RESONANCE_DIR}/architettura-echi-paralleli.md" && -d "${TARGET_SKILLS}/echi-paralleli" ]]; then
-    mkdir -p "${TARGET_SKILLS}/echi-paralleli/references"
-    cp "${RESONANCE_DIR}/architettura-echi-paralleli.md" "${TARGET_SKILLS}/echi-paralleli/references/full-doc.md"
-    echo "SYNCED: echi-paralleli/references/full-doc.md (from resonance)"
-  fi
-fi
-
-# Check mode exit
-if [[ "$CHECK_MODE" == "--check" ]]; then
-  if [[ $CHANGES -gt 0 ]]; then
-    echo "FAIL: $CHANGES skill(s) out of sync. Run 'make skills-sync' to fix." >&2
+    echo ""
+    echo "Run 'make skills-sync' to update."
     exit 1
   fi
-  echo "OK: All universal skills are in sync."
-  exit 0
 fi
 
-echo "Done. Universal skills synced to ${TARGET_SKILLS}/"
+# Sync mode
+SYNCED=0
+for skill in "${UNIVERSAL_SKILLS[@]}"; do
+  if [ ! -d "$SOURCE_DIR/$skill" ]; then
+    echo "⚠️  Skipping $skill (not in source)"
+    continue
+  fi
+
+  # Check if different before copying
+  if [ -d "$TARGET_DIR/$skill" ] && diff -rq "$SOURCE_DIR/$skill" "$TARGET_DIR/$skill" > /dev/null 2>&1; then
+    continue  # Already in sync
+  fi
+
+  # Copy
+  rm -rf "$TARGET_DIR/$skill"
+  cp -r "$SOURCE_DIR/$skill" "$TARGET_DIR/$skill"
+  echo "  ↻ $skill"
+  SYNCED=$((SYNCED + 1))
+done
+
+if [ $SYNCED -eq 0 ]; then
+  echo "✅ All universal skills already in sync"
+else
+  echo "✅ Synced $SYNCED skill(s)"
+fi

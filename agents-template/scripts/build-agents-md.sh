@@ -1,83 +1,72 @@
-#!/usr/bin/env bash
-set -euo pipefail
+#!/bin/bash
+set -e
 
-# build-agents-md.sh — Generates AGENTS.md from universal sections + per-timeline config.
+# build-agents-md.sh — Generate AGENTS.md from universal template + local config
 #
 # Usage:
-#   ./build-agents-md.sh <path-to-github-repo> <path-to-timeline-repo> [--check]
+#   bash build-agents-md.sh <github-repo-path> <timeline-repo-path> [--check]
 #
-# Examples:
-#   ./build-agents-md.sh ../.github . 
-#   ./build-agents-md.sh ../.github . --check
-#
-# With --check: exits 1 if the current AGENTS.md differs from what would be generated.
+# The generated AGENTS.md is composed of:
+#   1. Universal sections (from .github/agents-template/sections/00-universal.md)
+#   2. Local config files (from .agents/config/*.md, sorted by filename)
 
-GITHUB_REPO="${1:?Usage: build-agents-md.sh <github-repo-path> <timeline-repo-path> [--check]}"
-TIMELINE_REPO="${2:?Usage: build-agents-md.sh <github-repo-path> <timeline-repo-path> [--check]}"
+GITHUB_REPO="${1:?Usage: $0 <github-repo-path> <timeline-repo-path> [--check]}"
+TIMELINE_REPO="${2:?Usage: $0 <github-repo-path> <timeline-repo-path> [--check]}"
 CHECK_MODE="${3:-}"
 
-SECTIONS_DIR="${GITHUB_REPO}/agents-template/sections"
-CONFIG_DIR="${TIMELINE_REPO}/.agents/config"
-OUTPUT="${TIMELINE_REPO}/AGENTS.md"
+SECTIONS_DIR="$GITHUB_REPO/agents-template/sections"
+CONFIG_DIR="$TIMELINE_REPO/.agents/config"
+OUTPUT="$TIMELINE_REPO/AGENTS.md"
 
-# Validate inputs
-if [[ ! -d "$SECTIONS_DIR" ]]; then
-  echo "ERROR: sections directory not found: $SECTIONS_DIR" >&2
+# Validate paths
+if [ ! -d "$SECTIONS_DIR" ]; then
+  echo "❌ Error: $SECTIONS_DIR not found"
   exit 1
 fi
 
-if [[ ! -d "$CONFIG_DIR" ]]; then
-  echo "ERROR: per-timeline config directory not found: $CONFIG_DIR" >&2
+if [ ! -d "$CONFIG_DIR" ]; then
+  echo "❌ Error: $CONFIG_DIR not found"
   exit 1
 fi
 
-# Build AGENTS.md
+# Build the file
 GENERATED=$(mktemp)
-trap 'rm -f "$GENERATED"' EXIT
 
-cat >> "$GENERATED" << 'HEADER'
-<!-- GENERATED FILE — DO NOT EDIT MANUALLY -->
-<!-- Source: .github/agents-template/sections/ + .agents/config/ -->
-<!-- Regenerate with: make agents-md -->
-
-# AGENTS.md
-HEADER
-
-echo "" >> "$GENERATED"
-
-# Append universal sections (sorted by filename)
+# Universal sections (sorted) — first section includes the generation header
 for section in "$SECTIONS_DIR"/*.md; do
-  if [[ -f "$section" ]]; then
-    echo "" >> "$GENERATED"
-    cat "$section" >> "$GENERATED"
-    echo "" >> "$GENERATED"
-  fi
+  [ -f "$section" ] || continue
+  cat "$section" >> "$GENERATED"
+  echo "" >> "$GENERATED"
 done
 
-# Append per-timeline config sections (sorted by filename)
+# Local config (sorted)
 for config in "$CONFIG_DIR"/*.md; do
-  if [[ -f "$config" ]]; then
-    echo "" >> "$GENERATED"
-    cat "$config" >> "$GENERATED"
-    echo "" >> "$GENERATED"
-  fi
+  [ -f "$config" ] || continue
+  cat "$config" >> "$GENERATED"
+  echo "" >> "$GENERATED"
 done
 
 # Check mode: compare with existing
-if [[ "$CHECK_MODE" == "--check" ]]; then
-  if [[ ! -f "$OUTPUT" ]]; then
-    echo "FAIL: $OUTPUT does not exist. Run 'make agents-md' to generate it." >&2
+if [ "$CHECK_MODE" = "--check" ]; then
+  if [ ! -f "$OUTPUT" ]; then
+    echo "❌ AGENTS.md does not exist. Run 'make agents-md' to generate."
+    rm "$GENERATED"
     exit 1
   fi
-  if ! diff -q "$GENERATED" "$OUTPUT" > /dev/null 2>&1; then
-    echo "FAIL: $OUTPUT is out of date. Run 'make agents-md' to regenerate." >&2
-    diff --unified=3 "$OUTPUT" "$GENERATED" >&2 || true
+  if diff -q "$GENERATED" "$OUTPUT" > /dev/null 2>&1; then
+    echo "✅ AGENTS.md is up to date"
+    rm "$GENERATED"
+    exit 0
+  else
+    echo "❌ AGENTS.md is out of date. Run 'make agents-md' to regenerate."
+    echo ""
+    echo "Differences:"
+    diff "$GENERATED" "$OUTPUT" | head -30
+    rm "$GENERATED"
     exit 1
   fi
-  echo "OK: $OUTPUT is up to date."
-  exit 0
 fi
 
-# Write mode: overwrite
-cp "$GENERATED" "$OUTPUT"
-echo "Generated: $OUTPUT"
+# Write mode
+mv "$GENERATED" "$OUTPUT"
+echo "✅ AGENTS.md generated ($(wc -l < "$OUTPUT") lines)"
